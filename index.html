@@ -12,8 +12,9 @@
       --bg-base: #0a0a0a;
       --bg-surface: #171717;
       --bg-elevated: #1f1f1f;
-      --border-subtle: #262626;
-      --border-default: #333333;
+      --border-subtle: #333333;
+      --border-default: #454545;
+      --border-strong: #5a5a5a;
       --text-primary: #ffffff;
       --text-secondary: #ffffff;
       --text-tertiary: #a1a1aa;
@@ -225,7 +226,7 @@
 
     /* ---------- Section block ---------- */
     section.block {
-      margin-bottom: 48px;
+      margin-bottom: 56px;
     }
 
     /* ---------- Notice box ---------- */
@@ -382,7 +383,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-default);
     }
 
     .section-title {
@@ -4778,9 +4781,1081 @@ File Transfer (Safehouse→SFTP)</pre>
             </div>
           </article>
         </article>
-        <article class="page" id="page-quiz-section4" data-placeholder data-page-title="練習問題｜Section 4"></article>
-        <article class="page" id="page-quiz-section5" data-placeholder data-page-title="練習問題｜Section 5"></article>
-        <article class="page" id="page-quiz-mock" data-placeholder data-page-title="練習問題｜模試"></article>
+        <!-- 7. 練習問題 Section 4 -->
+        <article class="page" id="page-quiz-section4">
+          <header class="page__header">
+            <p class="page__subtitle">PRACTICE — SECTION 4</p>
+            <h1 class="page__title">Subscriber and Data Management (10 問)</h1>
+          </header>
+
+          <nav class="quiz-nav" aria-label="問題索引">
+            <p class="quiz-nav__label">問題索引</p>
+            <a class="quiz-nav__item" href="#quiz-section4-q1">Q4-1</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q2">Q4-2</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q3">Q4-3</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q4">Q4-4</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q5">Q4-5</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q6">Q4-6</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q7">Q4-7</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q8">Q4-8</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q9">Q4-9</a>
+            <a class="quiz-nav__item" href="#quiz-section4-q10">Q4-10</a>
+          </nav>
+
+          <article class="quiz" id="quiz-section4-q1" data-quiz-id="Q4-1" data-correct="C" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-1</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">複数の属性、購入履歴、メール許諾を保持し、将来 SQL でセグメントを作成する予定。最適なデータ構造は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">List</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Group</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Data Extension</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Publication List</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>多属性・履歴・SQL 対応は Data Extension。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A, B は単純な購読者管理のみで属性拡張・SQL に弱い。D は購読カテゴリ管理機能。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q2" data-quiz-id="Q4-2" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-2</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Data Extension 内の各行を一意識別するために使うのは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Subscriber Key</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Primary Key</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Contact Key</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Email Address</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Primary Key は DE 内の行一意性。Subscriber Key は購読者識別子。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は購読者識別子で DE 行とは別概念、C は Contact Builder 側の識別子、D は配信先で個人識別子としては不十分。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q3" data-quiz-id="Q4-3" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-3</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Sendable DE で送信時に購読ステータスを正しく管理するために、必須の設定は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Filtered DE への変換</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Subscriber Relationship（DE のキーを Subscriber Key に紐付け）の設定</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Send Logging の有効化</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">A/B Test Send の有効化</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Sendable DE は Subscriber Relationship 設定で All Subscribers と連携。これがないと購読管理が機能しない。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は条件抽出機能で本質ではない、C は送信記録、D はテスト機能。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q4" data-quiz-id="Q4-4" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-4</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">家族で同じメールアドレスを共有する顧客がいる。各家族員に個別のメッセージを送りたい。最適な設計は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Email Address を Subscriber Key にする</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">各家族員に固有の Subscriber Key（顧客 ID）を割り当てる</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">すべて Suppression List に追加する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Publication List で分ける</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Subscriber Key を個別に割り当てれば、同一メアドの中で別購読者として扱える。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は家族員が同一購読者として扱われる、C は送信不可化、D はカテゴリ管理で個人識別とは別。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q5" data-quiz-id="Q4-5" data-correct="A,C" data-type="multi-2">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-5</span>
+              <span class="quiz__type">複数選択(2 つ)</span>
+            </header>
+            <p class="quiz__question">送信予定数が 10,000 件のところ実送信が 8,500 件だった。最初に確認すべき項目は？（2 つ）</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">All Subscribers の購読ステータス（Unsubscribed / Held / Bounced）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Content Builder の画像サイズ</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Suppression List / Exclusion List</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Subscriber Preview の設定</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>送信差異の主要原因は購読・除外レイヤー。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B はコンテンツの見た目で送信数とは無関係、D は事前確認機能。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q6" data-quiz-id="Q4-6" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-6</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Publication List と Suppression List の違いとして正しいものは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">どちらも同じ機能</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Publication List はカテゴリ別購読管理、Suppression List は送信除外</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Publication List は除外用、Suppression List は購読管理</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">どちらも DE 内に作成する</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Publication = カテゴリ別購読、Suppression = 送信除外。混同が頻出。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は別機能、C は役割が逆、D は DE とは別の機能領域。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q7" data-quiz-id="Q4-7" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-7</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Contact Key として最も推奨される値は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Email Address</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">不変の社内顧客 ID（CRM の顧客 ID など）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">電話番号</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">ユーザーの氏名</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Email Address は変更・共有・複数所持が起こりうる。不変 ID が推奨される。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は可変で不適、C も変更されうる、D は重複が多く識別不能。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q8" data-quiz-id="Q4-8" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-8</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Sendable DE からレコードを削除した。All Contacts はどうなる？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">同時に削除される</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Contact レコードは All Contacts に残る</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Suppression List に自動追加される</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Subscriber Key が無効化される</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Contact Identity 層は Sendable DE とは独立。DE 削除では Contact は消えない。Contact 削除は別プロセス。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は連動しない、C は手動操作、D は別概念。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q9" data-quiz-id="Q4-9" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-9</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Parent BU と Child BU 3 つの構成で、共通テンプレートを複数の Child BU から参照したい。最適な手段は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">各 Child BU に同じテンプレートを複製</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Parent BU で Shared Data Extension / Shared Content を作成</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Suppression List を Parent BU に集約</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Send Classification を Parent BU に集約</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Shared 系（DE / Content）は Parent で作成し子 BU から参照可能。複製はアンチパターン。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A はメンテ性悪化、C は購読除外で目的不一致、D は送信設定で共通テンプレートとは別。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section4-q10" data-quiz-id="Q4-10" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q4-10</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">特定の社内テスト用購読者については Open / Click を記録したくない。設定すべきは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">DoNotTrack Attribute を設定</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Suppression List に追加</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Sender Profile を変更</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Send Logging を無効化</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>DoNotTrack Attribute は特定購読者のトラッキングを抑止する設定。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は送信自体を止める、C は From 設定で関連なし、D は全体設定で個別制御不可。</p>
+              </div>
+            </div>
+          </article>
+        </article>
+        <!-- 7. 練習問題 Section 5 -->
+        <article class="page" id="page-quiz-section5">
+          <header class="page__header">
+            <p class="page__subtitle">PRACTICE — SECTION 5</p>
+            <h1 class="page__title">Insights and Analytics (10 問)</h1>
+          </header>
+
+          <nav class="quiz-nav" aria-label="問題索引">
+            <p class="quiz-nav__label">問題索引</p>
+            <a class="quiz-nav__item" href="#quiz-section5-q1">Q5-1</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q2">Q5-2</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q3">Q5-3</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q4">Q5-4</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q5">Q5-5</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q6">Q5-6</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q7">Q5-7</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q8">Q5-8</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q9">Q5-9</a>
+            <a class="quiz-nav__item" href="#quiz-section5-q10">Q5-10</a>
+          </nav>
+
+          <article class="quiz" id="quiz-section5-q1" data-quiz-id="Q5-1" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-1</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">開封者のうちクリックした割合を見たい。最も近い指標は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">CTR (Click-Through Rate)</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">CTOR (Click-to-Open Rate)</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Bounce Rate</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Complaint Rate</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>CTOR の分母は Open、CTR の分母は Delivered。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は分母が Delivered で開封者ベースではない、C は到達失敗、D は苦情率。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q2" data-quiz-id="Q5-2" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-2</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">受信者ごとの最適送信時刻を学習させたい。使う Einstein 機能は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Einstein Send Time Optimization (STO)</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Einstein Content Selection</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Einstein Engagement Frequency</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Einstein Copy Insights</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>STO は受信者個別最適時刻の機能。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B はコンテンツ選定、C は頻度判定、D は件名 / 本文改善。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q3" data-quiz-id="Q5-3" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-3</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">SMS リンクのクリック数にボットや URL プレビューによる自動クリックが混在している。実際の購読者クリックに近い値を見るには？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">TotalClicks</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">VerifiedClicks</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">TotalOpens</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">BounceCount</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>VerifiedClicks（Spring '26）はボット由来の自動クリックを除外した補正指標。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A はボット込みの総数、C は開封指標、D はバウンス指標。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q4" data-quiz-id="Q5-4" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-4</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">過去 30 日の送信履歴を SQL で参照したい。使う仕組みは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Data Views（<code>_Sent</code>、<code>_Open</code> 等）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Send Classification</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Subscriber Preview</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Publication List</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Data Views は Tracking 系データを SQL で参照する標準手段。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は送信設定、C はプレビュー、D は購読管理で履歴参照不可。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q5" data-quiz-id="Q5-5" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-5</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">送信時点の Subscriber 属性と Subject Line を永続保存したい。使う仕組みは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Tracking Extract</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Send Logging</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Data Views</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Suppression List</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Send Logging は送信時点のスナップショットをカスタム DE に記録する。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は既存 Tracking からの抽出で送信時点記録ではない、C は標準データで Subject Line 等は取れない、D は除外管理。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q6" data-quiz-id="Q5-6" data-correct="A,C" data-type="multi-2">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-6</span>
+              <span class="quiz__type">複数選択(2 つ)</span>
+            </header>
+            <p class="quiz__question">Send Logging Data Extension で自動的に値が入るフィールドは？（2 つ）</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">JobID</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">EmailContent</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">TriggeredSendID</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">CTR</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>自動収集される 6 フィールドは JobID / ListID / BatchID / SubID / TriggeredSendID / ErrorCode。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は本文で自動収集対象外、D は集計指標で送信時点では存在しない。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q7" data-quiz-id="Q5-7" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-7</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Engagement の高い・低い購読者を予測したい。使う機能は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Einstein Engagement Scoring</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Einstein Send Time Optimization</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Einstein Content Selection</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Einstein Copy Insights</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Engagement Scoring は開封・クリック・離脱可能性を予測する。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は送信時刻、C はコンテンツ選定、D は文面改善。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q8" data-quiz-id="Q5-8" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-8</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Apple Mail Privacy Protection (MPP) によって発生する現象は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Click Rate が必ず低下する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Open Rate が実態より高く出る可能性がある</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Bounce Rate が消失する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Send Classification が無効化される</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>MPP はトラッキング画像を事前ロードするため、実開封でなくても Open として計上される。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A はクリックには直接影響しない、C は別の指標、D は送信設定で MPP と無関係。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q9" data-quiz-id="Q5-9" data-correct="C" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-9</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Marketing Cloud の送信・エンゲージメントデータの保持期間は？（2026 年時点）</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">30 日</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">90 日</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">180 日</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">無期限</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Spring '26 時点で 180 日。長期分析は外部退避が前提。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A, B は短すぎる、D は無期限保持ではない。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-section5-q10" data-quiz-id="Q5-10" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">Q5-10</span>
+              <span class="quiz__type">単一選択</span>
+            </header>
+            <p class="quiz__question">Automation で Data Extract ジョブをスケジュールしているが、新規ジョブが拒否される事象が発生した。原因として最も可能性が高いのは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Send Classification が未設定</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Data Extract キューが上限 250 件を超えている</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Publication List がない</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Subscriber Preview が無効</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Data Extract キュー上限は 250 件。スケジュール過密で詰まる典型パターン（Spring '26 で明文化）。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は送信設定、C は購読管理、D はプレビュー機能で Extract キューと無関係。</p>
+              </div>
+            </div>
+          </article>
+        </article>
+        <!-- 7. 練習問題 模試 -->
+        <article class="page" id="page-quiz-mock">
+          <header class="page__header">
+            <p class="page__subtitle">PRACTICE — MOCK EXAM</p>
+            <h1 class="page__title">模試 (20 問)</h1>
+          </header>
+
+          <p class="lead">配点比例で構成された総合問題。Best Practices 2 問 / Content 5 問 / Automation 5 問 / Subscriber &amp; Data 5 問 / Analytics 3 問。</p>
+
+          <nav class="quiz-nav" aria-label="問題索引">
+            <p class="quiz-nav__label">問題索引</p>
+            <a class="quiz-nav__item" href="#quiz-mock-q1">M1</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q2">M2</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q3">M3</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q4">M4</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q5">M5</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q6">M6</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q7">M7</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q8">M8</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q9">M9</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q10">M10</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q11">M11</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q12">M12</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q13">M13</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q14">M14</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q15">M15</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q16">M16</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q17">M17</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q18">M18</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q19">M19</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q20">M20</a>
+          </nav>
+
+          <article class="quiz" id="quiz-mock-q1" data-quiz-id="M1" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M1</span>
+              <span class="quiz__type">単一選択 ・ Best Practices</span>
+            </header>
+            <p class="quiz__question">新規顧客の獲得後に、4 週間にわたる Welcome シリーズ（5 通）を送信したい。各通のクリック有無で次の出し分けを変えたい。最適なツールは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Automation Studio</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Journey Builder</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Triggered Send</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">User-Initiated Send</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>個人時間軸 + 行動分岐は Journey Builder。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A はバッチ向きで個人時間軸不可、C は単発の即時送信、D は再利用可能定義の通常送信。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q2" data-quiz-id="M2" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M2</span>
+              <span class="quiz__type">単一選択 ・ Best Practices</span>
+            </header>
+            <p class="quiz__question">長期非開封の購読者を Suppression List に追加するか、再エンゲージメント Journey に投入するかを判断する基準として最も適切なのは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">直近 30 日のエンゲージメント状況と過去の購入有無</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Sender Profile の設定</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Send Classification の Commercial / Transactional 分類</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Subscriber Key の重複</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>顧客価値とエンゲージメント履歴で判断するのが定石。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は From 設定、C は送信分類、D は識別子問題で判断軸ではない。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q3" data-quiz-id="M3" data-correct="C" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M3</span>
+              <span class="quiz__type">単一選択 ・ Content</span>
+            </header>
+            <p class="quiz__question">メール内で会員ランクに応じた異なる商品レコメンドを表示したい。マーケターが GUI で管理できる手段は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">AMPscript の Lookup</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">SSJS</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Dynamic Content</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Personalization String</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Dynamic Content は GUI で条件と表示内容を設定できる。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A, B は開発者向け、D は単純差込のみ。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q4" data-quiz-id="M4" data-correct="A,C" data-type="multi-2">
+            <header class="quiz__head">
+              <span class="quiz__id">M4</span>
+              <span class="quiz__type">複数選択(2 つ) ・ Content</span>
+            </header>
+            <p class="quiz__question">Sender Profile で管理される項目は？（2 つ）</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">From Name</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Footer</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Reply Mail Management (RMM)</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Dedicated IP</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>From 系と Reply 処理は Sender Profile。Footer / IP は Delivery Profile。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B, D は Delivery Profile の管理項目。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q5" data-quiz-id="M5" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M5</span>
+              <span class="quiz__type">単一選択 ・ Content</span>
+            </header>
+            <p class="quiz__question">Triggered Send Definition を作成後、Start していない状態で API から送信リクエストを送るとどうなる？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">自動的に Start される</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">送信されない</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Suppression List に追加される</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Sender Profile が再生成される</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Start していない Definition は送信を受け付けない。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は明示的 Start が必須、C, D は無関係な動作。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q6" data-quiz-id="M6" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M6</span>
+              <span class="quiz__type">単一選択 ・ Content</span>
+            </header>
+            <p class="quiz__question">A/B Test Send で Subject Line を比較する際、勝者基準（Winner Criteria）として最も適切なのは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Bounce Rate</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Open Rate（Subject Line のテストなので開封が直接の指標）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Send Classification</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">CTOR</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Subject Line のテストは Open Rate が直接の効果指標。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は到達性で件名効果ではない、C は送信設定、D は開封後の指標で件名効果の直接測定ではない。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q7" data-quiz-id="M7" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M7</span>
+              <span class="quiz__type">単一選択 ・ Content</span>
+            </header>
+            <p class="quiz__question">Commercial 用と Transactional 用でメール送信設定を切り替えたい。再利用可能な設定単位は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Send Classification</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Sender Profile のみ</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Delivery Profile のみ</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Publication List</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Send Classification = Sender + Delivery + CAN-SPAM 分類の組み合わせテンプレート。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B, C は単独では Commercial / Transactional 区分を持たない、D は購読カテゴリ。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q8" data-quiz-id="M8" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M8</span>
+              <span class="quiz__type">単一選択 ・ Automation</span>
+            </header>
+            <p class="quiz__question">SFTP に毎朝 CSV が置かれる。これを DE に取り込み、対象者を絞ってメール送信したい。最適な Automation 構成は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">File Transfer → Import → SQL Query → Send Email</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Send Email → File Transfer</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Journey Builder の Wait → Engagement Split</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Random Split → Dynamic Content</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>SFTP 取込・SQL 加工・送信のチェーンが Automation Studio の典型。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は順序が逆、C は Journey Builder で取込不可、D は分岐とコンテンツ機能で取込関係なし。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q9" data-quiz-id="M9" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M9</span>
+              <span class="quiz__type">単一選択 ・ Automation</span>
+            </header>
+            <p class="quiz__question">Data Extract を実行したが外部 SFTP に届かない。原因は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">File Transfer Activity が後続にない</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Subscriber Key の重複</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Send Classification の設定不備</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Content Builder の画像エラー</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Data Extract = ファイル化、File Transfer = 移動。両方必要。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は DE 内部問題で SFTP と無関係、C は送信設定、D はメール本文。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q10" data-quiz-id="M10" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M10</span>
+              <span class="quiz__type">単一選択 ・ Automation</span>
+            </header>
+            <p class="quiz__question">Welcome Journey が再登録時に再入場しない。設定変更すべきは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Re-entry Settings</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Goal</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Exit Criteria</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Decision Split</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>デフォルトは No re-entry。明示的な変更が必要。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は目的達成定義、C は離脱条件、D は分岐機能。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q11" data-quiz-id="M11" data-correct="A,B" data-type="multi-2">
+            <header class="quiz__head">
+              <span class="quiz__id">M11</span>
+              <span class="quiz__type">複数選択(2 つ) ・ Automation</span>
+            </header>
+            <p class="quiz__question">Automation Studio で使う Activity として正しい組み合わせは？（2 つ）</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">SQL Query</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">File Transfer</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Decision Split</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Engagement Split</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Decision / Engagement Split は Journey Builder の要素。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>C, D は Journey Builder 内の要素で Automation Studio Activity ではない。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q12" data-quiz-id="M12" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M12</span>
+              <span class="quiz__type">単一選択 ・ Automation</span>
+            </header>
+            <p class="quiz__question">Triggered Send が向く場面として最も適切なのは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">定期的な一斉配信</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">EC 購入完了直後の購入確認メール</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">月次レポートメール</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Welcome 5 通シリーズ</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>イベント駆動・1 件単位・即時性は Triggered の典型。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A, C は定期バッチ向き、D は Journey Builder 向き。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q13" data-quiz-id="M13" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M13</span>
+              <span class="quiz__type">単一選択 ・ Subscriber &amp; Data</span>
+            </header>
+            <p class="quiz__question">Sendable DE と非 Sendable DE の違いは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Sendable DE は Subscriber Relationship が設定されており送信対象として使える</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">非 Sendable DE は Primary Key を持てない</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Sendable DE は SQL で参照できない</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">非 Sendable DE は Data Filter で抽出できない</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Sendable DE の核心は Subscriber Relationship 設定の有無。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B, D は誤った技術的制約、C は SQL 参照は両方可能。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q14" data-quiz-id="M14" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M14</span>
+              <span class="quiz__type">単一選択 ・ Subscriber &amp; Data</span>
+            </header>
+            <p class="quiz__question">実送信数が想定より少ない。最初に確認すべきは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">All Subscribers のステータス、Suppression / Exclusion</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Subject Line</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Send Time Optimization</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Content Builder の Block 数</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>送信差異の主要原因は購読・除外レイヤー。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B, D はコンテンツ要素、C は送信時刻最適化で差異とは別。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q15" data-quiz-id="M15" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M15</span>
+              <span class="quiz__type">単一選択 ・ Subscriber &amp; Data</span>
+            </header>
+            <p class="quiz__question">Email Address を Subscriber Key に使うリスクとして最も大きいのは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">メアド変更や家族共有で同一人物が複数 Subscriber 扱いになる</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Send Classification が機能しなくなる</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Sender Profile が無効化される</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Dynamic Content が動かない</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Email Address は変更・共有・複数所持のリスク。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B, C, D は Subscriber Key の選び方とは無関係。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q16" data-quiz-id="M16" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M16</span>
+              <span class="quiz__type">単一選択 ・ Subscriber &amp; Data</span>
+            </header>
+            <p class="quiz__question">3 つの DE（顧客マスタ / 購入履歴 / Preference）を結合して対象者を抽出したい。最適な手段は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Data Filter</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">SQL Query Activity</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Subscriber Preview</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Suppression Script</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>複数 DE JOIN は SQL Query。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は単一 DE 条件抽出、C は事前確認、D は除外スクリプト。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q17" data-quiz-id="M17" data-correct="A,B" data-type="multi-2">
+            <header class="quiz__head">
+              <span class="quiz__id">M17</span>
+              <span class="quiz__type">複数選択(2 つ) ・ Subscriber &amp; Data</span>
+            </header>
+            <p class="quiz__question">Contact Key と Subscriber Key の関係として正しいものは？（2 つ）</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">ベストプラクティスは両者を同一値で運用する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Subscriber Key は Email Studio で使い、Contact Key は Contact Builder で使う</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">両者は必ず別の値でなければならない</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Contact Key は Email Address と同じである</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>別レイヤーの識別子だが同一値運用が推奨。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>C は同一値運用が推奨されている、D は Email Address は不変ではないため推奨されない。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q18" data-quiz-id="M18" data-correct="B" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M18</span>
+              <span class="quiz__type">単一選択 ・ Analytics</span>
+            </header>
+            <p class="quiz__question">開封者の何 % がクリックしたかを見たい指標は？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">CTR</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">CTOR</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Bounce Rate</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Complaint Rate</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>CTOR の分母は Open。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>A は分母が Delivered、C, D は別指標。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q19" data-quiz-id="M19" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M19</span>
+              <span class="quiz__type">単一選択 ・ Analytics</span>
+            </header>
+            <p class="quiz__question">送信時点の SubscriberKey と Subject Line を後から SQL で参照できる形で残したい。最適な仕組みは？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Send Logging（カスタム DE にカラム名一致でフィールド追加）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Tracking Extract のみ</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Send Classification</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Data Filter</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Send Logging は送信時点のスナップショットを永続保存。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B は標準カラムのみで Subject Line 等は取れない、C は送信設定、D は購読者抽出。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q20" data-quiz-id="M20" data-correct="A" data-type="single">
+            <header class="quiz__head">
+              <span class="quiz__id">M20</span>
+              <span class="quiz__type">単一選択 ・ Analytics</span>
+            </header>
+            <p class="quiz__question">Marketing Cloud の送信・エンゲージメントデータが 180 日で消える。長期分析を行うためには？</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Send Logging や Tracking Extract で外部退避し、別途分析環境で保持する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Send Classification を Commercial にする</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Suppression List に追加する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Sender Profile を新規作成する</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>保持期間制限のため、長期分析は外部退避前提。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B, C, D は保持期間とは無関係な機能。</p>
+              </div>
+            </div>
+          </article>
+        </article>
       </div>
     </main>
   </div>
