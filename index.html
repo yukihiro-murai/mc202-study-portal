@@ -977,6 +977,91 @@
       line-height: 1.7;
     }
 
+    /* ---------- Quiz misconception tag ---------- */
+    .quiz__misconception {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 3px 10px;
+      font-size: 0.7rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+      background: var(--bg-elevated);
+    }
+
+    /* ---------- Quiz selection counter (multi-N) ---------- */
+    .quiz__counter {
+      margin: 0 0 12px;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.02em;
+    }
+
+    .quiz__counter-current {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .quiz__counter.is-ready .quiz__counter-current {
+      color: var(--accent-hover);
+    }
+
+    /* ---------- Quiz page progress bar ---------- */
+    .quiz-progress {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .quiz-progress__item {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .quiz-progress__label {
+      color: var(--text-tertiary);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+
+    .quiz-progress__value {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .quiz-progress__value--accent {
+      color: var(--accent);
+    }
+
+    .quiz-progress__reset {
+      margin-left: auto;
+      background: transparent;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .quiz-progress__reset:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
     /* ---------- Quiz nav bar ---------- */
     .quiz-nav {
       display: flex;
@@ -1347,7 +1432,7 @@
       }
 
       .trap-table td:first-child::before {
-        content: "罠";
+        content: "誤り";
         position: absolute;
         left: 0;
         top: 0;
@@ -1473,7 +1558,7 @@
           <li class="nav-item"><span class="nav-link" data-page="roadmap">6. 学習ロードマップ</span></li>
           <li class="nav-item" data-submenu>
             <span class="nav-link" data-page="quiz">
-              <span>7. 練習問題70問</span>
+              <span>7. 練習問題75問</span>
               <span class="nav-link__caret">▸</span>
             </span>
             <ul class="sub-list">
@@ -1506,8 +1591,8 @@
         <!-- TOP page -->
         <article class="page" id="page-top">
           <header class="page__header">
-            <p class="page__subtitle">Salesforce Marketing Cloud Email Specialist</p>
-            <h1 class="page__title">MC-202 試験対策ガイド</h1>
+            <p class="page__subtitle">Salesforce Certified Marketing Cloud Email Specialist</p>
+            <h1 class="page__title">Salesforce Certified Marketing Cloud Email Specialist（MC-202）試験対策ガイド</h1>
           </header>
 
           <section class="block">
@@ -1515,9 +1600,9 @@
               <p class="notice__title">注意喚起</p>
               <p>
                 試験傾向や試験情報は日々アップデートされます。公式でも注意喚起がされています。<br>
-                情報鮮度を確認のうえ、必要な行動を取ってください。<br>
+                公式 Exam Guide、Trailhead Trailmix、Release Maintenance、Salesforce Help の更新を確認してから学習してください。<br>
                 旧情報を元に学習すると逆効果なのでご注意ください。<br>
-                公式 Trailhead は直近の試験傾向を反映しているわけではないので、このページの鮮度が良好な情報とハイブリットで活用してください。
+                公式 Exam Guide / Trailhead Trailmix を基準にしつつ、Release Maintenance や Salesforce Help の更新も確認し、このページの情報とハイブリッドで活用してください。
               </p>
             </div>
           </section>
@@ -1595,7 +1680,7 @@
                     <tr><td>Email Studio</td><td>メール送信、購読者管理、Tracking</td><td>★★★ 中核</td></tr>
                     <tr><td>Content Builder</td><td>コンテンツ作成・管理</td><td>★★★ 中核</td></tr>
                     <tr><td>Automation Studio</td><td>バッチ自動化</td><td>★★★ 中核</td></tr>
-                    <tr><td>Journey Builder</td><td>顧客行動ベースのフロー</td><td>★★★ 中核</td></tr>
+                    <tr><td>Journey Builder</td><td>顧客行動に応じたジャーニー</td><td>★★★ 中核</td></tr>
                     <tr><td><span class="term" data-tooltip="Contact Builder。Marketing Cloud のアプリの 1 つ。Contact Model、Population、Attribute Group を管理する場所。">Contact Builder<sup>*</sup></span></td><td>Contact Model、Population 管理</td><td>★★ 頻出</td></tr>
                     <tr><td>Mobile Studio (MobileConnect/Push)</td><td>SMS/Push</td><td>★ 名前と概念のみ</td></tr>
                     <tr><td>Analytics Builder</td><td>レポート</td><td>★★</td></tr>
@@ -1615,7 +1700,7 @@
               </button>
             </div>
             <div class="section-body">
-              <p class="lead">ここを混同していると、購読管理・購読数差異・データ構造の問題が全滅する。</p>
+              <p class="lead">ここを混同していると、購読管理・送信数差異・データ構造の問題が全滅する。</p>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
@@ -1638,7 +1723,7 @@
                 <li>すべての Subscriber は Contact だが、すべての Contact が Subscriber ではない（メールを送られたことのない Contact もありうる）</li>
                 <li><span class="term" data-tooltip="Sendable DE。送信対象として利用可能な Data Extension。Subscriber Relationship 設定が必須。">Sendable DE<sup>*</sup></span> から行を削除しても、All Contacts からは消えない（Contact Identity は別レイヤーで管理）</li>
                 <li>ベストプラクティス: Subscriber Key と Contact Key は同じ値にする</li>
-                <li>Email Address を Contact Key にすると、メアド変更で別人扱い・共有メアドで競合などの問題が発生</li>
+                <li>Email Address を Contact Key にすると、メールアドレス変更で別人扱い・共有メールアドレスで競合などの問題が発生</li>
               </ul>
             </div>
           </section>
@@ -1659,10 +1744,16 @@
 └─ Child BU 3 (例: 部門X)</pre>
               <h3>ポイント</h3>
               <ul>
-                <li>All Contacts は Enterprise（全 BU 横断）レベル → Contact 数のカウントも Enterprise 単位</li>
-                <li>All Subscribers は BU ごと（ただし Parent BU からは子 BU を跨いで参照可能）</li>
-                <li>Shared Data Extension は Parent BU で作成し、複数の Child BU から参照可能</li>
+                <li>All Contacts / All Subscribers は Enterprise MID に関連付けられる（Contact 層は Enterprise 単位で管理）</li>
+                <li>BU 単位では Business Unit Unsubscribe、Subscriber Filter、送信分類、権限、表示範囲などにより購読状態や送信対象の扱いが変わる</li>
+                <li>Shared Data Extension / Shared Content は Parent BU で作成し、複数の Child BU から参照可能（具体的な可視範囲は公式 Help を参照）</li>
                 <li>Send Classification / Sender Profile / Delivery Profile は BU ごとに管理</li>
+              </ul>
+              <h3>判断軸（丸暗記しない）</h3>
+              <ul>
+                <li>Contact：Contact Builder / All Contacts / チャネル横断</li>
+                <li>Subscriber：Email Studio / Email 送信・購読ステータス</li>
+                <li>BU：送信運用・購読解除設定・共有データ・送信設定の境界</li>
               </ul>
             </div>
           </section>
@@ -1729,14 +1820,16 @@
                     <tr><th>項目</th><th>内容</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>問題数</td><td>60問（採点対象）+ 最大5問（非採点）</td></tr>
-                    <tr><td>試験時間</td><td>90分</td></tr>
+                    <tr><td>問題数</td><td>60 問（採点対象）+ 最大 5 問（非採点）</td></tr>
+                    <tr><td>試験時間</td><td>90 分</td></tr>
                     <tr><td>合格点</td><td>67%</td></tr>
-                    <tr><td>形式</td><td>多肢選択・複数選択（<span class="term" data-tooltip="Multi-select。複数選択問題。&quot;Choose 2&quot; や &quot;Choose 3&quot; のように複数の正解を選ぶ形式。">multi-select<sup>*</sup></span>）混在</td></tr>
-                    <tr><td>受験料</td><td>$200 USD / ¥30,000 JP（再受験 $100）</td></tr>
-                    <tr><td>受験形態</td><td>テストセンター or オンライン Proctored</td></tr>
+                    <tr><td>形式</td><td>Multiple Choice / Multiple Select（<span class="term" data-tooltip="Multi-select。複数選択問題。&quot;Choose 2&quot; や &quot;Choose 3&quot; のように複数の正解を選ぶ形式。">multi-select<sup>*</sup></span>）混在</td></tr>
+                    <tr><td>受験料</td><td>USD 200 / JPY 30,000（JPY 価格は公式価格ページで要確認）</td></tr>
+                    <tr><td>再受験料</td><td>USD 100（JPY 価格は公式ページで要確認）</td></tr>
+                    <tr><td>受験形態</td><td>テストセンター / オンライン Proctored</td></tr>
                     <tr><td>持ち込み</td><td>不可</td></tr>
                     <tr><td><span class="term" data-tooltip="Mark for Review。試験中、後で見直したい問題に印を付ける機能。最後に見直し画面で確認できる。">Mark for Review<sup>*</sup></span></td><td>利用可（後で見直しできる）</td></tr>
+                    <tr><td>情報源</td><td>受験前に公式 Exam Guide / Trailhead Academy / Webassessor を確認</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -1805,7 +1898,7 @@ Automation / Journey による運用
 Tracking / Analytics による改善</pre>
               <h3>近年（Spring '25 / Spring '26 メンテナンスモジュール）の追加論点</h3>
               <ul>
-                <li>Journey Builder High-Throughput Sending (<span class="term" data-tooltip="HTS。High-Throughput Sending。Journey Builder で大規模配信時に利用できる高速送信モード。Spring '25 で正式化。">HTS<sup>*</sup></span>)</li>
+                <li>Journey Builder High-Throughput Sending (<span class="term" data-tooltip="HTS = High-Throughput Sending。Journey Builder の大規模配信向け高速送信モード。2024 年導入、Spring '25 で利用推奨や考慮事項が強調。有効化後は同 Journey で無効化不可。">HTS<sup>*</sup></span>)</li>
                 <li>Einstein 生成 AI による多言語コンテンツ</li>
                 <li>Automation Studio History Dashboard</li>
                 <li>SMS の VerifiedClicks</li>
@@ -1954,14 +2047,45 @@ Tracking / Analytics による改善</pre>
               </button>
             </div>
             <div class="section-body">
-              <h3>押さえる用語</h3>
+              <h3>Sender Authentication / 到達性の用語</h3>
               <ul>
-                <li><span class="term" data-tooltip="SPF = Sender Policy Framework。送信元 IP を DNS で公開し、なりすまし送信を防ぐメール認証技術。">SPF<sup>*</sup></span> / <span class="term" data-tooltip="DKIM = DomainKeys Identified Mail。メールに電子署名を付与し、改ざんと送信元を検証する技術。">DKIM<sup>*</sup></span> / <span class="term" data-tooltip="DMARC = Domain-based Message Authentication, Reporting and Conformance。SPF / DKIM の結果に基づき受信側の処理ポリシーを規定する。">DMARC<sup>*</sup></span></li>
-                <li>Sender Authentication Package (SAP)</li>
-                <li>Dedicated IP、IP warming、Sender reputation</li>
-                <li>Bounce、Complaint、Spam trap</li>
-                <li>List hygiene、Engagement</li>
+                <li>SAP（Sender Authentication Package）</li>
+                <li><span class="term" data-tooltip="SPF = Sender Policy Framework。送信元 IP を DNS で公開し、なりすまし送信を防ぐメール認証技術。">SPF<sup>*</sup></span></li>
+                <li><span class="term" data-tooltip="DKIM = DomainKeys Identified Mail。メールに電子署名を付与し、改ざんと送信元を検証する技術。">DKIM<sup>*</sup></span></li>
+                <li><span class="term" data-tooltip="DMARC = Domain-based Message Authentication, Reporting and Conformance。SPF / DKIM の結果に基づき受信側の処理ポリシーを規定する。">DMARC<sup>*</sup></span></li>
+                <li>Sender Profile / From Address Management</li>
+                <li>Dedicated IP / Shared IP</li>
+                <li>IP Warming</li>
+                <li>Sender Reputation</li>
               </ul>
+              <h3>Deliverability troubleshooting（切り分け順序）</h3>
+              <ol>
+                <li>SPF / DKIM / DMARC</li>
+                <li>SAP / From Domain / Sender Profile</li>
+                <li>Bounce 分類</li>
+                <li>Complaint Rate</li>
+                <li>List hygiene</li>
+                <li>Engagement 低下</li>
+                <li>Spam trap risk</li>
+                <li>Domain block</li>
+                <li>List Detective</li>
+                <li>IP warming 不足</li>
+                <li>急激な送信量増加</li>
+                <li>古いリストや同意不明リストの利用</li>
+              </ol>
+              <h3>Bounce 分類</h3>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>Bounce 種別</th><th>意味</th><th>判断</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Hard Bounce</td><td>無効アドレスなど恒久的失敗</td><td>リスト品質・アドレス正規性を確認</td></tr>
+                    <tr><td>Soft Bounce</td><td>メールボックス満杯など一時的失敗</td><td>継続観察</td></tr>
+                    <tr><td>Block Bounce</td><td>受信側ポリシー・ブロック</td><td>レピュテーション・認証・コンテンツ確認</td></tr>
+                  </tbody>
+                </table>
+              </div>
               <h3>典型判断</h3>
               <div class="table-wrap">
                 <table class="data-table">
@@ -1998,6 +2122,20 @@ Tracking / Analytics による改善</pre>
                 <li>Publication List、Suppression List</li>
                 <li>同意取得、再許諾、購読者保持</li>
               </ul>
+              <h3>Publication / Suppression / Exclusion の整理</h3>
+              <ul>
+                <li><em class="em">Publication List</em>: メールカテゴリ単位の購読管理（ニュースレター、製品アップデート、キャンペーン通知など）</li>
+                <li><em class="em">Suppression List</em>: 送ってはいけない人を除外（苦情、法務要請、Do Not Contact など）</li>
+                <li><em class="em">Exclusion List</em>: 特定の送信だけから除外</li>
+                <li><em class="em">Exclusion Script</em>: 条件式による動的除外</li>
+              </ul>
+              <h3>Transactional 分類の注意点</h3>
+              <ul>
+                <li>Transactional に分類すれば何を送ってもよい、という説明は不可</li>
+                <li>取引目的・サービス提供目的のメールであることが前提</li>
+                <li>Commercial 要素が入ると法令・購読解除・送信分類の問題が生じる</li>
+                <li>Transactional Messaging API でも購読管理・法令・社内ポリシーの検討は必要</li>
+              </ul>
             </div>
           </section>
 
@@ -2013,7 +2151,7 @@ Tracking / Analytics による改善</pre>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>Transactional なら何を送ってもよい</td><td>取引目的のメールである必要がある</td></tr>
@@ -2152,18 +2290,26 @@ Tracking / Analytics による改善</pre>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
-                    <tr><th>方式</th><th>向く場面</th></tr>
+                    <tr><th>方式</th><th>向く場面</th><th>注意点</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Guided Send (Send Flow)</td><td>手動で単発送信したい</td></tr>
-                    <tr><td>User-Initiated Send</td><td>再利用可能な送信定義を作りたい</td></tr>
-                    <tr><td>Triggered Send</td><td>外部イベント・API で 1 通ずつ送信したい</td></tr>
-                    <tr><td>Transactional Send (TMS)</td><td>高優先度の取引メール（API）</td></tr>
-                    <tr><td>Journey Builder Email Activity</td><td>顧客行動に応じた流れの中で送信したい</td></tr>
-                    <tr><td>Automation Studio Send Email Activity</td><td>定期バッチ処理の中で送信したい</td></tr>
+                    <tr><td>Send Flow（旧 Guided Send）</td><td>手動の単発送信</td><td>再利用性や API 即時送信には不向き</td></tr>
+                    <tr><td>User-Initiated Send</td><td>再利用可能な通常送信定義</td><td>イベント即時 1 通には不向き</td></tr>
+                    <tr><td>Classic Triggered Send</td><td>Email Studio 管理の Triggered Send Definition による従来型イベント送信</td><td>旧来の試験文脈で「外部イベント / API / 1 通即時」の答えになりやすい</td></tr>
+                    <tr><td>Transactional Messaging API / Transactional Send</td><td>注文確認、パスワードリセット、領収書などの即時・高優先度の取引メール</td><td>現代的な API 送信ではこちらを優先候補に。messageKey の一意性が重要</td></tr>
+                    <tr><td>Journey Builder Email Activity</td><td>顧客体験・待機・分岐を含むフロー内の送信</td><td>単純な即時 1 通には過剰な場合がある</td></tr>
+                    <tr><td>Automation Studio Send Email Activity</td><td>定期バッチ処理の中で送信</td><td>個人時間軸の待機・分岐は不可</td></tr>
                   </tbody>
                 </table>
               </div>
+              <h3>Transactional Messaging API の境界</h3>
+              <ul>
+                <li>API 経由の取引メール（注文確認・パスワードリセット等）は Transactional Messaging API が現代的選択肢</li>
+                <li>Classic Triggered Send は旧来の試験問題や Email Studio 文脈で出る</li>
+                <li>messageKey の一意性が重要</li>
+                <li>Suppression List / Exclusion Script の扱いなど通常送信と異なる制限があるため、法令・購読管理を別途考慮</li>
+                <li>Send Logging を使う場合は automatic send logging などの設定確認が必要</li>
+              </ul>
             </div>
           </section>
 
@@ -2222,11 +2368,17 @@ Tracking / Analytics による改善</pre>
             <div class="section-body">
               <h3>押さえる項目</h3>
               <ul>
-                <li>Subject Line / From Name / Preheader / Email Content / Send Time</li>
-                <li>Winner Criteria（Open Rate / Click Rate / <span class="term" data-tooltip="CTOR = Click-to-Open Rate。クリック数 / 開封数。開封者のうち何 % がクリックしたか。">CTOR<sup>*</sup></span>）</li>
+                <li>テスト変数: Subject Line / From Name / Preheader / Email Content / Send Time</li>
+                <li>代表的な Winner Criteria: Highest Unique Open Rate / Highest Unique Click-Through Rate</li>
                 <li>テスト対象割合 / Winner 送信対象割合</li>
               </ul>
-              <p><em class="em">Path Optimizer</em>: Journey Builder 内で複数パスを A/B テストし、勝者パスに残りの購読者を送る機能。Email Studio の A/B Testing とは別物。</p>
+              <p><em class="em">CTOR</em>（Click-to-Open Rate = Click / Open）は開封後クリックの<em class="em">分析指標</em>として有用だが、Email Studio A/B Test の Winner Criteria としては扱わない。<span class="term" data-tooltip="CTOR = Click-to-Open Rate。クリック数 / 開封数。開封者のうち何 % がクリックしたか。分析指標として使う。">CTOR<sup>*</sup></span></p>
+              <h3>隣接機能との境界</h3>
+              <ul>
+                <li><em class="em">A/B Test Send</em>（Email Studio）: 1 回の送信ジョブで件名等を比較し勝者を残り対象に配信</li>
+                <li><em class="em">Path Optimizer</em>（Journey Builder）: Journey 内の複数パスを比較し勝者パスへ寄せる</li>
+                <li><em class="em">Random Split</em>（Journey Builder）: 単純なランダム分岐。<em class="em">勝者選定は行わない</em></li>
+              </ul>
             </div>
           </section>
 
@@ -2242,7 +2394,7 @@ Tracking / Analytics による改善</pre>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>開封率を見たいのにクリック率を Winner 基準にする</td><td>指標と目的を合わせる</td></tr>
@@ -2399,7 +2551,20 @@ File Transfer (Safehouse→SFTP)</pre>
                   </tbody>
                 </table>
               </div>
-              <p><em class="em">HTS</em>（High-Throughput Sending）: 大規模配信時に Journey の Email Activity で利用できる高速送信モード。Spring '25 で正式化。</p>
+              <h3><em class="em">HTS</em>（High-Throughput Sending）— 大規模 Journey 配信向け高速送信モード</h3>
+              <ul>
+                <li>HTS は 2024 年に導入。Spring '25 では利用推奨やデフォルト設定、考慮事項が強調された</li>
+                <li>Journey Settings で個別 Journey に対して有効化する</li>
+                <li>有効化して Journey をアクティブ化した後は、その Journey で HTS を<em class="em">無効化できない</em></li>
+              </ul>
+              <h3>HTS の考慮事項</h3>
+              <ul>
+                <li>標準的な Journey Builder 送信は、目安として最大 2M emails/hour/tenant</li>
+                <li>HTS では 2 倍以上のスループットを狙える</li>
+                <li>Send Summary by Day Reports では HTS Email Activity が正しく反映されない可能性。Journey Analytics または Marketing Cloud Intelligence での確認が必要になる場合がある</li>
+                <li>Field-Level Encryption 有効環境では HTS が使えない場合がある</li>
+                <li>Message Priority は HTS で認識されない</li>
+              </ul>
             </div>
           </section>
 
@@ -2442,7 +2607,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>すべて Journey Builder でやる</td><td>SQL・ファイル処理は Automation Studio</td></tr>
@@ -2521,6 +2686,13 @@ File Transfer (Safehouse→SFTP)</pre>
   └─ Subscriber relationship
         → All Subscribers の Subscriber Key  ← この値と紐付ける</pre>
               <p>ここを誤ると、<em class="em">送信対象 / 購読管理 / Tracking / Journey entry / 重複排除 / レポート / Unsubscribe 処理がすべて壊れる</em>。</p>
+              <h3>Sendable DE 設計のチェック</h3>
+              <ul>
+                <li>Email Address だけでは不十分。<em class="em">Subscriber Relationship</em> の設定が必要</li>
+                <li>Subscriber Key 相当のカラムが各 Sendable DE に存在する必要がある</li>
+                <li>Sendable DE の Primary Key は、Subscriber Key と<em class="em">同じである必要はない</em></li>
+                <li>Primary Key は DE 内の行一意性、Subscriber Key は Email Studio 側の購読者識別子、Contact Key は Contact Builder 側のチャネル横断識別子</li>
+              </ul>
             </div>
           </section>
 
@@ -2547,7 +2719,14 @@ File Transfer (Safehouse→SFTP)</pre>
                   </tbody>
                 </table>
               </div>
-              <div class="takeaway">ベストプラクティス: Subscriber Key = Contact Key を同一値で運用。Email Address を使うと、メアド変更や家族での共有時に同一人物を別 Contact として扱ってしまう。</div>
+              <div class="takeaway">ベストプラクティス: Subscriber Key = Contact Key を同一値で運用。Email Address を使うと、メールアドレス変更や家族での共有時に同一人物を別 Contact として扱ってしまう。</div>
+              <h3>Contact Key 設計のベストプラクティス</h3>
+              <ul>
+                <li>Contact Key は<em class="em">チャネル非依存で変わりにくい値</em>を使う</li>
+                <li>Email Address、Phone Number などチャネル固有・変更されやすい値は避ける</li>
+                <li>Subscriber Key と Contact Key は同じ値にするのがベストプラクティス</li>
+                <li>Email Address を Contact Key にすると、メールアドレス変更時に別 Contact 化しやすい</li>
+              </ul>
             </div>
           </section>
 
@@ -2679,6 +2858,22 @@ File Transfer (Safehouse→SFTP)</pre>
                   </tbody>
                 </table>
               </div>
+              <h3>Data Filter vs SQL Query の使い分け（詳細）</h3>
+              <ul>
+                <li><em class="em">Data Filter</em>:
+                  <ul>
+                    <li>GUI で管理しやすい</li>
+                    <li>単一 DE の属性、Data Relationship、Measures を使ったセグメントに向く</li>
+                    <li>マーケターが条件を保守したい場合に向く</li>
+                  </ul>
+                </li>
+                <li><em class="em">SQL Query</em>:
+                  <ul>
+                    <li>複数 DE の JOIN、履歴集計、動的な日付条件、複雑な除外条件に向く</li>
+                    <li>Automation Studio で定期実行する対象者作成に向く</li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           </section>
 
@@ -2755,7 +2950,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>Primary Key = Subscriber Key</td><td>違う</td></tr>
@@ -2849,7 +3044,7 @@ File Transfer (Safehouse→SFTP)</pre>
                     <tr><td>Tracking Extract</td><td>トラッキングデータをファイル化（過去最大 30 日）</td></tr>
                     <tr><td>Send Logging</td><td>送信時点の属性を記録（要事前設定）</td></tr>
                     <tr><td>Journey Analytics</td><td>Journey 単位の分析</td></tr>
-                    <tr><td>Marketing Cloud Intelligence (旧 Datorama)</td><td>高度な統合分析</td></tr>
+                    <tr><td>Marketing Cloud Intelligence（旧 Datorama）</td><td>高度な統合分析（現行 UI や契約により表記が異なる可能性あり）</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -2865,7 +3060,7 @@ File Transfer (Safehouse→SFTP)</pre>
               </button>
             </div>
             <div class="section-body">
-              <p class="lead">Send Log DE は事前に Salesforce サポートで有効化が必要。SendLog テンプレートから作成すると以下のフィールドが<em class="em">自動で値が入る</em>。</p>
+              <p class="lead">Send Logging を利用するには、アカウントで Send Logging と Send Log Data Extension が利用できる状態か確認する（環境によっては設定または有効化が必要）。実装前に管理画面と Salesforce Help で確認すること。SendLog テンプレートから作成すると以下のフィールドが<em class="em">自動で値が入る</em>。</p>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
@@ -2882,7 +3077,7 @@ File Transfer (Safehouse→SFTP)</pre>
                 </table>
               </div>
               <h3>カスタムフィールド追加ルール</h3>
-              <p>Sendable DE のカラム名 / AMPscript 変数名 / Personalization String 名と<em class="em">完全に一致するカラム名</em>で DE に追加すれば、自動で値が入る。例：SubscriberKey、EmailAddress、FirstName、SubjectLine など。10 カラム以下推奨、すべて nullable 設定。</p>
+              <p>Sendable DE のカラム名 / AMPscript 変数名 / Personalization String 名と<em class="em">完全に一致するカラム名</em>で Send Log DE に追加すれば、送信時点の値を記録できる。例：<code>SubscriberKey</code>、<code>EmailAddress</code>、<code>FirstName</code>、<code>SubjectLine</code> など必要なものだけを追加する。パフォーマンスと保守性のためカラム数は必要最小限にし、原則 nullable 設定。Enterprise 2.0 では Parent BU の Enterprise Send Log にするか、Child BU 単位の Send Log にするかという設計判断も行う。</p>
             </div>
           </section>
 
@@ -2898,15 +3093,18 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
-                    <tr><th>手段</th><th>データ取得タイミング</th><th>保持期間</th><th>カスタマイズ</th></tr>
+                    <tr><th>手段</th><th>主用途</th><th>保持・制限の考え方</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Data Views</td><td>リアルタイム参照</td><td>6 ヶ月（多くは）</td><td>不可（標準カラム固定）</td></tr>
-                    <tr><td>Tracking Extract</td><td>スケジュール抽出</td><td>Tracking に依存</td><td>Extract 条件のみ</td></tr>
-                    <tr><td>Send Logging</td><td>送信時点で記録</td><td>DE 設定次第（永続可）</td><td>カスタムカラム追加可</td></tr>
+                    <tr><td>Data Views</td><td>SQL で <code>_Sent</code>, <code>_Open</code>, <code>_Click</code>, <code>_Bounce</code> 等を参照</td><td>多くのイベント Data View は 6 か月保持（仕様変更の可能性あり、最新 Help で確認）</td></tr>
+                    <tr><td>Email Studio Tracking / Reports</td><td>送信ジョブ単位の確認</td><td>最新 Help で保持期間を確認</td></tr>
+                    <tr><td>Tracking Extract</td><td>Tracking データをファイル化</td><td>Specific Range は最大 30 日。抽出範囲は設定に依存するため公式 Help 確認</td></tr>
+                    <tr><td>Send Logging</td><td>送信時点の属性を記録</td><td>Send Log DE の保持設定次第</td></tr>
+                    <tr><td>External BI / Data Lake</td><td>長期分析・監査</td><td>長期保存が必要なら外部退避前提</td></tr>
                   </tbody>
                 </table>
               </div>
+              <p>送信・エンゲージメントデータの保持期間は公式ソース間（Salesforce Help / Release Maintenance 教材など）で差分が出る可能性がある。試験対策上は Release Maintenance の記述も確認するが、<em class="em">実務運用では最新の Salesforce Help を基準</em>に保持期間を確認すること。長期分析や監査用途では、保持期間に依存せず外部保存または Send Log / Extract 設計を検討する。</p>
             </div>
           </section>
 
@@ -2950,7 +3148,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <ul>
                 <li><em class="em">VerifiedClicks</em>（SMS）: ボットやプレビューによる自動クリックを除外し、実際の購読者クリックに近い値を測定</li>
                 <li>レポートデータ再処理: 7 日ウィンドウでサポートチケットなしに再処理可能</li>
-                <li>180 日保持: 送信・エンゲージメントデータは 180 日保持。長期分析は外部保存前提</li>
+                <li>保持期間: Salesforce Help（2025-06-16 以降）は 730 日、Spring '26 Maintenance 教材は 180 日と記載があり<em class="em">ソース間で差分</em>。実務は最新 Help を基準にし、長期分析は外部保存前提</li>
                 <li>Data Extract キュー 250 件: 超過すると新規要求が拒否される。スケジュール過密に注意</li>
                 <li>Journey Builder HTS: 大規模配信で利用可能な高速送信モード</li>
               </ul>
@@ -2969,15 +3167,15 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>Total と Unique を混同</td><td>Unique は人単位、Total は総数</td></tr>
                     <tr><td>CTR と CTOR を混同</td><td>CTOR は開封後クリック</td></tr>
                     <tr><td>Open Rate を絶対視</td><td>プライバシー保護 (<span class="term" data-tooltip="Apple MPP = Apple Mail Privacy Protection。iOS 15 以降の Mail アプリでデフォルト有効。トラッキング画像を事前ロードするため Open Rate が実態より高く出る。">Apple MPP<sup>*</sup></span>)・自動取得の影響を考慮</td></tr>
-                    <tr><td>長期データは MC 内に無期限保持</td><td>180 日保持など制限を意識</td></tr>
+                    <tr><td>長期データは MC 内に無期限保持</td><td>保持期間制限あり（公式 Help と Maintenance 教材で記述差分あり）。長期分析は外部退避前提</td></tr>
                     <tr><td>Extract は無制限にキューできる</td><td>キュー上限 250 件を意識</td></tr>
-                    <tr><td>Send Logging は何もせず使える</td><td>事前に Salesforce サポートで有効化が必要</td></tr>
+                    <tr><td>Send Logging は何もせず使える</td><td>アカウントで利用可能か確認が必要（設定または有効化が必要な場合あり）</td></tr>
                     <tr><td>Tracking Extract と Send Logging は同じ</td><td>Extract = 既存 Tracking から抽出、Logging = 送信時点で記録</td></tr>
                   </tbody>
                 </table>
@@ -3014,7 +3212,7 @@ File Transfer (Safehouse→SFTP)</pre>
               </div>
               <div class="scenario__answer-row">
                 <p class="scenario__label">判断軸</p>
-                <p>送信差異は購読・除外レイヤーで発生することが圧倒的に多い。データの中身（メアドの妥当性、重複）を確認するのはその後。実務でも試験でも、購読層を上から下へ削っていく順序を最初に思い浮かべる癖をつける。</p>
+                <p>送信差異は購読・除外レイヤーで発生することが圧倒的に多い。データの中身（メールアドレスの妥当性、重複）を確認するのはその後。実務でも試験でも、購読層を上から下へ削っていく順序を最初に思い浮かべる癖をつける。</p>
               </div>
             </div>
           </article>
@@ -3053,7 +3251,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>EC サイトの購入完了イベントを受けて、外部システムから API 経由で 1 件ずつメールを即時送信したい。Marketing Cloud のどの送信方式を選ぶべきか。</p>
+              <p>EC サイトの購入完了イベントを受けて、外部システムから API 経由で 1 件ずつメールを即時送信したい。Marketing Cloud のどの送信方式を選ぶべきか。問題文の文脈（Email Studio の従来型か、注文確認 / パスワードリセット等の高優先度取引メールか）で答えが分かれる点も整理せよ。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -3062,18 +3260,27 @@ File Transfer (Safehouse→SFTP)</pre>
             <div class="scenario__answer" hidden>
               <div class="scenario__answer-row">
                 <p class="scenario__label">最適解</p>
-                <p class="scenario__solution"><em class="em">Triggered Send</em></p>
+                <ul class="scenario__solution">
+                  <li>Email Studio の従来型イベント送信文脈 → <em class="em">Classic Triggered Send</em>（Triggered Send Definition を Start して稼働）</li>
+                  <li>注文確認・パスワードリセットなど高優先度の取引メールの<em class="em">現代的選択肢</em> → <em class="em">Transactional Messaging API / Transactional Send</em>（<code>messageKey</code> ベース、Automatic Send Logging、Suppression / Exclusion 挙動が通常送信と異なる）</li>
+                </ul>
               </div>
               <div class="scenario__answer-row">
                 <p class="scenario__label">判断軸</p>
-                <p>「外部イベント駆動」「1 件単位」「即時性」の 3 つが揃ったら Triggered。</p>
+                <ul>
+                  <li>「外部イベント駆動」「1 件単位」「即時性」の 3 つが揃ったら Triggered 系</li>
+                  <li>「Classic Triggered Send Definition」「Email Studio」「従来の Triggered Send」と書いてあれば Classic Triggered Send</li>
+                  <li>「注文確認」「パスワードリセット」「高優先度」「Transactional Messaging API」「REST API」と書いてあれば Transactional Messaging API</li>
+                  <li>旧来の試験問題は Classic Triggered Send を答えにすることが多い。実務設計は TMS API を優先候補にする</li>
+                </ul>
               </div>
               <div class="scenario__answer-row scenario__answer-row--wrong">
                 <p class="scenario__label">誤答理由</p>
                 <ul>
-                  <li>Guided Send → 手動操作。API から呼び出せない</li>
+                  <li>Send Flow（旧 Guided Send）→ 手動操作。API から呼び出せない</li>
                   <li>Journey Builder → 顧客旅程に組み込むなら可能だが「1 通だけ即時送信」用途には過剰</li>
                   <li>User-Initiated Send → 再利用可能な定義だが、1 件単位の API 呼び出しを想定していない</li>
+                  <li>Automation Studio Send Email Activity → バッチ処理向き、1 件単位即時には合わない</li>
                 </ul>
               </div>
             </div>
@@ -3269,7 +3476,7 @@ File Transfer (Safehouse→SFTP)</pre>
           <article class="scenario">
             <header class="scenario__head">
               <div class="scenario__number">3.11</div>
-              <h3 class="scenario__title">購読者がメアド変更で同一人物が 2 人にカウントされる</h3>
+              <h3 class="scenario__title">購読者がメールアドレス変更で同一人物が 2 人にカウントされる</h3>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
@@ -3286,7 +3493,7 @@ File Transfer (Safehouse→SFTP)</pre>
               </div>
               <div class="scenario__answer-row">
                 <p class="scenario__label">判断軸</p>
-                <p>Email Address は個人識別子として弱い。家族で共有、メアド変更、複数アドレス所持の可能性がある。Contact Key は不変の社内 ID（顧客 ID）を割り当てるのがベストプラクティス。試験でも頻出。</p>
+                <p>Email Address は個人識別子として弱い。家族で共有、メールアドレス変更、複数アドレス所持の可能性がある。Contact Key は不変の社内 ID（顧客 ID）を割り当てるのがベストプラクティス。試験でも頻出。</p>
               </div>
             </div>
           </article>
@@ -3377,7 +3584,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>件名 A/B で 20% ずつ送り、CTOR が優秀な方を残り 60% の購読者に自動配信したい。Email Studio で使うべき機能名、勝者判定の基準として設定すべき指標、テスト割合と勝者送信割合の設定値は？ また、Journey Builder の Path Optimizer や Random Split との違いを簡潔に説明せよ。</p>
+              <p>件名 A/B で 20% ずつ送り、勝者を残り 60% の購読者に自動配信したい。Email Studio で使うべき機能名、勝者判定の基準として設定すべき指標、テスト割合と勝者送信割合の設定値は？ また、Journey Builder の Path Optimizer や Random Split との違いを簡潔に説明せよ。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -3386,15 +3593,20 @@ File Transfer (Safehouse→SFTP)</pre>
             <div class="scenario__answer" hidden>
               <div class="scenario__answer-row">
                 <p class="scenario__label">最適解</p>
-                <p class="scenario__solution"><em class="em">Email Studio の A/B Test Send</em> で件名 2 種・テスト割合各 20%・勝者基準 CTOR・勝者送信割合 60% を設定</p>
+                <p class="scenario__solution"><em class="em">Email Studio の A/B Test Send</em> で件名 2 種・テスト割合各 20%・勝者基準 <em class="em">Highest Unique Open Rate</em>（件名 A/B は開封が直接の効果指標）・勝者送信割合 60% を設定</p>
               </div>
               <div class="scenario__answer-row">
                 <p class="scenario__label">判断軸</p>
-                <p>違いを知る：</p>
                 <ul>
-                  <li><em class="em">A/B Test Send (Email Studio 内)</em>: 1 回の送信ジョブで件名や本文を比較</li>
-                  <li><em class="em"><span class="term" data-tooltip="Path Optimizer。Journey Builder 内で複数パスを A/B テストし、結果に基づき残りの購読者を勝者パスに送る機能。">Path Optimizer<sup>*</sup></span> (Journey Builder 内)</em>: Journey 内の複数パスを比較し勝者パスへ寄せる</li>
-                  <li><em class="em">Random Split (Journey Builder)</em>: 単純ランダム分岐（勝者選定機能なし）</li>
+                  <li>件名 A/B → 勝者基準は <em class="em">Open Rate</em> が自然（開封が直接の効果指標）</li>
+                  <li>本文 / CTA 比較 → 勝者基準は <em class="em">Click-Through Rate</em> が自然</li>
+                  <li><em class="em">CTOR</em>（開封者のうちクリックした割合）は<em class="em">分析指標</em>として有用だが、Email Studio A/B Test の Winner Criteria としては扱わない</li>
+                </ul>
+                <p>隣接機能との境界：</p>
+                <ul>
+                  <li><em class="em">A/B Test Send（Email Studio）</em>: 1 回の送信ジョブで件名や本文を比較</li>
+                  <li><em class="em"><span class="term" data-tooltip="Path Optimizer。Journey Builder 内で複数パスを A/B テストし、結果に基づき残りの購読者を勝者パスに送る機能。">Path Optimizer<sup>*</sup></span>（Journey Builder）</em>: Journey 内の複数パスを比較し勝者パスへ寄せる</li>
+                  <li><em class="em">Random Split（Journey Builder）</em>: 単純ランダム分岐（勝者選定機能なし）</li>
                 </ul>
               </div>
             </div>
@@ -3421,7 +3633,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table trap-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>Email Address を一意 ID にする</td><td>Subscriber Key / Contact Key を使う</td></tr>
@@ -3446,7 +3658,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table trap-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>Publication List は除外用</td><td>カテゴリ別購読管理</td></tr>
@@ -3472,7 +3684,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table trap-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>From Name は Delivery Profile</td><td>Sender Profile</td></tr>
@@ -3497,7 +3709,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table trap-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>SQL 加工を Journey 内でやる</td><td>Automation Studio の SQL Query Activity</td></tr>
@@ -3524,13 +3736,13 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="table-wrap">
                 <table class="data-table trap-table">
                   <thead>
-                    <tr><th>罠</th><th>正しい理解</th></tr>
+                    <tr><th>誤りやすい理解</th><th>正しい理解</th></tr>
                   </thead>
                   <tbody>
                     <tr><td>Total と Unique を混同</td><td>Unique = 人単位、Total = 総数</td></tr>
                     <tr><td>CTR と CTOR を混同</td><td>CTOR の分母は Open</td></tr>
                     <tr><td>Open Rate を絶対視</td><td>Apple MPP / プライバシー保護で過大計上の可能性</td></tr>
-                    <tr><td>長期データは MC 内に無期限保持</td><td>180 日保持。長期分析は外部退避前提</td></tr>
+                    <tr><td>長期データは MC 内に無期限保持</td><td>保持期間制限あり。最新 Help を基準に確認し、長期分析は外部退避前提</td></tr>
                     <tr><td>Extract は無制限にキュー可能</td><td>250 件上限</td></tr>
                     <tr><td>Send Logging はデフォルトで使える</td><td>Salesforce サポートで事前有効化必要</td></tr>
                     <tr><td>Tracking Extract = Send Logging</td><td>前者は既存 Tracking 抽出、後者は送信時点記録</td></tr>
@@ -3786,6 +3998,59 @@ File Transfer (Safehouse→SFTP)</pre>
                     <tr><td>Tracking データを外部にファイル出力</td><td>Tracking Extract</td></tr>
                     <tr><td>Journey 単位の分析</td><td>Journey Analytics</td></tr>
                     <tr><td>BU 横断・多次元分析</td><td>Marketing Cloud Intelligence</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.8 Hands-on Practice Required</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">この領域は読解だけではなく、画面上で設定場所を確認する必要がある。試験では<em class="em">設定オブジェクト名と画面上の役割を混同しやすい</em>。</p>
+              <ul>
+                <li>Send Classification / Sender Profile / Delivery Profile の作成画面</li>
+                <li>Send Flow（旧 Guided Send）</li>
+                <li>User-Initiated Send</li>
+                <li>Triggered Send Definition（Classic）</li>
+                <li>Send Log DE</li>
+                <li>Automation Studio の File Transfer / Import / Data Extract</li>
+                <li>Journey Builder の Entry Source / Re-entry / Exit Criteria</li>
+                <li>Subscriber Preview / Test Send</li>
+                <li>A/B Test Send</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.9 Source Conflict Notes</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">この表は<em class="em">暗記対象ではなく</em>、受験前に公式 Help と Exam Guide を再確認するチェックリストとして使う。公式ソース間（Salesforce Help / Release Maintenance / Trailhead Trailmix）や時期で記述差分が出やすい論点を集約。</p>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>論点</th><th>差分が出やすい理由</th><th>確認先</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Data Retention（送信・エンゲージメントデータ保持期間）</td><td>Salesforce Help（2025-06-16 以降）730 日 / Spring '26 Maintenance 教材 180 日 などのソース間差分</td><td>最新 Salesforce Help、Data Retention Limits ページ</td></tr>
+                    <tr><td>Exam Fee（USD / JPY）</td><td>地域価格・通貨改定で変更されうる</td><td>公式 Trailhead Academy / Webassessor 価格ページ</td></tr>
+                    <tr><td>Exam Section Weights</td><td>試験改訂で配点・セクション構成が変わる</td><td>最新 Exam Guide</td></tr>
+                    <tr><td>Feature Availability（HTS / TMS API / VerifiedClicks 等）</td><td>リリースごとに導入・拡張・制約が更新</td><td>Release Notes / Salesforce Help</td></tr>
+                    <tr><td>Legacy vs Current Terminology（Send Flow / Guided Send、Marketing Cloud Intelligence / Datorama）</td><td>UI / 製品名のリブランド</td><td>最新 Salesforce Help / UI 表示</td></tr>
+                    <tr><td>Transactional Messaging API vs Classic Triggered Send</td><td>旧来試験 = Classic、現代設計 = TMS API という二重基準</td><td>Exam Guide / TMS API ドキュメント / Email Studio Help</td></tr>
+                    <tr><td>Journey Builder HTS</td><td>導入時期・利用推奨・制約（FLE / Message Priority / Send Summary Reports）の更新</td><td>Journey Builder Help / Release Notes</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -4049,10 +4314,10 @@ File Transfer (Safehouse→SFTP)</pre>
         <article class="page" id="page-quiz">
           <header class="page__header">
             <p class="page__subtitle">SECTION 7</p>
-            <h1 class="page__title">練習問題 70 問</h1>
+            <h1 class="page__title">練習問題 75 問</h1>
           </header>
 
-          <p class="lead">配点比例で構成された練習問題集。Section 1-5 各 10 問 + 模試 20 問。<br>各問題は選択肢タップで即座に正解 / 不正解と解説を表示する。一度選択すると変更不可（リロードで初期化される）。</p>
+          <p class="lead">配点比例で構成された練習問題集。Section 1-5 各 10 問 + 模試 25 問（配点比例 20 問 + multi-3 補強 5 問）。<br>各問題は選択肢タップで即座に正解 / 不正解と解説を表示する。一度選択すると変更不可（ページ上部のリセットボタンまたはリロードで初期化）。</p>
 
           <div class="section-index">
             <a class="section-index__card" href="#quiz-section1">
@@ -4099,8 +4364,8 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="section-index__badge">模試</div>
               <div class="section-index__body">
                 <h3 class="section-index__title">模試</h3>
-                <p class="section-index__weight">20 問</p>
-                <p class="section-index__desc">配点比例の総合問題</p>
+                <p class="section-index__weight">25 問</p>
+                <p class="section-index__desc">配点比例の総合問題 20 問 + multi-3 補強 5 問</p>
               </div>
             </a>
           </div>
@@ -4111,6 +4376,13 @@ File Transfer (Safehouse→SFTP)</pre>
             <p class="page__subtitle">PRACTICE — SECTION 1</p>
             <h1 class="page__title">Email Marketing Best Practices (10 問)</h1>
           </header>
+
+          <div class="quiz-progress" aria-label="進捗">
+            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
+            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
+          </div>
 
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
@@ -4216,6 +4488,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Hard / Soft の定義が逆）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Hard = アドレス無効・存在しないなど恒久的。Soft = 一時的（メールボックス満杯、サーバー一時障害）。</p>
@@ -4291,6 +4564,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 罠 wording（「常に」「必須」を疑う）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Dedicated IP はレピュテーション独立管理と大量配信向き。</p>
@@ -4384,6 +4658,13 @@ File Transfer (Safehouse→SFTP)</pre>
             <h1 class="page__title">Content Creation and Delivery (10 問)</h1>
           </header>
 
+          <div class="quiz-progress" aria-label="進捗">
+            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
+            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
+          </div>
+
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
             <a class="quiz-nav__item" href="#quiz-section2-q1">Q2-1</a>
@@ -4462,6 +4743,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Sender / Delivery / Send Classification の境界）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>From Name / From Email は Sender Profile の管理項目。</p>
@@ -4487,6 +4769,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Sender / Delivery / Send Classification の境界）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Footer / Header / IP は Delivery Profile の管理項目。</p>
@@ -4539,36 +4822,38 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="quiz__verdict"></div>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>A/B Test の勝者判定は Open / Click / CTOR などの反応指標。</p>
+                <p>Email Studio A/B Test の代表的な Winner Criteria は Highest Unique Open Rate と Highest Unique Click-Through Rate。CTOR は開封後クリックの<em class="em">分析指標</em>として有用だが、Email Studio A/B Test の Winner Criteria としては扱わない。A/B Test Send と Journey Builder の Path Optimizer は別機能、Random Split は勝者選定を行わない。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
-                <p>B は到達性指標で勝者判定には不適。D は送信設定で指標ではない。</p>
+                <p>B（Bounce Rate）は到達性指標で勝者判定には不適。D（Send Classification）は送信設定で指標ではない。</p>
               </div>
             </div>
           </article>
 
-          <article class="quiz" id="quiz-section2-q7" data-quiz-id="Q2-7" data-correct="C" data-type="single">
+          <article class="quiz" id="quiz-section2-q7" data-quiz-id="Q2-7" data-correct="E" data-type="single">
             <header class="quiz__head">
               <span class="quiz__id">Q2-7</span>
               <span class="quiz__type">単一選択</span>
             </header>
-            <p class="quiz__question">EC サイトの購入完了直後に、外部システムから API で 1 通の購入完了メールを即時送信したい。最も適切な送信方式は？</p>
+            <p class="quiz__question">EC サイトで注文確認メールを<em class="em">高優先度・1 件単位の即時送信</em>として REST API 経由で送りたい。現代的な選択肢として最も適切な送信方式は？</p>
             <ul class="quiz__choices">
-              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Guided Send</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Send Flow（旧 Guided Send）</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">User-Initiated Send</span></button></li>
-              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Triggered Send</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Classic Triggered Send（Email Studio の Triggered Send Definition）</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Automation Studio Send Email Activity</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="E"><span class="quiz__choice-mark">E</span><span class="quiz__choice-text">Transactional Messaging API / Transactional Send</span></button></li>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 旧 / 現行名称の混同（Classic Triggered Send vs Transactional Messaging API）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>API 駆動・即時・1 件単位は Triggered Send の典型用途。</p>
+                <p>注文確認 / パスワードリセット / 領収書のような<em class="em">高優先度の取引メール</em>を REST API で 1 通即時送信する場合、現代的な選択肢は Transactional Messaging API。messageKey の一意性、Automatic Send Logging、Suppression / Exclusion の挙動など通常送信と異なる前提を持つ。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
-                <p>A は手動操作、B は再利用可能定義の通常送信、D はバッチ処理。</p>
+                <p>A は手動操作で API 駆動不可。B は再利用可能定義の通常送信で 1 件単位 API 即時には不向き。C（Classic Triggered Send）は Email Studio 管理の従来型イベント送信で、旧来の試験問題では「外部イベント / API / 1 通即時」の答えになりやすいが、現代的な高優先度取引メールの第一候補は Transactional Messaging API。D はバッチ処理で 1 件単位即時には合わない。</p>
               </div>
             </div>
           </article>
@@ -4633,17 +4918,18 @@ File Transfer (Safehouse→SFTP)</pre>
               <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">開発者が複雑なロジックを書く場合は AMPscript</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">マーケターが GUI で管理する場合は Dynamic Content</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">AMPscript は Personalization String と完全に同じ機能</span></button></li>
-              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Dynamic Content は別 DE を参照できない場合がある</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Dynamic Content は別 DE を Lookup する条件分岐に向いている</span></button></li>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（GUI vs 開発者制御の境界）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>AMPscript = 開発者制御、Dynamic Content = GUI 管理。</p>
+                <p>AMPscript = 開発者制御 / 別 DE Lookup / 条件分岐の本命。Dynamic Content = マーケターが GUI で属性条件と表示内容を設定する用途。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
-                <p>C は AMPscript が条件分岐 / 関数 / 別 DE 参照など Personalization String 以上の機能を持つため誤り。D は技術的には正だが、本問では A・B が代表的な使い分け軸として優先される。</p>
+                <p>C は AMPscript が条件分岐 / 関数 / 別 DE 参照など Personalization String 以上の機能を持つため誤り。D は Dynamic Content の GUI 条件は送信対象 DE 自身の属性を前提とし、別 DE の Lookup は AMPscript（<code>Lookup</code> / <code>LookupRows</code>）の領域。GUI と別 DE Lookup を一緒くたにしないこと。</p>
               </div>
             </div>
           </article>
@@ -4654,6 +4940,13 @@ File Transfer (Safehouse→SFTP)</pre>
             <p class="page__subtitle">PRACTICE — SECTION 3</p>
             <h1 class="page__title">Marketing Automation (10 問)</h1>
           </header>
+
+          <div class="quiz-progress" aria-label="進捗">
+            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
+            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
+          </div>
 
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
@@ -4708,6 +5001,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Data Extract と File Transfer はセット運用）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Data Extract はファイル生成（Safehouse 内）、File Transfer は移動。両方必要。</p>
@@ -4808,9 +5102,10 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Classic Triggered Send Definition のライフサイクル）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>Triggered Send は Definition を作成 → 検証 → Start で初めて稼働。Start しないと外部からの送信リクエストを受けない。</p>
+                <p>Classic Triggered Send は Definition を作成 → 検証（Verify）→ Start で初めて稼働。Start しないと外部からの送信リクエストを受けない。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
@@ -4883,9 +5178,10 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（A/B Test Send と Path Optimizer は別レイヤー）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>両者は実行レイヤーが異なる。</p>
+                <p>両者は実行レイヤーが異なる。A/B Test Send は Email Studio の 1 回の送信ジョブ内、Path Optimizer は Journey Builder 内のパス比較。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
@@ -4910,7 +5206,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="quiz__verdict"></div>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>HTS は大規模 Journey 送信向けの高速送信モード（Spring '25 で正式化）。</p>
+                <p>HTS は大規模 Journey 送信向けの高速送信モード。2024 年導入、Spring '25 で利用推奨や考慮事項が強調された。Journey Settings で個別 Journey に有効化し、アクティブ化後は無効化できない。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
@@ -4925,6 +5221,13 @@ File Transfer (Safehouse→SFTP)</pre>
             <p class="page__subtitle">PRACTICE — SECTION 4</p>
             <h1 class="page__title">Subscriber and Data Management (10 問)</h1>
           </header>
+
+          <div class="quiz-progress" aria-label="進捗">
+            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
+            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
+          </div>
 
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
@@ -5031,7 +5334,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="quiz__verdict"></div>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>Subscriber Key を個別に割り当てれば、同一メアドの中で別購読者として扱える。</p>
+                <p>Subscriber Key を個別に割り当てれば、同一メールアドレスの中で別購読者として扱える。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
@@ -5079,6 +5382,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Publication / Suppression の役割逆転）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Publication = カテゴリ別購読、Suppression = 送信除外。混同が頻出。</p>
@@ -5197,6 +5501,13 @@ File Transfer (Safehouse→SFTP)</pre>
             <h1 class="page__title">Insights and Analytics (10 問)</h1>
           </header>
 
+          <div class="quiz-progress" aria-label="進捗">
+            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
+            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
+          </div>
+
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
             <a class="quiz-nav__item" href="#quiz-section5-q1">Q5-1</a>
@@ -5225,9 +5536,10 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（CTR と CTOR の分母）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>CTOR の分母は Open、CTR の分母は Delivered。</p>
+                <p>CTOR の分母は Open、CTR の分母は Delivered。「開封してくれた人のうち」が出たら CTOR。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
@@ -5416,22 +5728,23 @@ File Transfer (Safehouse→SFTP)</pre>
               <span class="quiz__id">Q5-9</span>
               <span class="quiz__type">単一選択</span>
             </header>
-            <p class="quiz__question">Marketing Cloud の送信・エンゲージメントデータの保持期間は？（2026 年時点）</p>
+            <p class="quiz__question">Marketing Cloud Engagement の送信・エンゲージメントデータ保持期間について、管理者が長期分析基盤を設計している。最も安全な対応はどれか。</p>
             <ul class="quiz__choices">
-              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">30 日</span></button></li>
-              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">90 日</span></button></li>
-              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">180 日</span></button></li>
-              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">無期限</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Spring '26 Maintenance 教材の 180 日を前提に内製ツールを構築する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Salesforce Help の 730 日を前提に内製ツールを構築する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">最新の Salesforce Help で保持期間を確認し、長期分析が必要なデータは外部保存または Send Logging / Extract 設計を行う</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">無期限保持を前提に運用する</span></button></li>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 実務 vs 試験文脈（公式情報の更新確認が必要）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>Spring '26 時点で 180 日。長期分析は外部退避が前提。</p>
+                <p>保持期間は公式ソースやリリース時期で差分が出る可能性がある。試験対策では Maintenance の記述も確認するが、実務設計では最新 Help を基準にし、長期分析は外部退避前提とする。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
-                <p>A, B は短すぎる、D は無期限保持ではない。</p>
+                <p>A・B は特定ソースの数値に丸ごと依存しており、ソース間差分や仕様変更で破綻するリスクがある。D は無期限保持ではない。</p>
               </div>
             </div>
           </article>
@@ -5465,10 +5778,17 @@ File Transfer (Safehouse→SFTP)</pre>
         <article class="page" id="page-quiz-mock">
           <header class="page__header">
             <p class="page__subtitle">PRACTICE — MOCK EXAM</p>
-            <h1 class="page__title">模試 (20 問)</h1>
+            <h1 class="page__title">模試 (25 問)</h1>
           </header>
 
-          <p class="lead">配点比例で構成された総合問題。Best Practices 2 問 / Content 5 問 / Automation 5 問 / Subscriber &amp; Data 5 問 / Analytics 3 問。</p>
+          <p class="lead">配点比例で構成された総合問題（M1-M20: 20 問）+ 複数選択補強問題（M21-M25: multi-3、5 問）。配点比例の内訳: Best Practices 2 問 / Content 5 問 / Automation 5 問 / Subscriber &amp; Data 5 問 / Analytics 3 問。補強問題は 3 つ選択形式で、混同しやすい論点（Send Discrepancy / Send Classification / SFTP 連携 / Contact Key BP / Deliverability）をまとめて確認する。</p>
+
+          <div class="quiz-progress" aria-label="進捗">
+            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
+            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
+            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
+          </div>
 
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
@@ -5492,6 +5812,11 @@ File Transfer (Safehouse→SFTP)</pre>
             <a class="quiz-nav__item" href="#quiz-mock-q18">M18</a>
             <a class="quiz-nav__item" href="#quiz-mock-q19">M19</a>
             <a class="quiz-nav__item" href="#quiz-mock-q20">M20</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q21">M21</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q22">M22</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q23">M23</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q24">M24</a>
+            <a class="quiz-nav__item" href="#quiz-mock-q25">M25</a>
           </nav>
 
           <article class="quiz" id="quiz-mock-q1" data-quiz-id="M1" data-correct="B" data-type="single">
@@ -5599,7 +5924,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <span class="quiz__id">M5</span>
               <span class="quiz__type">単一選択 ・ Content</span>
             </header>
-            <p class="quiz__question">Triggered Send Definition を作成後、Start していない状態で API から送信リクエストを送るとどうなる？</p>
+            <p class="quiz__question"><em class="em">Classic Triggered Send Definition</em>（Email Studio の Triggered Send Definition）を作成後、Start していない状態で API から送信リクエストを送るとどうなる？</p>
             <ul class="quiz__choices">
               <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">自動的に Start される</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">送信されない</span></button></li>
@@ -5608,13 +5933,14 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Definition ライフサイクル）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>Start していない Definition は送信を受け付けない。</p>
+                <p>Classic Triggered Send は Create → Verify → Start のライフサイクル。Start していない Definition は API リクエストを受け付けず送信されない。なお Transactional Messaging API は Definition のライフサイクルではなく <code>messageKey</code> ベースで稼働するため、本問の前提が異なる。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
-                <p>A は明示的 Start が必須、C, D は無関係な動作。</p>
+                <p>A は明示的 Start が必須で自動 Start はしない。C, D は無関係な動作。</p>
               </div>
             </div>
           </article>
@@ -5774,22 +6100,23 @@ File Transfer (Safehouse→SFTP)</pre>
               <span class="quiz__id">M12</span>
               <span class="quiz__type">単一選択 ・ Automation</span>
             </header>
-            <p class="quiz__question">Triggered Send が向く場面として最も適切なのは？</p>
+            <p class="quiz__question">Classic Triggered Send（Email Studio の Triggered Send Definition）が向く場面として最も適切なのは？</p>
             <ul class="quiz__choices">
               <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">定期的な一斉配信</span></button></li>
-              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">EC 購入完了直後の購入確認メール</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">EC 購入完了直後の購入確認メール（Email Studio 文脈での従来型イベント送信）</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">月次レポートメール</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Welcome 5 通シリーズ</span></button></li>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 旧 / 現行名称の混同（Classic Triggered Send vs Transactional Messaging API）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>イベント駆動・1 件単位・即時性は Triggered の典型。</p>
+                <p>Classic Triggered Send の典型はイベント駆動・1 件単位・即時送信。Email Studio 管理の Triggered Send Definition を Start して稼働させる従来型のパターン。なお<em class="em">現代的</em>な高優先度の取引メール（注文確認・パスワードリセット等）の第一候補は Transactional Messaging API。試験文脈では Classic Triggered Send が問われやすいが、実務設計では境界を意識する。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
-                <p>A, C は定期バッチ向き、D は Journey Builder 向き。</p>
+                <p>A, C は定期バッチ向きで Automation Studio の領域。D は個人時間軸 + 行動分岐を含むため Journey Builder 向き。</p>
               </div>
             </div>
           </article>
@@ -5851,7 +6178,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <p class="quiz__question">Email Address を Subscriber Key に使うリスクとして最も大きいのは？</p>
             <ul class="quiz__choices">
-              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">メアド変更や家族共有で同一人物が複数 Subscriber 扱いになる</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">メールアドレス変更や家族共有で同一人物が複数 Subscriber 扱いになる</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Send Classification が機能しなくなる</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Sender Profile が無効化される</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Dynamic Content が動かない</span></button></li>
@@ -5974,7 +6301,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <span class="quiz__id">M20</span>
               <span class="quiz__type">単一選択 ・ Analytics</span>
             </header>
-            <p class="quiz__question">Marketing Cloud の送信・エンゲージメントデータが 180 日で消える。長期分析を行うためには？</p>
+            <p class="quiz__question">Marketing Cloud Engagement の送信・エンゲージメントデータは保持期間制限がある（公式 Help と Release Maintenance 教材で記述差分あり）。長期分析を行うために最も安全なのは？</p>
             <ul class="quiz__choices">
               <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Send Logging や Tracking Extract で外部退避し、別途分析環境で保持する</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Send Classification を Commercial にする</span></button></li>
@@ -5985,11 +6312,146 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="quiz__verdict"></div>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
-                <p>保持期間制限のため、長期分析は外部退避前提。</p>
+                <p>保持期間はソース間で差分があるため特定値に依存せず、外部退避（Send Logging / Tracking Extract → BI / Data Lake）を前提に設計する。</p>
               </div>
               <div class="quiz__wrong-reasons">
                 <p class="quiz__label">誤答の理由</p>
                 <p>B, C, D は保持期間とは無関係な機能。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q21" data-quiz-id="M21" data-correct="A,B,C" data-type="multi-3">
+            <header class="quiz__head">
+              <span class="quiz__id">M21</span>
+              <span class="quiz__type">複数選択(3 つ) ・ Subscriber &amp; Data</span>
+            </header>
+            <p class="quiz__question">送信予定 10,000 件のところ、実送信が 8,200 件だった。Send Discrepancy（送信数差異）の原因として最初に疑うべき層は？（3 つ）</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">All Subscribers の購読ステータス（Unsubscribed / Held / Bounced）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Publication List のオプトアウトおよび Suppression List / Exclusion 設定</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Sendable DE の Subscriber Relationship、Subscriber Key 重複・不一致、Email Address の空 / 無効</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Content Builder のテンプレート構造</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="E"><span class="quiz__choice-mark">E</span><span class="quiz__choice-text">Sender Profile の From Name 表記</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（送信数差異は購読・除外・データ整合の 3 層で発生）</p>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Send Discrepancy の主要原因は、(1) All Subscribers の購読ステータス、(2) Publication / Suppression / Exclusion レイヤー、(3) Sendable DE のデータ整合（Relationship / Key 重複・不一致 / Email Address 空 / 無効）。コンテンツや From 表記は送信数の増減には直接関係しない。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>D（テンプレート構造）と E（Sender Profile）は表示や運用に影響するが、送信数差異の主要因にはならない。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q22" data-quiz-id="M22" data-correct="A,B,C" data-type="multi-3">
+            <header class="quiz__head">
+              <span class="quiz__id">M22</span>
+              <span class="quiz__type">複数選択(3 つ) ・ Content</span>
+            </header>
+            <p class="quiz__question">Send Classification の構成要素として正しいものを 3 つ選択せよ。</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Sender Profile（From Name / From Email / Reply Mail Management）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Delivery Profile（IP / Header / Footer / Domain）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">CAN-SPAM 分類（Commercial / Transactional）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Publication List</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="E"><span class="quiz__choice-mark">E</span><span class="quiz__choice-text">Subscriber Key</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Send Classification の三層構造）</p>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Send Classification は Sender Profile + Delivery Profile + CAN-SPAM 分類の 3 要素を組み合わせた再利用可能な送信テンプレート。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>D（Publication List）は購読カテゴリ管理で別レイヤー。E（Subscriber Key）は購読者識別子で送信分類とは別概念。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q23" data-quiz-id="M23" data-correct="A,C,D" data-type="multi-3">
+            <header class="quiz__head">
+              <span class="quiz__id">M23</span>
+              <span class="quiz__type">複数選択(3 つ) ・ Automation</span>
+            </header>
+            <p class="quiz__question">Automation Studio で「SFTP から CSV を取り込み、DE 加工後、結果ファイルを SFTP に戻す」運用を構築する場合に必須となる Activity を 3 つ選択せよ。</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">File Transfer（SFTP ⇄ Safehouse の橋渡し）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Send Email Activity</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">Import File（Safehouse のファイルから DE へロード）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Data Extract（DE をファイル化、Safehouse に出力）</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="E"><span class="quiz__choice-mark">E</span><span class="quiz__choice-text">Random Split</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Extract と File Transfer はセット運用）</p>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>SFTP → DE → SFTP の流れは File Transfer（SFTP→Safehouse）→ Import（Safehouse→DE）→ ... → Data Extract（DE→Safehouse）→ File Transfer（Safehouse→SFTP）の典型パターン。File Transfer は両端で使うので必須。Send Email は本問の要件に含まれない。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>B（Send Email）は本問が SFTP 連携でメール送信を要件としていないため不要。E（Random Split）は Journey Builder の要素で Automation Studio Activity ではない。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q24" data-quiz-id="M24" data-correct="A,B,C" data-type="multi-3">
+            <header class="quiz__head">
+              <span class="quiz__id">M24</span>
+              <span class="quiz__type">複数選択(3 つ) ・ Subscriber &amp; Data</span>
+            </header>
+            <p class="quiz__question">Contact Key 設計のベストプラクティスとして正しいものを 3 つ選択せよ。</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">不変かつチャネル非依存の値（社内顧客 ID など）を使う</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Subscriber Key と Contact Key は同一値で運用する</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">変更されやすい値（Email Address、Phone Number）は識別子に避ける</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">家族で共有可能性のあるメールアドレスを Contact Key にする</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="E"><span class="quiz__choice-mark">E</span><span class="quiz__choice-text">Contact Key と Primary Key は必ず別の値にする</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（識別子の永続性とチャネル独立性）</p>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>Contact Key は<em class="em">不変・チャネル非依存</em>の値が原則。Subscriber Key = Contact Key の同一値運用が BP。Email Address のような変更・共有・複数所持のリスクがある値は識別子として避ける。Primary Key（DE 行一意性）と Contact Key（人の識別）は別レイヤーで、同じ値でも別の値でも構わない（「必ず別」ではない）。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>D は別 Contact 化を招く典型的なアンチパターン。E は Primary Key と Contact Key の概念混同。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="quiz" id="quiz-mock-q25" data-quiz-id="M25" data-correct="A,B,C" data-type="multi-3">
+            <header class="quiz__head">
+              <span class="quiz__id">M25</span>
+              <span class="quiz__type">複数選択(3 つ) ・ Best Practices</span>
+            </header>
+            <p class="quiz__question">Deliverability（到達性）が悪化したシナリオで、最初に確認すべき要素を 3 つ選択せよ。</p>
+            <ul class="quiz__choices">
+              <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">SPF / DKIM / DMARC の認証設定</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Sender Reputation / Complaint Rate / Bounce 分類</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="C"><span class="quiz__choice-mark">C</span><span class="quiz__choice-text">List Hygiene（古いリスト・低エンゲージメント購読者）と急激な送信量増加</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="D"><span class="quiz__choice-mark">D</span><span class="quiz__choice-text">Content Builder のフォントサイズと画像比率</span></button></li>
+              <li><button class="quiz__choice" type="button" data-choice="E"><span class="quiz__choice-mark">E</span><span class="quiz__choice-text">Subscriber Preview の利用回数</span></button></li>
+            </ul>
+            <div class="quiz__explanation" hidden>
+              <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（コンテンツ表現 vs 到達性の主因）</p>
+              <div class="quiz__rationale">
+                <p class="quiz__label">根拠</p>
+                <p>到達性悪化の主要因は、(1) 認証設定（SPF / DKIM / DMARC / SAP）、(2) 送信者評価とバウンス / 苦情率、(3) リスト品質・エンゲージメント低下・送信量増加。コンテンツの細部はスパムフィルタに影響しうるが、到達性の最初の切り分けでは上の 3 軸を優先する。</p>
+              </div>
+              <div class="quiz__wrong-reasons">
+                <p class="quiz__label">誤答の理由</p>
+                <p>D は表示・アクセシビリティの話で、到達性の主要因ではない。E はプレビュー機能で送信側挙動と無関係。</p>
               </div>
             </div>
           </article>
@@ -6361,45 +6823,73 @@ File Transfer (Safehouse→SFTP)</pre>
 
       // ---------- Quiz (page-quiz-section*) ----------
       function bindQuizzes() {
-        document.querySelectorAll('.quiz').forEach(function (quiz) {
-          var correct = (quiz.getAttribute('data-correct') || '').split(',').map(function (s) { return s.trim(); });
-          var type = quiz.getAttribute('data-type') || 'single';
-          var requiredCount = type === 'single' ? 1 : (parseInt(type.split('-')[1], 10) || 1);
-          var selectedChoices = [];
-          var locked = false;
+        document.querySelectorAll('.quiz').forEach(bindSingleQuiz);
+        bindQuizReset();
+      }
 
-          quiz.querySelectorAll('.quiz__choice').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-              if (locked) return;
-              var choice = btn.getAttribute('data-choice');
+      function bindSingleQuiz(quiz) {
+        var correct = (quiz.getAttribute('data-correct') || '').split(',').map(function (s) { return s.trim(); });
+        var type = quiz.getAttribute('data-type') || 'single';
+        var requiredCount = type === 'single' ? 1 : (parseInt(type.split('-')[1], 10) || 1);
 
-              if (type !== 'single') {
-                var idx = selectedChoices.indexOf(choice);
-                if (idx === -1) {
-                  if (selectedChoices.length >= requiredCount) return;
-                  selectedChoices.push(choice);
-                  btn.classList.add('is-pending');
-                } else {
-                  selectedChoices.splice(idx, 1);
-                  btn.classList.remove('is-pending');
-                }
+        // State per quiz (accessible via DOM ref for reset)
+        var state = { selectedChoices: [], locked: false, correct: correct, requiredCount: requiredCount, type: type, isCorrect: false };
+        quiz.__quizState = state;
+
+        // Inject counter for multi-N
+        if (type !== 'single' && !quiz.querySelector('.quiz__counter')) {
+          var question = quiz.querySelector('.quiz__question');
+          if (question) {
+            var counter = document.createElement('p');
+            counter.className = 'quiz__counter';
+            counter.innerHTML = '選択済み: <span class="quiz__counter-current">0</span> / <span class="quiz__counter-required">' + requiredCount + '</span>';
+            question.parentNode.insertBefore(counter, question.nextSibling);
+          }
+        }
+
+        quiz.querySelectorAll('.quiz__choice').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            if (state.locked) return;
+            var choice = btn.getAttribute('data-choice');
+
+            if (type !== 'single') {
+              var idx = state.selectedChoices.indexOf(choice);
+              if (idx === -1) {
+                if (state.selectedChoices.length >= requiredCount) return;
+                state.selectedChoices.push(choice);
+                btn.classList.add('is-pending');
               } else {
-                selectedChoices = [choice];
+                state.selectedChoices.splice(idx, 1);
+                btn.classList.remove('is-pending');
               }
+            } else {
+              state.selectedChoices = [choice];
+            }
 
-              if (selectedChoices.length === requiredCount) {
-                evaluateQuiz(quiz, correct, selectedChoices);
-                locked = true;
-              }
-            });
+            updateQuizCounter(quiz, state.selectedChoices.length, requiredCount);
+
+            if (state.selectedChoices.length === requiredCount) {
+              evaluateQuiz(quiz, correct, state.selectedChoices);
+              state.locked = true;
+              updateQuizProgress(quiz);
+            }
           });
         });
+      }
+
+      function updateQuizCounter(quiz, current, required) {
+        var counter = quiz.querySelector('.quiz__counter');
+        if (!counter) return;
+        var curEl = counter.querySelector('.quiz__counter-current');
+        if (curEl) curEl.textContent = String(current);
+        counter.classList.toggle('is-ready', current === required);
       }
 
       function evaluateQuiz(quiz, correct, selected) {
         var correctSorted = correct.slice().sort().join(',');
         var selectedSorted = selected.slice().sort().join(',');
         var isCorrect = correctSorted === selectedSorted;
+        if (quiz.__quizState) quiz.__quizState.isCorrect = isCorrect;
 
         quiz.querySelectorAll('.quiz__choice').forEach(function (btn) {
           var choice = btn.getAttribute('data-choice');
@@ -6426,6 +6916,75 @@ File Transfer (Safehouse→SFTP)</pre>
             verdict.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
           }
         }
+      }
+
+      function resetSingleQuiz(quiz) {
+        var st = quiz.__quizState;
+        if (st) {
+          st.selectedChoices = [];
+          st.locked = false;
+          st.isCorrect = false;
+        }
+        quiz.querySelectorAll('.quiz__choice').forEach(function (btn) {
+          btn.disabled = false;
+          btn.classList.remove('is-selected-correct', 'is-selected-wrong', 'is-correct-answer', 'is-pending');
+        });
+        var explanation = quiz.querySelector('.quiz__explanation');
+        if (explanation) {
+          explanation.setAttribute('hidden', '');
+          var verdict = explanation.querySelector('.quiz__verdict');
+          if (verdict) {
+            verdict.textContent = '';
+            verdict.classList.remove('is-correct', 'is-wrong');
+          }
+        }
+        if (st && st.requiredCount) updateQuizCounter(quiz, 0, st.requiredCount);
+      }
+
+      function updateQuizProgress(quizOrPage) {
+        var page = (quizOrPage && quizOrPage.classList && quizOrPage.classList.contains('page'))
+          ? quizOrPage
+          : (quizOrPage && quizOrPage.closest ? quizOrPage.closest('.page') : null);
+        if (!page) return;
+        var progress = page.querySelector('.quiz-progress');
+        if (!progress) return;
+
+        var quizzes = page.querySelectorAll('.quiz');
+        var answered = 0, correct = 0;
+        quizzes.forEach(function (q) {
+          var st = q.__quizState;
+          if (st && st.locked) {
+            answered++;
+            if (st.isCorrect) correct++;
+          }
+        });
+        var total = quizzes.length;
+        var rate = answered > 0 ? Math.round(correct / answered * 100) : 0;
+
+        var elA = progress.querySelector('[data-progress="answered"]');
+        var elC = progress.querySelector('[data-progress="correct"]');
+        var elR = progress.querySelector('[data-progress="rate"]');
+        if (elA) elA.textContent = answered + ' / ' + total;
+        if (elC) elC.textContent = String(correct);
+        if (elR) elR.textContent = rate + '%';
+      }
+
+      function bindQuizReset() {
+        document.querySelectorAll('.quiz-progress__reset').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var page = btn.closest('.page');
+            if (!page) return;
+            page.querySelectorAll('.quiz').forEach(resetSingleQuiz);
+            updateQuizProgress(page);
+            // Scroll page to top of nav for fresh start
+            var nav = page.querySelector('.quiz-nav');
+            if (nav && nav.scrollIntoView) nav.scrollIntoView({ block: 'start' });
+          });
+        });
+        // Initial render of progress on each page that has progress UI
+        document.querySelectorAll('.quiz-progress').forEach(function (p) {
+          updateQuizProgress(p.closest('.page'));
+        });
       }
 
       // ---------- Interactive checklist (page-cheatsheet) ----------
@@ -6517,5 +7076,45 @@ File Transfer (Safehouse→SFTP)</pre>
       }
     })();
   </script>
+  <!--
+    CHANGELOG (Phase 1: 校閲・誤情報修正・テキスト自然化)
+    - 表記揺れ修正: ハイブリット→ハイブリッド、メアド→メールアドレス、購読数差異→送信数差異、顧客行動ベースのフロー→顧客行動に応じたジャーニー、罠→誤りやすい理解（th列名 / モバイル badge は「誤り」）
+    - TOP ページタイトルを「Salesforce Certified Marketing Cloud Email Specialist（MC-202）試験対策ガイド」に統一
+    - 注意喚起ボックスを「公式 Exam Guide / Trailhead Trailmix / Release Maintenance / Salesforce Help の更新を確認」の表現に書き換え
+    - §0.3 BU 構造を「All Subscribers = BUごと」の単純化から脱し、Enterprise MID + BU 単位制御 + 判断軸の整理に
+    - §1.2 試験仕様表に Multiple Choice/Multiple Select / USD-JPY 注記 / 再受験料 / 情報源 行を追加
+    - §2.1 に Sender Authentication / Deliverability troubleshooting 順序 / Bounce 分類表 / Publication/Suppression/Exclusion 整理 / Transactional 分類注意 を追加
+    - §2.2 A/B Testing: Winner Criteria から CTOR を除外（Open Rate / Click-Through Rate のみ）。CTOR は分析指標として併記
+    - §2.2 送信方式表: Classic Triggered Send と Transactional Messaging API を分離、Send Flow（旧 Guided Send）表記、注意点列を追加、Transactional Messaging API の境界注記
+    - §2.3 HTS: 「Spring '25 で正式化」断定を 2024 導入 + Spring '25 で利用推奨 / 考慮事項 / 有効化後無効化不可 / スループット目安 / Field-Level Encryption 制約 等に
+    - §2.4 Sendable DE / Primary Key / Subscriber Key / Contact Key 補強、Contact Key 設計 BP、Data Filter vs SQL Query 詳細
+    - §2.5 Send Logging 「Salesforce サポートで事前有効化が必要」断定を緩和、custom column 命名規則を「必要最小限」表現に
+    - §2.5 Data Views / Tracking Extract / Send Logging / External BI を主用途 + 保持・制限考え方の表に再編、ソース間差分の注記
+    - §2.5 ひっかけ表 / 最新論点リスト の 180日断定を緩和（公式 Help と Release Maintenance の差分注記）
+    - §3.15 シナリオ: 件名 A/B の勝者基準を Open Rate に変更、CTOR は分析指標として残置、Path Optimizer / Random Split 境界明示
+    - Q2-6 解説強化（Winner Criteria は Open Rate / CTR、CTOR は分析指標、A/B Test と Path Optimizer / Random Split の別機能注記）
+    - Q5-9 を「保持期間設計の最も安全な対応」を問う設問に差し替え、M20 を保持期間ソース間差分の文脈に修正
+    - Marketing Cloud Intelligence（旧 Datorama）に「現行 UI や契約により表記が異なる可能性あり」注記
+    Phase 2（練習問題改訂・シナリオ書き換え・誤答分類タグインフラ）:
+    - Q2-10 曖昧選択肢 D を「Dynamic Content は別 DE を Lookup する条件分岐に向いている」に差し替え（誤として）、解説強化
+    - Q2-7 を「高優先度の取引メールを REST API で 1 通即時送信」シナリオに書き換え、選択肢 E に Transactional Messaging API を追加、正解を E に変更。Classic Triggered Send（C）と Transactional Messaging API（E）の境界を解説で明示
+    - M5 を「Classic Triggered Send Definition」明示の出題に修正、TMS API は messageKey ベースで前提が異なることを解説で注記
+    - M12 を「Classic Triggered Send が向く場面」明示の出題に修正、現代的高優先度取引メールは TMS API の第一候補であることを解説で注記
+    - §3.3 シナリオを「Email Studio 文脈 → Classic Triggered Send / 注文確認等 → Transactional Messaging API」の境界整理に書き換え、判断軸を「キーワードで答えを分ける」整理に
+    - 誤答分類タグ（罠タイプ）の CSS インフラ追加（.quiz__misconception）。Q1-4 / Q1-7 / Q2-3 / Q2-4 / Q2-7 / Q2-10 / Q3-2 / Q3-6 / Q3-9 / Q4-6 / Q5-1 / Q5-9 / M5 / M12 の 14 問にタグ付与（概念違い / スコープ違い / 罠 wording / 旧 / 現行名称の混同 / 実務 vs 試験文脈）
+    Phase 3（構造追加・JS リファクタリング）:
+    - 模試に multi-3 問題 5 問（M21-M25）を追加。Send Discrepancy 3 軸 / Send Classification 三要素 / SFTP 連携 Activity / Contact Key BP / Deliverability 確認の論点をカバー
+    - 模試タイトル「20 問 → 25 問」、リード文に「配点比例 20 問 + multi-3 補強 5 問」明記、問題索引バーに M21-M25 追加
+    - page-quiz の section-index カード「模試 20 問 → 25 問」、ページタイトル「練習問題 70 問 → 75 問」、サイドバーラベル「練習問題70問 → 練習問題75問」、リード文更新
+    - クイズの JS をリファクタ: bindQuizzes / bindSingleQuiz / evaluateQuiz / resetSingleQuiz / updateQuizCounter / updateQuizProgress / bindQuizReset に分割し、状態を quiz 要素の __quizState に保持して外部リセットを可能化
+    - multi-N 問題に選択数カウンター UI を JS で動的注入（quiz__counter / quiz__counter-current / quiz__counter-required、「選択済み: 0 / N」表示、N 到達時に is-ready クラス付与）。CSS で表示
+    - 6 クイズページ（section1-5 + mock）上部に quiz-progress UI を配置: 回答済み / 正答 / 正答率 + リセットボタン。リセットボタンは disabled 解除、選択クラス除去、explanation 非表示、状態初期化、quiz-nav へスクロール戻し
+    - チートシートに 5.8 Hands-on Practice Required（実機画面で設定場所を確認すべき 9 領域）と 5.9 Source Conflict Notes（公式ソース間で記述差分が出やすい 7 論点の確認先表）を追加
+    Phase 4（未実施・将来検討）:
+    - 残り 56 問への誤答分類タグ拡張（Phase 2 で 14 問付与済み）
+    - 進捗の localStorage 永続化（現状はリロードで初期化）
+    - 模試の時間計測機能
+    - 誤答のみ再出題モード
+  -->
 </body>
 </html>
