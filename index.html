@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="last-updated" content="2026/05/11">
+  <title>MC-202 試験対策ガイド</title>
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root {
+      --bg-base: #0a0a0a;
+      --bg-surface: #171717;
+      --bg-elevated: #1f1f1f;
+      --border-subtle: #262626;
+      --border-default: #333333;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a;
+      --accent: #5eb8a0;
+      --accent-hover: #6fc9b1;
+      --accent-muted: rgba(94, 184, 160, 0.1);
+      --status-good: #5eb8a0;
+      --status-normal: #d4a574;
+      --status-stale: #c87171;
+
+      --sidebar-width: 260px;
+      --radius: 6px;
+      --transition: 0.18s ease;
+    }
+
+    /* ---------- Base ---------- */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.4;
+      color: var(--text-primary);
+      font-weight: 600;
+      margin: 0 0 12px;
+    }
+
+    h1 { font-size: 1.75rem; letter-spacing: -0.01em; }
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.05rem; }
+
+    p { margin: 0 0 12px; color: var(--text-secondary); }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    a:hover { color: var(--accent-hover); }
+
+    button {
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+    }
+
+    /* ---------- Layout ---------- */
+    .app {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ---------- Sidebar ---------- */
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar__header {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sidebar__title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .sidebar__subtitle {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin: 4px 0 0;
+      line-height: 1.5;
+    }
+
+    .sidebar__nav {
+      padding: 12px 8px;
+      flex: 1;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-item {
+      margin: 1px 0;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      user-select: none;
+    }
+
+    .nav-link:hover {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+    }
+
+    .nav-link.is-active {
+      background: var(--accent-muted);
+      color: var(--accent);
+    }
+
+    .nav-link__caret {
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      transition: transform var(--transition);
+    }
+
+    .nav-item.is-open > .nav-link .nav-link__caret {
+      transform: rotate(90deg);
+    }
+
+    .sub-list {
+      list-style: none;
+      margin: 2px 0 4px;
+      padding: 0 0 0 12px;
+      display: none;
+    }
+
+    .nav-item.is-open > .sub-list {
+      display: block;
+    }
+
+    .sub-list .nav-link {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      color: var(--text-tertiary);
+    }
+
+    .sub-list .nav-link:hover {
+      color: var(--text-secondary);
+    }
+
+    .sub-list .nav-link.is-active {
+      color: var(--accent);
+      background: var(--accent-muted);
+    }
+
+    /* ---------- Main content ---------- */
+    .main {
+      flex: 1;
+      margin-left: var(--sidebar-width);
+      padding: 40px 48px 64px;
+      max-width: 100%;
+    }
+
+    .main__inner {
+      max-width: 820px;
+    }
+
+    .page { display: none; }
+    .page.is-active { display: block; }
+
+    .page__header {
+      margin-bottom: 32px;
+    }
+
+    .page__subtitle {
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+
+    .page__title {
+      margin: 0;
+      font-size: 1.75rem;
+    }
+
+    /* ---------- Section block ---------- */
+    section.block {
+      margin-bottom: 48px;
+    }
+
+    /* ---------- Notice box ---------- */
+    .notice {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+
+    .notice__title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .notice p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* ---------- Meta info ---------- */
+    .meta {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+
+    .meta__row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 0;
+      font-size: 0.9rem;
+    }
+
+    .meta__label {
+      width: 84px;
+      flex-shrink: 0;
+      color: var(--text-tertiary);
+      font-size: 0.8rem;
+    }
+
+    .meta__value {
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .status-dot.fresh-good { background: var(--status-good); }
+    .status-dot.fresh-normal { background: var(--status-normal); }
+    .status-dot.fresh-stale { background: var(--status-stale); }
+
+    /* ---------- Contact form ---------- */
+    .contact {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+
+    .contact__title {
+      font-size: 1rem;
+      margin: 0 0 12px;
+    }
+
+    .contact__hint {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      margin: 0 0 12px;
+    }
+
+    .contact__textarea {
+      width: 100%;
+      min-height: 120px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      padding: 12px 14px;
+      resize: vertical;
+      transition: border-color var(--transition);
+    }
+
+    .contact__textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .contact__actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid var(--border-default);
+      color: var(--text-primary);
+      padding: 8px 18px;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-muted);
+    }
+
+    /* ---------- Placeholder card ---------- */
+    .placeholder {
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-default);
+      border-radius: var(--radius);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .placeholder__title {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin: 0 0 8px;
+    }
+
+    .placeholder__text {
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    /* ---------- Mobile header & overlay ---------- */
+    .mobile-header {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--bg-base);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 16px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hamburger {
+      background: transparent;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .hamburger:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hamburger__icon {
+      display: inline-block;
+      width: 16px;
+      height: 12px;
+      position: relative;
+    }
+
+    .hamburger__icon::before,
+    .hamburger__icon::after,
+    .hamburger__icon span {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: currentColor;
+      border-radius: 1px;
+    }
+
+    .hamburger__icon::before { top: 0; }
+    .hamburger__icon span { top: 50%; transform: translateY(-50%); }
+    .hamburger__icon::after { bottom: 0; }
+
+    .mobile-header__title {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 40;
+    }
+
+    .overlay.is-visible { display: block; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 768px) {
+      .mobile-header { display: flex; }
+
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--transition);
+      }
+
+      .sidebar.is-open {
+        transform: translateX(0);
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 24px 20px 48px;
+      }
+
+      .page__title { font-size: 1.4rem; }
+
+      .notice,
+      .meta,
+      .contact {
+        padding: 16px 18px;
+      }
+
+      .meta__row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+      }
+
+      .meta__label { width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="サイドバーナビゲーション">
+      <div class="sidebar__header">
+        <p class="sidebar__title">MC-202 試験対策ガイド</p>
+        <p class="sidebar__subtitle">Email Specialist</p>
+      </div>
+      <nav class="sidebar__nav">
+        <ul class="nav-list">
+          <li class="nav-item"><span class="nav-link" data-page="top">TOP</span></li>
+          <li class="nav-item"><span class="nav-link" data-page="prereq">0. 前提知識</span></li>
+          <li class="nav-item"><span class="nav-link" data-page="macro">1. マクロ</span></li>
+          <li class="nav-item" data-submenu>
+            <span class="nav-link" data-page="meso">
+              <span>2. メソ</span>
+              <span class="nav-link__caret">▸</span>
+            </span>
+            <ul class="sub-list">
+              <li><span class="nav-link" data-page="meso-bestpractices">Best Practices</span></li>
+              <li><span class="nav-link" data-page="meso-content">Content</span></li>
+              <li><span class="nav-link" data-page="meso-automation">Automation</span></li>
+              <li><span class="nav-link" data-page="meso-subscriber">Subscriber &amp; Data</span></li>
+              <li><span class="nav-link" data-page="meso-analytics">Analytics</span></li>
+            </ul>
+          </li>
+          <li class="nav-item"><span class="nav-link" data-page="micro">3. ミクロ</span></li>
+          <li class="nav-item"><span class="nav-link" data-page="traps">4. ひっかけ集</span></li>
+          <li class="nav-item"><span class="nav-link" data-page="cheatsheet">5. チートシート</span></li>
+          <li class="nav-item"><span class="nav-link" data-page="roadmap">6. 学習ロードマップ</span></li>
+          <li class="nav-item" data-submenu>
+            <span class="nav-link" data-page="quiz">
+              <span>7. 練習問題70問</span>
+              <span class="nav-link__caret">▸</span>
+            </span>
+            <ul class="sub-list">
+              <li><span class="nav-link" data-page="quiz-section1">Section 1</span></li>
+              <li><span class="nav-link" data-page="quiz-section2">Section 2</span></li>
+              <li><span class="nav-link" data-page="quiz-section3">Section 3</span></li>
+              <li><span class="nav-link" data-page="quiz-section4">Section 4</span></li>
+              <li><span class="nav-link" data-page="quiz-section5">Section 5</span></li>
+              <li><span class="nav-link" data-page="quiz-mock">模試</span></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main content -->
+    <main class="main">
+      <!-- Mobile header (visible only on narrow screens) -->
+      <header class="mobile-header">
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-controls="sidebar" aria-expanded="false">
+          <span class="hamburger__icon"><span></span></span>
+        </button>
+        <p class="mobile-header__title">MC-202 試験対策ガイド</p>
+      </header>
+
+      <div class="main__inner">
+        <!-- TOP page -->
+        <article class="page" id="page-top">
+          <header class="page__header">
+            <p class="page__subtitle">Salesforce Marketing Cloud Email Specialist</p>
+            <h1 class="page__title">MC-202 試験対策ガイド</h1>
+          </header>
+
+          <section class="block">
+            <div class="notice" role="note">
+              <p class="notice__title">注意喚起</p>
+              <p>
+                試験傾向や試験情報は日々アップデートされます。公式でも注意喚起がされています。<br>
+                情報鮮度を確認のうえ、必要な行動を取ってください。<br>
+                旧情報を元に学習すると逆効果なのでご注意ください。<br>
+                公式 Trailhead は直近の試験傾向を反映しているわけではないので、鮮度ある情報とハイブリッドで活用してください。
+              </p>
+            </div>
+          </section>
+
+          <section class="block">
+            <div class="meta">
+              <div class="meta__row">
+                <span class="meta__label">更新日</span>
+                <span class="meta__value" id="meta-updated">—</span>
+              </div>
+              <div class="meta__row">
+                <span class="meta__label">情報鮮度</span>
+                <span class="meta__value" id="meta-freshness">
+                  <span class="status-dot" id="meta-freshness-dot"></span>
+                  <span id="meta-freshness-text">—</span>
+                </span>
+              </div>
+              <div class="meta__row">
+                <span class="meta__label">推奨行動</span>
+                <span class="meta__value" id="meta-action">—</span>
+              </div>
+              <div class="meta__row">
+                <span class="meta__label">更新者</span>
+                <span class="meta__value">Yukihiro Murai</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="block">
+            <div class="contact">
+              <h2 class="contact__title">更新者へ連絡</h2>
+              <p class="contact__hint">送信ボタンを押すとメールアプリが起動します。</p>
+              <textarea
+                class="contact__textarea"
+                id="contact-textarea"
+                rows="5"
+                placeholder="更新依頼・お問い合わせ内容をご記入ください"></textarea>
+              <div class="contact__actions">
+                <button type="button" class="btn" id="contact-submit">送信</button>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <!-- Placeholder pages -->
+        <article class="page" id="page-prereq" data-placeholder data-page-title="0. 前提知識"></article>
+        <article class="page" id="page-macro" data-placeholder data-page-title="1. マクロ"></article>
+        <article class="page" id="page-meso" data-placeholder data-page-title="2. メソ"></article>
+        <article class="page" id="page-meso-bestpractices" data-placeholder data-page-title="2. メソ｜Best Practices"></article>
+        <article class="page" id="page-meso-content" data-placeholder data-page-title="2. メソ｜Content"></article>
+        <article class="page" id="page-meso-automation" data-placeholder data-page-title="2. メソ｜Automation"></article>
+        <article class="page" id="page-meso-subscriber" data-placeholder data-page-title="2. メソ｜Subscriber &amp; Data"></article>
+        <article class="page" id="page-meso-analytics" data-placeholder data-page-title="2. メソ｜Analytics"></article>
+        <article class="page" id="page-micro" data-placeholder data-page-title="3. ミクロ"></article>
+        <article class="page" id="page-traps" data-placeholder data-page-title="4. ひっかけ集"></article>
+        <article class="page" id="page-cheatsheet" data-placeholder data-page-title="5. チートシート"></article>
+        <article class="page" id="page-roadmap" data-placeholder data-page-title="6. 学習ロードマップ"></article>
+        <article class="page" id="page-quiz" data-placeholder data-page-title="7. 練習問題70問"></article>
+        <article class="page" id="page-quiz-section1" data-placeholder data-page-title="練習問題｜Section 1"></article>
+        <article class="page" id="page-quiz-section2" data-placeholder data-page-title="練習問題｜Section 2"></article>
+        <article class="page" id="page-quiz-section3" data-placeholder data-page-title="練習問題｜Section 3"></article>
+        <article class="page" id="page-quiz-section4" data-placeholder data-page-title="練習問題｜Section 4"></article>
+        <article class="page" id="page-quiz-section5" data-placeholder data-page-title="練習問題｜Section 5"></article>
+        <article class="page" id="page-quiz-mock" data-placeholder data-page-title="練習問題｜模試"></article>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // ---------- Page routing config ----------
+      var PAGE_IDS = [
+        'top', 'prereq', 'macro', 'meso',
+        'meso-bestpractices', 'meso-content', 'meso-automation', 'meso-subscriber', 'meso-analytics',
+        'micro', 'traps', 'cheatsheet', 'roadmap',
+        'quiz', 'quiz-section1', 'quiz-section2', 'quiz-section3', 'quiz-section4', 'quiz-section5', 'quiz-mock'
+      ];
+
+      var MESO_CHILDREN = ['meso', 'meso-bestpractices', 'meso-content', 'meso-automation', 'meso-subscriber', 'meso-analytics'];
+      var QUIZ_CHILDREN = ['quiz', 'quiz-section1', 'quiz-section2', 'quiz-section3', 'quiz-section4', 'quiz-section5', 'quiz-mock'];
+
+      // ---------- Build placeholder content ----------
+      function buildPlaceholders() {
+        var nodes = document.querySelectorAll('[data-placeholder]');
+        nodes.forEach(function (node) {
+          var title = node.getAttribute('data-page-title') || '';
+          node.innerHTML =
+            '<header class="page__header">' +
+              '<h1 class="page__title">' + title + '</h1>' +
+            '</header>' +
+            '<section class="block">' +
+              '<div class="placeholder">' +
+                '<p class="placeholder__title">Coming soon</p>' +
+                '<p class="placeholder__text">このページのコンテンツは順次追加されます。</p>' +
+              '</div>' +
+            '</section>';
+        });
+      }
+
+      // ---------- Routing ----------
+      function showPage(pageId) {
+        if (PAGE_IDS.indexOf(pageId) === -1) {
+          pageId = 'top';
+        }
+
+        document.querySelectorAll('.page').forEach(function (el) {
+          el.classList.remove('is-active');
+        });
+        var target = document.getElementById('page-' + pageId);
+        if (target) {
+          target.classList.add('is-active');
+        }
+
+        highlightActiveNav(pageId);
+        autoExpandSubmenu(pageId);
+
+        // Scroll to top on page change
+        window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+      }
+
+      function highlightActiveNav(pageId) {
+        document.querySelectorAll('.nav-link').forEach(function (el) {
+          if (el.getAttribute('data-page') === pageId) {
+            el.classList.add('is-active');
+          } else {
+            el.classList.remove('is-active');
+          }
+        });
+      }
+
+      function autoExpandSubmenu(pageId) {
+        // Expand meso submenu if current page belongs to it
+        document.querySelectorAll('.nav-item[data-submenu]').forEach(function (item) {
+          var parent = item.querySelector('.nav-link[data-page]');
+          if (!parent) return;
+          var parentPage = parent.getAttribute('data-page');
+          var children = parentPage === 'meso' ? MESO_CHILDREN : (parentPage === 'quiz' ? QUIZ_CHILDREN : []);
+          if (children.indexOf(pageId) !== -1) {
+            item.classList.add('is-open');
+          }
+        });
+      }
+
+      function navigate(pageId) {
+        if (window.location.hash !== '#' + pageId) {
+          window.location.hash = pageId;
+        } else {
+          showPage(pageId);
+        }
+      }
+
+      function handleHashChange() {
+        var hash = window.location.hash.replace(/^#/, '');
+        showPage(hash || 'top');
+      }
+
+      // ---------- Sidebar interactions ----------
+      function bindSidebar() {
+        document.querySelectorAll('.nav-link').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            var page = link.getAttribute('data-page');
+            if (!page) return;
+
+            // If this is a submenu parent, toggle expansion (don't navigate away from current page beyond loading the parent's own page)
+            var parentItem = link.closest('.nav-item[data-submenu]');
+            var isParentLink = parentItem && parentItem.querySelector(':scope > .nav-link') === link;
+
+            if (isParentLink) {
+              parentItem.classList.toggle('is-open');
+            }
+
+            navigate(page);
+            closeMobileSidebar();
+          });
+        });
+      }
+
+      // ---------- Mobile sidebar toggle ----------
+      function openMobileSidebar() {
+        document.getElementById('sidebar').classList.add('is-open');
+        document.getElementById('overlay').classList.add('is-visible');
+        var btn = document.getElementById('hamburger');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeMobileSidebar() {
+        document.getElementById('sidebar').classList.remove('is-open');
+        document.getElementById('overlay').classList.remove('is-visible');
+        var btn = document.getElementById('hamburger');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+
+      function bindMobileSidebar() {
+        var btn = document.getElementById('hamburger');
+        var overlay = document.getElementById('overlay');
+        if (btn) {
+          btn.addEventListener('click', function () {
+            var sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('is-open')) {
+              closeMobileSidebar();
+            } else {
+              openMobileSidebar();
+            }
+          });
+        }
+        if (overlay) {
+          overlay.addEventListener('click', closeMobileSidebar);
+        }
+      }
+
+      // ---------- Freshness calculation ----------
+      function computeFreshness() {
+        var metaEl = document.querySelector('meta[name="last-updated"]');
+        if (!metaEl) return;
+
+        var raw = metaEl.getAttribute('content') || '';
+        var updatedDate = new Date(raw.replace(/\//g, '-'));
+        if (isNaN(updatedDate.getTime())) return;
+
+        var now = new Date();
+        var monthsElapsed = (now - updatedDate) / (1000 * 60 * 60 * 24 * 30.44);
+
+        var freshness, action, statusClass;
+        if (monthsElapsed <= 3) {
+          freshness = '良好';
+          action = '必要な箇所は調べながら学習を進める';
+          statusClass = 'fresh-good';
+        } else if (monthsElapsed <= 6) {
+          freshness = '通常';
+          action = '最新情報が欲しい場合のみ更新者へ連絡';
+          statusClass = 'fresh-normal';
+        } else {
+          freshness = '不良';
+          action = '最新情報への更新が必要なので更新者へ連絡';
+          statusClass = 'fresh-stale';
+        }
+
+        document.getElementById('meta-updated').textContent = raw;
+        document.getElementById('meta-freshness-text').textContent = freshness;
+        document.getElementById('meta-action').textContent = action;
+
+        var dot = document.getElementById('meta-freshness-dot');
+        dot.classList.remove('fresh-good', 'fresh-normal', 'fresh-stale');
+        dot.classList.add(statusClass);
+      }
+
+      // ---------- Mailto form ----------
+      function bindContactForm() {
+        var btn = document.getElementById('contact-submit');
+        if (!btn) return;
+
+        btn.addEventListener('click', function () {
+          var textarea = document.getElementById('contact-textarea');
+          var body = encodeURIComponent(textarea ? textarea.value : '');
+          var subject = encodeURIComponent('[MC-202ガイド] 更新依頼・お問い合わせ');
+          window.location.href = 'mailto:yukihiro-murai@bigm2y.com?subject=' + subject + '&body=' + body;
+        });
+      }
+
+      // ---------- Init ----------
+      function init() {
+        buildPlaceholders();
+        bindSidebar();
+        bindMobileSidebar();
+        computeFreshness();
+        bindContactForm();
+
+        window.addEventListener('hashchange', handleHashChange);
+        handleHashChange();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
