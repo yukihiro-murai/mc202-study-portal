@@ -748,6 +748,16 @@
       border-bottom: none;
     }
 
+    /* ---------- Trap pair table (page-traps) ---------- */
+    .trap-table {
+      width: 100%;
+    }
+
+    .trap-table thead th:first-child,
+    .trap-table tbody td:first-child {
+      width: 45%;
+    }
+
     /* ---------- Pre block (ASCII tree etc.) ---------- */
     pre.tree-block {
       background: var(--bg-surface);
@@ -922,6 +932,80 @@
 
       .lead { font-size: 0.9rem; }
       .section-body .lead { font-size: 0.88rem; }
+
+      /* Trap table: collapse to cards */
+      .trap-table thead {
+        display: none;
+      }
+
+      .trap-table,
+      .trap-table tbody,
+      .trap-table tr,
+      .trap-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .table-wrap:has(.trap-table) {
+        border: none;
+        background: transparent;
+      }
+
+      .trap-table tr {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius);
+        margin-bottom: 12px;
+        padding: 14px 16px;
+      }
+
+      .trap-table td {
+        border: none;
+        padding: 0;
+        position: relative;
+        padding-left: 80px;
+        min-height: 24px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .trap-table td:first-child {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed var(--border-subtle);
+      }
+
+      .trap-table td:first-child::before {
+        content: "罠";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--status-stale);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 2px 10px;
+        border: 1px solid var(--status-stale);
+        border-radius: var(--radius);
+        line-height: 1.4;
+        background: rgba(200, 113, 113, 0.08);
+      }
+
+      .trap-table td:last-child::before {
+        content: "正解";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 2px 10px;
+        border: 1px solid var(--accent);
+        border-radius: var(--radius);
+        line-height: 1.4;
+        background: var(--accent-muted);
+      }
     }
   </style>
 </head>
@@ -2884,7 +2968,146 @@ File Transfer (Safehouse→SFTP)</pre>
             </div>
           </article>
         </article>
-        <article class="page" id="page-traps" data-placeholder data-page-title="4. ひっかけ集"></article>
+        <!-- 4. ひっかけ集 -->
+        <article class="page" id="page-traps">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 4</p>
+            <h1 class="page__title">高頻度ひっかけ集約版</h1>
+          </header>
+
+          <p class="lead">§2 のセクション別ひっかけ表をテーマ別にクロス整理。試験直前 2-3 日の暗記用。</p>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">4.1 識別子・キー系</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table trap-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Email Address を一意 ID にする</td><td>Subscriber Key / Contact Key を使う</td></tr>
+                    <tr><td>Primary Key と Subscriber Key を同一視</td><td>役割が違う</td></tr>
+                    <tr><td>Subscriber Key と Contact Key は完全に同じもの</td><td>ベストプラクティスは同一値だが概念は別レイヤー</td></tr>
+                    <tr><td>Data Extension は送信に常に使える</td><td>Sendable 設定 + Subscriber Relationship 定義が必要</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">4.2 購読・除外系</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table trap-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Publication List は除外用</td><td>カテゴリ別購読管理</td></tr>
+                    <tr><td>Suppression List は購読カテゴリ管理</td><td>送信除外（do-not-contact）</td></tr>
+                    <tr><td>Unsubscribe = DE から削除</td><td>ステータス管理が正解。物理削除しない</td></tr>
+                    <tr><td>Sendable DE から削除すれば Contact も消える</td><td>Contact 層は別。All Contacts には残る</td></tr>
+                    <tr><td>Transactional は Unsubscribe を完全に無視してよい</td><td>設定・法令・目的次第。Transactional でも乱用は不可</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">4.3 送信設定系</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table trap-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>From Name は Delivery Profile</td><td>Sender Profile</td></tr>
+                    <tr><td>Footer は Sender Profile</td><td>Delivery Profile</td></tr>
+                    <tr><td>Commercial / Transactional は Sender Profile</td><td>Send Classification の CAN-SPAM 分類</td></tr>
+                    <tr><td>Send Classification は単なるラベル</td><td>Sender + Delivery + CAN-SPAM の組み合わせテンプレート</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">4.4 Automation / Journey 系</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table trap-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>SQL 加工を Journey 内でやる</td><td>Automation Studio の SQL Query Activity</td></tr>
+                    <tr><td>顧客行動分岐を Automation で組む</td><td>Journey Builder</td></tr>
+                    <tr><td>Data Extract だけで SFTP 転送完了</td><td>File Transfer Activity が必要</td></tr>
+                    <tr><td>Triggered Send を定期一斉送信に使う</td><td>イベント駆動・1 件単位向き</td></tr>
+                    <tr><td>Journey の Re-entry はデフォルトで再入場可</td><td>デフォルトは No re-entry</td></tr>
+                    <tr><td>A/B Test Send と Path Optimizer は同じ</td><td>前者は 1 回の送信内、後者は Journey 内のパス比較</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">4.5 Analytics 系</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table trap-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Total と Unique を混同</td><td>Unique = 人単位、Total = 総数</td></tr>
+                    <tr><td>CTR と CTOR を混同</td><td>CTOR の分母は Open</td></tr>
+                    <tr><td>Open Rate を絶対視</td><td>Apple MPP / プライバシー保護で過大計上の可能性</td></tr>
+                    <tr><td>長期データは MC 内に無期限保持</td><td>180 日保持。長期分析は外部退避前提</td></tr>
+                    <tr><td>Extract は無制限にキュー可能</td><td>250 件上限</td></tr>
+                    <tr><td>Send Logging はデフォルトで使える</td><td>Salesforce サポートで事前有効化必要</td></tr>
+                    <tr><td>Tracking Extract = Send Logging</td><td>前者は既存 Tracking 抽出、後者は送信時点記録</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </article>
         <article class="page" id="page-cheatsheet" data-placeholder data-page-title="5. チートシート"></article>
         <article class="page" id="page-roadmap" data-placeholder data-page-title="6. 学習ロードマップ"></article>
         <article class="page" id="page-quiz" data-placeholder data-page-title="7. 練習問題70問"></article>
