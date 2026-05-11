@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
   <meta name="robots" content="noindex, nofollow">
   <meta name="last-updated" content="2026/05/11">
   <title>MC-202 試験対策ガイド</title>
@@ -28,6 +29,28 @@
       --sidebar-width: 260px;
       --radius: 6px;
       --transition: 0.18s ease;
+    }
+
+    /* ---------- Inline code ---------- */
+    code {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.85em;
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    /* ---------- Focus visibility ---------- */
+    :focus {
+      outline: none;
+    }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: var(--radius);
     }
 
     /* ---------- Base ---------- */
@@ -202,10 +225,25 @@
 
     .main__inner {
       max-width: 820px;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     .page { display: none; }
-    .page.is-active { display: block; }
+    .page.is-active {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     .page__header {
       margin-bottom: 32px;
@@ -623,6 +661,7 @@
       margin-top: 16px;
       padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
+      animation: fadeInUp 0.18s ease;
     }
 
     .scenario__answer-row {
@@ -893,6 +932,7 @@
       margin-top: 16px;
       padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
+      animation: fadeInUp 0.18s ease;
     }
 
     .quiz__explanation[hidden] {
@@ -1181,6 +1221,36 @@
 
     .overlay.is-visible { display: block; }
 
+    /* ---------- Back-to-top floating button ---------- */
+    .to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      color: var(--text-secondary);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: inherit;
+      z-index: 35;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .to-top:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .to-top.is-visible {
+      display: flex;
+    }
+
     /* ---------- Responsive ---------- */
     @media (max-width: 768px) {
       .mobile-header { display: flex; }
@@ -1299,6 +1369,67 @@
         border-radius: var(--radius);
         line-height: 1.4;
         background: var(--accent-muted);
+      }
+
+      /* Scenario / Quiz card density on mobile */
+      .scenario {
+        padding: 16px 18px;
+      }
+      .scenario__head {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .scenario__title {
+        font-size: 1rem;
+      }
+
+      .quiz {
+        padding: 16px 18px;
+      }
+      .quiz__head {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .quiz__choice {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+      }
+
+      .section-index__card {
+        padding: 14px 16px;
+        gap: 12px;
+      }
+      .section-index__badge {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+      }
+      .section-index__title {
+        font-size: 0.95rem;
+      }
+
+      .quiz-nav {
+        padding: 10px 14px;
+      }
+      .quiz-nav__item {
+        padding: 3px 8px;
+        font-size: 0.75rem;
+      }
+
+      .takeaway {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+      }
+
+      /* Adjust anchor jump offset for sticky mobile header */
+      .quiz,
+      .scenario {
+        scroll-margin-top: 80px;
+      }
+
+      .to-top {
+        right: 16px;
+        bottom: 16px;
       }
     }
   </style>
@@ -5860,6 +5991,8 @@ File Transfer (Safehouse→SFTP)</pre>
     </main>
   </div>
 
+  <button type="button" class="to-top" id="to-top" aria-label="ページトップへ戻る">↑</button>
+
   <script>
     (function () {
       'use strict';
@@ -6321,6 +6454,24 @@ File Transfer (Safehouse→SFTP)</pre>
         });
       }
 
+      // ---------- Back-to-top floating button ----------
+      function bindToTop() {
+        var btn = document.getElementById('to-top');
+        if (!btn) return;
+        function update() {
+          if (window.scrollY > 400) {
+            btn.classList.add('is-visible');
+          } else {
+            btn.classList.remove('is-visible');
+          }
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        update();
+      }
+
       // ---------- Mailto form ----------
       function bindContactForm() {
         var btn = document.getElementById('contact-submit');
@@ -6346,6 +6497,7 @@ File Transfer (Safehouse→SFTP)</pre>
         bindScenarios();
         bindChecklists();
         bindQuizzes();
+        bindToTop();
 
         window.addEventListener('hashchange', handleHashChange);
         handleHashChange();
