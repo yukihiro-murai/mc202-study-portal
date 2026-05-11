@@ -2485,7 +2485,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>Sendable DE には 10,000 件あるが、Send 成功は 8,700 件だった。最初に確認すべきものは？</p>
+              <p>管理者が Sendable Data Extension（10,000 件）を使ってメール送信したところ、実際に送信されたのは 8,700 件だった。この差異の原因を特定するために、まず確認すべき購読・除外関連の項目を 3 つ挙げよ。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2509,8 +2509,10 @@ File Transfer (Safehouse→SFTP)</pre>
               <h3 class="scenario__title">会員ランクに応じた異なるバナー表示</h3>
             </header>
             <div class="scenario__question">
-              <p class="scenario__label">設問</p>
-              <p>会員ランク（Gold / Silver / Bronze）によって異なるバナー画像を表示したい。マーケターが GUI で管理できる方法と、別 DE から条件参照する場合の方法は？</p>
+              <p class="scenario__label">設問A</p>
+              <p>会員ランク（Gold / Silver / Bronze）に応じて異なるバナー画像をメール内に表示したい。マーケターが GUI で条件と表示内容を管理できるようにする場合、どの Content Builder 機能を使うべきか。</p>
+              <p class="scenario__label" style="margin-top:12px;">設問B</p>
+              <p>同じ要件で、別の Data Extension に格納された「会員ランク履歴テーブル」から条件を引いてバナーを切り替えたい場合、どの Marketing Cloud スクリプティング機能と、どの関数を使うべきか。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2535,7 +2537,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>EC サイトの購入完了時、外部システムから API で 1 通ずつ送信したい。</p>
+              <p>EC サイトの購入完了イベントを受けて、外部システムから API 経由で 1 件ずつメールを即時送信したい。Marketing Cloud のどの送信方式を選ぶべきか。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2568,7 +2570,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>Automation Studio で Data Extract Activity は成功した。しかし外部 SFTP にファイルが見つからない。</p>
+              <p>Automation Studio で Data Extract Activity がエラーなく完了したが、外部 SFTP サーバー上にファイルが届いていない。Automation に追加すべき Activity と、その追加が必要な理由は？</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2593,7 +2595,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>上記フローを実現する最適ツールは？</p>
+              <p>Web フォームから新規登録した購読者に Welcome メールを送り、その送信から個人ごとに 3 日経過したタイミングで開封・クリックの有無に応じて分岐するフローを構築したい。Automation Studio と Journey Builder のどちらを使うべきか、その理由は？</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2618,7 +2620,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>同じメール本文だがブランド A とブランド B で From Name と Footer を変更したい。</p>
+              <p>同じメール本文を使うが、ブランド A とブランド B で「From Name / From Email」と「Footer」をそれぞれ変えたい。From 系の変更で使う設定オブジェクトと、Footer の変更で使う設定オブジェクトを答えよ。また、両者をまとめて再利用可能な送信定義にする上位の設定単位は？</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2649,7 +2651,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>開封したユーザーのうち、何 % がリンクをクリックしたか知りたい。</p>
+              <p>メールキャンペーンの効果分析で「開封したユーザーのうち、何 % がリンクをクリックしたか」を知りたい。どの指標を見るべきか。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2674,7 +2676,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>受信者個別の反応傾向に合わせて送信時刻を最適化したい。</p>
+              <p>過去の反応データから受信者ごとに最も開封されやすい時刻を学習させ、個別最適な時刻でメールを送信したい。どの Einstein 機能を使うべきか。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2705,7 +2707,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>SMS キャンペーンのクリック数に、URL プレビューやセキュリティスキャナの自動クリックが混ざっている。実際の人間のクリックに近い値を見たい。</p>
+              <p>SMS キャンペーンの分析画面で、リンクのクリック数に URL プレビューやセキュリティスキャナによる自動クリックが混ざっており、実際の購読者のクリック数が不明確になっている。ボット由来のクリックを除いた値を確認するために、どの指標を見るべきか。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2730,7 +2732,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>Parent BU 1 つと Child BU 3 つの構成で、共通のテンプレートとロゴをすべての子 BU で使い回したい。</p>
+              <p>Parent BU 1 つと Child BU 3 つから成る Enterprise 2.0 構成で、共通のテンプレートとロゴをすべての子 BU から参照したい。どの Data Extension 種別 / Content の保存方法を使うべきか。また、各子 BU に同じものを複製するのはなぜ望ましくないか？</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2755,7 +2757,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>同じ顧客がメールアドレスを変えたら、Marketing Cloud 上で別 Contact として扱われた。原因は？</p>
+              <p>同じ顧客がメールアドレスを変更した結果、Marketing Cloud 上で別 Contact として扱われ Total Contact Count が増加した。現在の Contact Key の運用上の問題点と、Contact Key として割り当てるべき推奨値は？</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2780,7 +2782,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>送信時点の SubscriberKey / EmailAddress / SubjectLine を記録したい。</p>
+              <p>送信時点での SubscriberKey、EmailAddress、SubjectLine を後から SQL で参照できる形で永続保存したい。Send Logging を利用するために必要な手順を 3 つ、順序付きで挙げよ。また、追加カラムに自動で値を入れるための命名規則は？</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2809,7 +2811,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>過去 6 ヶ月開封なしの購読者を再エンゲージメントするキャンペーンを設計したい。</p>
+              <p>過去 6 ヶ月開封がない購読者を抽出し、再エンゲージメント Journey に投入したい。抽出に使うべき Automation Studio の Activity 種別、参照すべき Data View、Journey 投入時の Entry Source 種別を答えよ。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2834,7 +2836,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>Welcome Journey に 2 回目の登録時も入って欲しいが、デフォルト設定では入らない。</p>
+              <p>Welcome Journey に同じ購読者が 2 回目の登録時も再度入って欲しいが、現在の設定では再入場できない。Journey のどの設定項目を、どのような値に変更すべきか。デフォルト値は何か？</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>
@@ -2859,7 +2861,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </header>
             <div class="scenario__question">
               <p class="scenario__label">設問</p>
-              <p>件名 A/B で 20% ずつ送り、CTOR 優秀な方を残り 60% に自動配信したい。</p>
+              <p>件名 A/B で 20% ずつ送り、CTOR が優秀な方を残り 60% の購読者に自動配信したい。Email Studio で使うべき機能名、勝者判定の基準として設定すべき指標、テスト割合と勝者送信割合の設定値は？ また、Journey Builder の Path Optimizer や Random Split との違いを簡潔に説明せよ。</p>
             </div>
             <button class="scenario__toggle" type="button" aria-expanded="false">
               <span class="scenario__toggle-label">解答と判断軸を見る</span>

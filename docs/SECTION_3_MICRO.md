@@ -222,19 +222,20 @@ function bindScenarios() {
 シナリオは 15 個。各 .scenario を縦に並べる。
 
 #### 3.1 購読者は 10,000 件、実送信は 8,700 件
-- 設問: Sendable DE には 10,000 件あるが、Send 成功は 8,700 件だった。最初に確認すべきものは？
+- 設問: 管理者が Sendable Data Extension（10,000 件）を使ってメール送信したところ、実際に送信されたのは 8,700 件だった。この差異の原因を特定するために、まず確認すべき購読・除外関連の項目を 3 つ挙げよ。
 - 最適解: All Subscribers の購読ステータス（Unsubscribed / Held / Bounced）、Suppression List、Exclusion 設定
 - 判断軸: 送信差異は購読・除外レイヤーで発生することが圧倒的に多い。データの中身（メアドの妥当性、重複）を確認するのはその後。実務でも試験でも、購読層を上から下へ削っていく順序を最初に思い浮かべる癖をつける。
 - 誤答理由: なし（省略）
 
 #### 3.2 会員ランクに応じた異なるバナー表示
-- 設問: 会員ランク（Gold / Silver / Bronze）によって異なるバナー画像を表示したい。マーケターが GUI で管理できる方法と、別 DE から条件参照する場合の方法は？
+- 設問A: 会員ランク（Gold / Silver / Bronze）に応じて異なるバナー画像をメール内に表示したい。マーケターが GUI で条件と表示内容を管理できるようにする場合、どの Content Builder 機能を使うべきか。
+- 設問B: 同じ要件で、別の Data Extension に格納された「会員ランク履歴テーブル」から条件を引いてバナーを切り替えたい場合、どの Marketing Cloud スクリプティング機能と、どの関数を使うべきか。
 - 最適解: GUI 管理は <em class="em">Dynamic Content</em>、別 DE 参照を伴う条件分岐は <em class="em">AMPscript</em>（Lookup 関数で別 DE を参照）
 - 判断軸: 「GUI 管理可能か / 開発者制御が必要か」「単純属性参照か / 別 DE 参照か」の 2 軸で切る。問題文中に「別の DE」「条件結合」が出てきたら AMPscript を疑うシグナル。
 - 誤答理由: なし
 
 #### 3.3 購入完了直後のメール
-- 設問: EC サイトの購入完了時、外部システムから API で 1 通ずつ送信したい。
+- 設問: EC サイトの購入完了イベントを受けて、外部システムから API 経由で 1 件ずつメールを即時送信したい。Marketing Cloud のどの送信方式を選ぶべきか。
 - 最適解: <em class="em">Triggered Send</em>
 - 判断軸: 「外部イベント駆動」「1 件単位」「即時性」の 3 つが揃ったら Triggered。
 - 誤答理由:<br>
@@ -243,7 +244,7 @@ function bindScenarios() {
   - User-Initiated Send → 再利用可能な定義だが、1 件単位の API 呼び出しを想定していない
 
 #### 3.4 Automation で Data Extract したのに SFTP に無い
-- 設問: Automation Studio で Data Extract Activity は成功した。しかし外部 SFTP にファイルが見つからない。
+- 設問: Automation Studio で Data Extract Activity がエラーなく完了したが、外部 SFTP サーバー上にファイルが届いていない。Automation に追加すべき Activity と、その追加が必要な理由は？
 - 最適解: Data Extract の後に <em class="em">File Transfer Activity</em> がない
 - 判断軸: Data Extract = ファイル生成（Safehouse 内）、File Transfer = ファイル移動（Safehouse ⇄ SFTP）。この 2 つはセットで使うのが前提。試験でも実務でもここで詰まる人が非常に多い。
 - 誤答理由: なし
@@ -251,13 +252,13 @@ function bindScenarios() {
 (Safehouse 補足を term tooltip で：Safehouse: Marketing Cloud が提供する内部ファイル保管領域)
 
 #### 3.5 フォーム登録 → Welcome → 3 日後にクリック有無で分岐
-- 設問: 上記フローを実現する最適ツール
+- 設問: Web フォームから新規登録した購読者に Welcome メールを送り、その送信から個人ごとに 3 日経過したタイミングで開封・クリックの有無に応じて分岐するフローを構築したい。Automation Studio と Journey Builder のどちらを使うべきか、その理由は？
 - 最適解: <em class="em">Journey Builder</em>
 - 判断軸: 「個人ごとの時間軸 + 行動分岐」が出たら Journey。Automation Studio はバッチ処理向きで「個人ごとの 3 日後」を待つことができない（Wait で全体待機はできるが、個人時間軸ではない）。
 - 誤答理由: なし
 
 #### 3.6 ブランドごとに From Name とフッターを変える
-- 設問: 同じメール本文だがブランド A とブランド B で From Name と Footer を変更したい。
+- 設問: 同じメール本文を使うが、ブランド A とブランド B で「From Name / From Email」と「Footer」をそれぞれ変えたい。From 系の変更で使う設定オブジェクトと、Footer の変更で使う設定オブジェクトを答えよ。また、両者をまとめて再利用可能な送信定義にする上位の設定単位は？
 - 最適解: <em class="em">Sender Profile</em>（From Name 用）と <em class="em">Delivery Profile</em>（Footer 用）をそれぞれブランド別に作成し、Send Classification として組み合わせる
 - 判断軸: 「From」というキーワードに引きずられて Delivery Profile を選ぶと不正解。<br>
   - From Name / From Email → Sender Profile<br>
@@ -267,13 +268,13 @@ function bindScenarios() {
 - 誤答理由: なし
 
 #### 3.7 開封者のうちクリックした割合を見たい
-- 設問: 開封したユーザーのうち、何 % がリンクをクリックしたか知りたい。
+- 設問: メールキャンペーンの効果分析で「開封したユーザーのうち、何 % がリンクをクリックしたか」を知りたい。どの指標を見るべきか。
 - 最適解: <em class="em">CTOR</em>（Click-to-Open Rate = Click / Open）
 - 判断軸: CTR は分母が Delivered、CTOR は分母が Open。「開封してくれた人のうち」が出たら CTOR と即断できる癖をつける。
 - 誤答理由: なし
 
 #### 3.8 受信者ごとの最適時間に送りたい
-- 設問: 受信者個別の反応傾向に合わせて送信時刻を最適化したい。
+- 設問: 過去の反応データから受信者ごとに最も開封されやすい時刻を学習させ、個別最適な時刻でメールを送信したい。どの Einstein 機能を使うべきか。
 - 最適解: <em class="em">Einstein Send Time Optimization (STO)</em>
 - 判断軸:<br>
   - 受信者ごと最適時刻 → STO<br>
@@ -284,25 +285,25 @@ function bindScenarios() {
 - 誤答理由: なし
 
 #### 3.9 SMS クリック数にボットが混在
-- 設問: SMS キャンペーンのクリック数に、URL プレビューやセキュリティスキャナの自動クリックが混ざっている。実際の人間のクリックに近い値を見たい。
+- 設問: SMS キャンペーンの分析画面で、リンクのクリック数に URL プレビューやセキュリティスキャナによる自動クリックが混ざっており、実際の購読者のクリック数が不明確になっている。ボット由来のクリックを除いた値を確認するために、どの指標を見るべきか。
 - 最適解: <em class="em">VerifiedClicks</em>（Spring '26 追加）
 - 判断軸: Apple MPP 対応などプライバシー保護由来の自動クリック・自動開封は、メール / SMS 両方で測定値を歪める。Salesforce は VerifiedClicks で補正値を提供している。
 - 誤答理由: なし
 
 #### 3.10 BU 横断のキャンペーン管理
-- 設問: Parent BU 1 つと Child BU 3 つの構成で、共通のテンプレートとロゴをすべての子 BU で使い回したい。
+- 設問: Parent BU 1 つと Child BU 3 つから成る Enterprise 2.0 構成で、共通のテンプレートとロゴをすべての子 BU から参照したい。どの Data Extension 種別 / Content の保存方法を使うべきか。また、各子 BU に同じものを複製するのはなぜ望ましくないか？
 - 最適解: <em class="em">Shared Data Extension</em> / Shared Content（Parent BU で作成 → Child BU から参照）
 - 判断軸: 「共通利用」「複数 BU」「親で一元管理」というキーワードは Shared 系のシグナル。各子 BU に同じものを複製するのはアンチパターン。
 - 誤答理由: なし
 
 #### 3.11 購読者がメアド変更で同一人物が 2 人にカウントされる
-- 設問: 同じ顧客がメールアドレスを変えたら、Marketing Cloud 上で別 Contact として扱われた。原因は？
+- 設問: 同じ顧客がメールアドレスを変更した結果、Marketing Cloud 上で別 Contact として扱われ Total Contact Count が増加した。現在の Contact Key の運用上の問題点と、Contact Key として割り当てるべき推奨値は？
 - 最適解: Contact Key として <em class="em">Email Address を使っている</em>こと
 - 判断軸: Email Address は個人識別子として弱い。家族で共有、メアド変更、複数アドレス所持の可能性がある。Contact Key は不変の社内 ID（顧客 ID）を割り当てるのがベストプラクティス。試験でも頻出。
 - 誤答理由: なし
 
 #### 3.12 Send Logging を有効にしたい
-- 設問: 送信時点の SubscriberKey / EmailAddress / SubjectLine を記録したい。
+- 設問: 送信時点での SubscriberKey、EmailAddress、SubjectLine を後から SQL で参照できる形で永続保存したい。Send Logging を利用するために必要な手順を 3 つ、順序付きで挙げよ。また、追加カラムに自動で値を入れるための命名規則は？
 - 最適解:<br>
   1. Salesforce サポートに Send Logging 機能の有効化を依頼<br>
   2. SendLog テンプレートから DE を作成<br>
@@ -311,19 +312,19 @@ function bindScenarios() {
 - 誤答理由: なし
 
 #### 3.13 旧購読者を再エンゲージメントしたい
-- 設問: 過去 6 ヶ月開封なしの購読者を再エンゲージメントするキャンペーンを設計したい。
+- 設問: 過去 6 ヶ月開封がない購読者を抽出し、再エンゲージメント Journey に投入したい。抽出に使うべき Automation Studio の Activity 種別、参照すべき Data View、Journey 投入時の Entry Source 種別を答えよ。
 - 最適解: <em class="em">Automation Studio で SQL Query</em> → 対象者 DE を生成 → <em class="em">Journey Builder</em> に投入
 - 判断軸: 「過去 N 日間の○○」というデータ抽出は SQL Query が定番（Data View `_Open` を結合）。抽出後の顧客旅程は Journey Builder で分岐管理。両方を使う複合パターンは試験頻出。
 - 誤答理由: なし
 
 #### 3.14 Journey に再入場させたい
-- 設問: Welcome Journey に 2 回目の登録時も入って欲しいが、デフォルト設定では入らない。
+- 設問: Welcome Journey に同じ購読者が 2 回目の登録時も再度入って欲しいが、現在の設定では再入場できない。Journey のどの設定項目を、どのような値に変更すべきか。デフォルト値は何か？
 - 最適解: Journey の <em class="em">Re-entry Settings</em> を `Re-entry Anytime` または `Re-entry only after exiting` に変更
 - 判断軸: デフォルトは `No re-entry`（一度入ったら終わり）。Welcome / Loyalty / 周年 Journey などで再入場を意図する場合は明示的に設定変更が必要。
 - 誤答理由: なし
 
 #### 3.15 A/B テスト勝者の自動配信
-- 設問: 件名 A/B で 20% ずつ送り、CTOR 優秀な方を残り 60% に自動配信したい。
+- 設問: 件名 A/B で 20% ずつ送り、CTOR が優秀な方を残り 60% の購読者に自動配信したい。Email Studio で使うべき機能名、勝者判定の基準として設定すべき指標、テスト割合と勝者送信割合の設定値は？ また、Journey Builder の Path Optimizer や Random Split との違いを簡潔に説明せよ。
 - 最適解: <em class="em">Email Studio の A/B Test Send</em> で件名 2 種・テスト割合各 20%・勝者基準 CTOR・勝者送信割合 60% を設定
 - 判断軸: 違いを知る：<br>
   - <em class="em">A/B Test Send (Email Studio 内)</em>: 1 回の送信ジョブで件名や本文を比較<br>
