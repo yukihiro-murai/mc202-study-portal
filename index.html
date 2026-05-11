@@ -681,6 +681,84 @@
       color: var(--status-stale);
     }
 
+    /* ---------- Interactive checklist (page-cheatsheet) ---------- */
+    .section-body .checklist {
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .checklist__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-body .checklist__item {
+      margin-bottom: 0;
+    }
+
+    .checklist__item:last-child {
+      border-bottom: none;
+    }
+
+    .checklist__toggle {
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 4px;
+      font: inherit;
+      color: inherit;
+    }
+
+    .checklist__box {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--border-default);
+      border-radius: 4px;
+      position: relative;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .checklist__toggle:hover .checklist__box {
+      border-color: var(--accent);
+    }
+
+    .checklist__toggle[aria-pressed="true"] .checklist__box {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .checklist__toggle[aria-pressed="true"] .checklist__box::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0px;
+      width: 5px;
+      height: 10px;
+      border-right: 2px solid var(--bg-base);
+      border-bottom: 2px solid var(--bg-base);
+      transform: rotate(45deg);
+    }
+
+    .checklist__text {
+      flex: 1;
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      transition: color var(--transition), text-decoration var(--transition);
+    }
+
+    .checklist__toggle[aria-pressed="true"] ~ .checklist__text {
+      color: var(--text-tertiary);
+      text-decoration: line-through;
+    }
+
     /* ---------- Section body typography ---------- */
     .section-body > p {
       margin: 0 0 16px;
@@ -3108,7 +3186,258 @@ File Transfer (Safehouse→SFTP)</pre>
             </div>
           </section>
         </article>
-        <article class="page" id="page-cheatsheet" data-placeholder data-page-title="5. チートシート"></article>
+        <!-- 5. チートシート -->
+        <article class="page" id="page-cheatsheet">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 5</p>
+            <h1 class="page__title">判断軸チートシート</h1>
+          </header>
+
+          <p class="lead">試験直前確認用の判断軸まとめ。1 ブロック = 1 テーマで順次見られる構成。</p>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.1 ツール選択フローチャート</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+<pre class="tree-block">顧客行動に応じた分岐・待機がある？        → YES → Journey Builder
+
+定期バッチ処理 / ファイル取込 / SQL / SFTP？  → YES → Automation Studio
+
+外部イベント駆動の即時 1 通送信？             → YES → Triggered Send
+
+単発で手動送信したい？                       → YES → Guided Send
+
+再利用可能な送信定義を作りたい？             → YES → User-Initiated Send</pre>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.2 機能境界マトリクス</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>軸 A</th><th>軸 B</th><th>決め手</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Automation Studio</td><td>Journey Builder</td><td>バッチ処理 vs 顧客体験</td></tr>
+                    <tr><td>SQL Query</td><td>Data Filter</td><td>複雑 JOIN vs 単純条件</td></tr>
+                    <tr><td>Publication List</td><td>Suppression List</td><td>カテゴリ別購読管理 vs 送信除外</td></tr>
+                    <tr><td>Sender Profile</td><td>Delivery Profile</td><td>From 系 vs 配送系</td></tr>
+                    <tr><td>Triggered Send</td><td>User-Initiated Send</td><td>API / イベント vs 再利用可能定義</td></tr>
+                    <tr><td>Send Logging</td><td>Tracking Extract</td><td>送信時点記録 vs Tracking からの抽出</td></tr>
+                    <tr><td>Personalization String</td><td>AMPscript</td><td>単純差込 vs 条件分岐 / 別 DE 参照</td></tr>
+                    <tr><td>Dynamic Content</td><td>AMPscript</td><td>GUI 管理 vs 開発者制御</td></tr>
+                    <tr><td>All Contacts</td><td>All Subscribers</td><td>Enterprise 横断 / 全チャネル vs BU 内 Email 購読者</td></tr>
+                    <tr><td>Contact Key</td><td>Subscriber Key</td><td>チャネル横断 ID vs Email Studio 識別子</td></tr>
+                    <tr><td>A/B Test Send</td><td>Path Optimizer</td><td>Email Studio 内 vs Journey Builder 内</td></tr>
+                    <tr><td>Shared DE</td><td>Local DE</td><td>親 BU 作成・子 BU 参照 vs 単一 BU</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.3 Send Classification 三層構造</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+<pre class="tree-block">┌────────────────────────────────────────────┐
+│         Send Classification                │
+│  ┌──────────────────────────────────────┐  │
+│  │ Sender Profile                       │  │
+│  │  • From Name / From Email            │  │
+│  │  • Reply Mail Management (RMM)       │  │
+│  └──────────────────────────────────────┘  │
+│  ┌──────────────────────────────────────┐  │
+│  │ Delivery Profile                     │  │
+│  │  • IP                                │  │
+│  │  • Header / Footer                   │  │
+│  │  • Domain                            │  │
+│  └──────────────────────────────────────┘  │
+│  ┌──────────────────────────────────────┐  │
+│  │ CAN-SPAM Classification              │  │
+│  │  • Commercial / Transactional        │  │
+│  └──────────────────────────────────────┘  │
+└────────────────────────────────────────────┘</pre>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.4 Contact Identity 階層</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+<pre class="tree-block">[Contact ID]                    ← システム内部数値（不変・通常意識せず）
+   │
+[Contact Key]                   ← Contact Builder で使用、チャネル横断
+   │  (ベストプラクティス：= Subscriber Key)
+   │
+[Subscriber Key]                ← Email Studio で使用、Email 購読者識別
+   │
+[Sendable DE の Primary Key]    ← DE 内の行を一意化（Subscriber Key と別物可）</pre>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.5 送信差異の原因チェックリスト</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">送信予定数より実送信数が少ない場合、上から順に確認する。</p>
+              <ul class="checklist">
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">All Subscribers のステータス（Unsubscribed / Held / Bounced）</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Publication List のオプトアウト</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Suppression List 該当</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Exclusion List / Exclusion Script</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Sendable DE の Subscriber Relationship 設定</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Subscriber Key の重複・不一致</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Email Address の空・無効</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">SQL / Filter の抽出条件</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Send Classification の Commercial / Transactional 設定</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">ドメインブロック / List Detective</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Journey re-entry / exit criteria</span>
+                </li>
+                <li class="checklist__item">
+                  <button class="checklist__toggle" type="button" aria-pressed="false" aria-label="チェック">
+                    <span class="checklist__box"></span>
+                  </button>
+                  <span class="checklist__text">Frequency Cap / STO 影響</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.6 Einstein 機能の 3 秒判別</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>問題文のキーワード</th><th>機能</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>「送信時刻」「タイミング」</td><td>Send Time Optimization (STO)</td></tr>
+                    <tr><td>「予測」「離脱可能性」「スコア」</td><td>Engagement Scoring</td></tr>
+                    <tr><td>「頻度」「送りすぎ」「少なすぎ」</td><td>Engagement Frequency</td></tr>
+                    <tr><td>「コンテンツの自動選択」</td><td>Content Selection</td></tr>
+                    <tr><td>「件名生成」「多言語」「ローカライズ」</td><td>Generative AI / Copy Insights</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">5.7 データ手段の使い分け</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>用途</th><th>手段</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>リアルタイムで送信履歴を見たい</td><td>Data Views（<code>_Sent</code>、<code>_Open</code> 等）</td></tr>
+                    <tr><td>送信時点の属性を残したい</td><td>Send Logging</td></tr>
+                    <tr><td>Tracking データを外部にファイル出力</td><td>Tracking Extract</td></tr>
+                    <tr><td>Journey 単位の分析</td><td>Journey Analytics</td></tr>
+                    <tr><td>BU 横断・多次元分析</td><td>Marketing Cloud Intelligence</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </article>
         <article class="page" id="page-roadmap" data-placeholder data-page-title="6. 学習ロードマップ"></article>
         <article class="page" id="page-quiz" data-placeholder data-page-title="7. 練習問題70問"></article>
         <article class="page" id="page-quiz-section1" data-placeholder data-page-title="練習問題｜Section 1"></article>
@@ -3450,6 +3779,16 @@ File Transfer (Safehouse→SFTP)</pre>
         }, 1500);
       }
 
+      // ---------- Interactive checklist (page-cheatsheet) ----------
+      function bindChecklists() {
+        document.querySelectorAll('.checklist__toggle').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var pressed = btn.getAttribute('aria-pressed') === 'true';
+            btn.setAttribute('aria-pressed', String(!pressed));
+          });
+        });
+      }
+
       // ---------- Scenario card toggle ----------
       function bindScenarios() {
         document.querySelectorAll('.scenario__toggle').forEach(function (btn) {
@@ -3496,6 +3835,7 @@ File Transfer (Safehouse→SFTP)</pre>
         bindTermTooltips();
         bindCopyButtons();
         bindScenarios();
+        bindChecklists();
 
         window.addEventListener('hashchange', handleHashChange);
         handleHashChange();
