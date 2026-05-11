@@ -456,6 +456,24 @@
       font-size: 0.92rem;
     }
 
+    /* ---------- Inline emphasis ---------- */
+    .em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* ---------- Key takeaway block ---------- */
+    .takeaway {
+      background: var(--accent-muted);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+
     /* ---------- Section body typography ---------- */
     .section-body > p {
       margin: 0 0 16px;
@@ -944,8 +962,173 @@
           </section>
         </article>
 
+        <!-- 1. マクロ -->
+        <article class="page" id="page-macro">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 1</p>
+            <h1 class="page__title">マクロ：試験全体の構造・配点・攻略方針</h1>
+          </header>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">1.1 何を測る試験か</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">Email Specialist は単に「メールを作れるか」を見る試験ではなく、Marketing Cloud Engagement のメール領域で、<em class="em">顧客シナリオに対する設計判断ができるか</em>を問う試験。</p>
+              <h3>具体的には</h3>
+              <ul>
+                <li>どのデータ構造で購読者・属性・履歴を管理するか</li>
+                <li>どの送信方式（Guided / User-Initiated / Triggered / Journey / Automation Send）を使うか</li>
+                <li>どの自動化ツール（Automation Studio / Journey Builder / Triggered Send）を選ぶか</li>
+                <li>送信対象が想定より少ない/多い原因を切り分けられるか</li>
+                <li>メール到達性・購読管理・法令対応を踏まえた設計ができるか</li>
+                <li>トラッキング結果を正しく読み、必要なレポート手段を選べるか</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">1.2 試験仕様（2026年現行）</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>項目</th><th>内容</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>問題数</td><td>60問（採点対象）+ 最大5問（非採点）</td></tr>
+                    <tr><td>試験時間</td><td>90分</td></tr>
+                    <tr><td>合格点</td><td>67%</td></tr>
+                    <tr><td>形式</td><td>多肢選択・複数選択（<span class="term" data-tooltip="Multi-select。複数選択問題。&quot;Choose 2&quot; や &quot;Choose 3&quot; のように複数の正解を選ぶ形式。">multi-select<sup>*</sup></span>）混在</td></tr>
+                    <tr><td>受験料</td><td>$200 USD / ¥30,000 JP（再受験 $100）</td></tr>
+                    <tr><td>受験形態</td><td>テストセンター or オンライン Proctored</td></tr>
+                    <tr><td>持ち込み</td><td>不可</td></tr>
+                    <tr><td><span class="term" data-tooltip="Mark for Review。試験中、後で見直したい問題に印を付ける機能。最後に見直し画面で確認できる。">Mark for Review<sup>*</sup></span></td><td>利用可（後で見直しできる）</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3>特筆すべき点</h3>
+              <ul>
+                <li>他の Salesforce 試験より <em class="em">複数選択（&quot;Choose 2&quot; / &quot;Choose 3&quot;）の比率が高い</em>。1問で2-3個正解させる形式に注意。</li>
+                <li>「best」「only」「all」「which two」「most appropriate」などの<em class="em">条件を限定する語</em>は決定的。</li>
+                <li>試験画面に下線・ハイライト機能はない。テストセンターでは<em class="em">スクラッチペーパー</em>、<span class="term" data-tooltip="OnVUE。Pearson VUE が提供するオンラインプロクター（監督官）付き試験。自宅などから受験可能。">OnVUE<sup>*</sup></span> では<em class="em">デジタルホワイトボード</em>が提供される。</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">1.3 配点と優先順位</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>優先度</th><th>セクション</th><th>配点</th><th>戦略</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>Subscriber and Data Management</td><td>26%</td><td>最優先。データ設計が崩れると他全部が崩れる</td></tr>
+                    <tr><td>2</td><td>Marketing Automation</td><td>26%</td><td>AS/JB/Triggered の使い分けが頻出</td></tr>
+                    <tr><td>3</td><td>Content Creation and Delivery</td><td>24%</td><td>送信設定・送信方式・コンテンツ管理が広い</td></tr>
+                    <tr><td>4</td><td>Insights and Analytics</td><td>14%</td><td>軽視すると Einstein 系・Data Views で落とす</td></tr>
+                    <tr><td>5</td><td>Email Marketing Best Practices</td><td>10%</td><td>配点低いが、到達性・法令の罠が多い</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="takeaway">
+                Data + Automation で 52%、Content まで含めると 76%。ただし複合シナリオが多く、どのセクションも「捨てる」判断は危険。
+              </div>
+              <h3>複合シナリオの例</h3>
+              <ul>
+                <li>Automation の問題に購読ステータスが絡む</li>
+                <li>Content の問題に Send Classification が絡む</li>
+                <li>Analytics の問題に Data Extract 制限が絡む</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">1.4 出題思想の変遷</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">旧バージョンでは Email Message Design や Tracking and Reporting が独立セクションだったが、現行は<em class="em">より実務判断寄り</em>に再編されている。</p>
+<pre class="tree-block">メール作成
+  ↓
+データ構造を使ったパーソナライズ
+  ↓
+適切な送信方式
+  ↓
+Automation / Journey による運用
+  ↓
+Tracking / Analytics による改善</pre>
+              <h3>近年（Spring '25 / Spring '26 メンテナンスモジュール）の追加論点</h3>
+              <ul>
+                <li>Journey Builder High-Throughput Sending (<span class="term" data-tooltip="HTS。High-Throughput Sending。Journey Builder で大規模配信時に利用できる高速送信モード。Spring '25 で正式化。">HTS<sup>*</sup></span>)</li>
+                <li>Einstein 生成 AI による多言語コンテンツ</li>
+                <li>Automation Studio History Dashboard</li>
+                <li>SMS の VerifiedClicks</li>
+                <li>レポートデータ再処理（7日ウィンドウ）</li>
+                <li>送信・エンゲージメントデータ 180日保持</li>
+                <li>Data Extract ジョブキュー上限 250件</li>
+                <li>Path Optimizer (Journey Builder 内のA/Bテスト)</li>
+              </ul>
+              <p>これらは試験コアを置き換えるものではないが、Analytics / Automation / Journey / Einstein の出題は軽くないことを示すシグナル。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">1.5 合格戦略の大枠</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead"><em class="em">「機能名暗記」ではなく「境界判断」の試験</em>であることを意識する。</p>
+              <p>同じような機能名が並ぶが、問われるのは<em class="em">定義ではなく境界</em>。</p>
+              <h3>混同しやすい組み合わせと決め手</h3>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>混同しやすい組み合わせ</th><th>決め手</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Automation Studio vs Journey Builder</td><td>バッチ処理か、顧客体験か</td></tr>
+                    <tr><td>SQL Query vs Data Filter</td><td>複雑 JOIN か、単純条件か</td></tr>
+                    <tr><td>Publication List vs Suppression List</td><td>購読管理か、送信除外か</td></tr>
+                    <tr><td>Sender Profile vs Delivery Profile</td><td>From か、配送方式か</td></tr>
+                    <tr><td>Triggered Send vs User-Initiated Send</td><td>イベント即時か、再利用可能な通常送信か</td></tr>
+                    <tr><td>Send Logging vs Tracking Extract</td><td>送信時属性記録か、Tracking データ抽出か</td></tr>
+                    <tr><td>All Contacts vs All Subscribers</td><td>Enterprise 横断か、BU 内の Email 購読者か</td></tr>
+                    <tr><td>Contact Key vs Subscriber Key vs Primary Key</td><td>チャネル横断 ID vs Email Studio 識別子 vs DE 行一意性</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </article>
+
         <!-- Placeholder pages -->
-        <article class="page" id="page-macro" data-placeholder data-page-title="1. マクロ"></article>
         <article class="page" id="page-meso" data-placeholder data-page-title="2. メソ"></article>
         <article class="page" id="page-meso-bestpractices" data-placeholder data-page-title="2. メソ｜Best Practices"></article>
         <article class="page" id="page-meso-content" data-placeholder data-page-title="2. メソ｜Content"></article>
@@ -1204,6 +1387,11 @@
           case 'ol': return listToMarkdown(node, true);
           case 'table': return tableToMarkdown(node);
           case 'pre': return '```\n' + node.textContent.replace(/\n+$/, '') + '\n```\n\n';
+          case 'div':
+            if (node.classList && node.classList.contains('takeaway')) {
+              return '> ' + inner().replace(/\s+/g, ' ').trim() + '\n\n';
+            }
+            return inner();
           default: return inner();
         }
       }
