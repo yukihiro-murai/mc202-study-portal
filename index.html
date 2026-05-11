@@ -474,6 +474,67 @@
       color: var(--text-primary);
     }
 
+    /* ---------- Section index cards (page-meso) ---------- */
+    .section-index {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .section-index__card {
+      display: flex;
+      gap: 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .section-index__card:hover {
+      border-color: var(--accent);
+      background: var(--bg-elevated);
+    }
+
+    .section-index__badge {
+      background: var(--accent-muted);
+      color: var(--accent);
+      border-radius: var(--radius);
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .section-index__body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .section-index__title {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+    }
+
+    .section-index__weight {
+      margin: 0 0 6px;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    .section-index__desc {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
     /* ---------- Section body typography ---------- */
     .section-body > p {
       margin: 0 0 16px;
@@ -1129,12 +1190,1139 @@ Tracking / Analytics による改善</pre>
         </article>
 
         <!-- Placeholder pages -->
-        <article class="page" id="page-meso" data-placeholder data-page-title="2. メソ"></article>
-        <article class="page" id="page-meso-bestpractices" data-placeholder data-page-title="2. メソ｜Best Practices"></article>
-        <article class="page" id="page-meso-content" data-placeholder data-page-title="2. メソ｜Content"></article>
-        <article class="page" id="page-meso-automation" data-placeholder data-page-title="2. メソ｜Automation"></article>
-        <article class="page" id="page-meso-subscriber" data-placeholder data-page-title="2. メソ｜Subscriber &amp; Data"></article>
-        <article class="page" id="page-meso-analytics" data-placeholder data-page-title="2. メソ｜Analytics"></article>
+        <!-- 2. メソ（導入） -->
+        <article class="page" id="page-meso">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 2</p>
+            <h1 class="page__title">メソ：セクション別の出題ポイント</h1>
+          </header>
+
+          <p class="lead">試験の 5 セクションを順に深掘りする。配点と頻出論点、ひっかけパターンを各サブセクションで整理する。</p>
+
+          <div class="section-index">
+            <a class="section-index__card" href="#meso-bestpractices">
+              <div class="section-index__badge">2.1</div>
+              <div class="section-index__body">
+                <h3 class="section-index__title">Email Marketing Best Practices</h3>
+                <p class="section-index__weight">配点 10%</p>
+                <p class="section-index__desc">メール設計、到達性、購読管理、法令対応</p>
+              </div>
+            </a>
+            <a class="section-index__card" href="#meso-content">
+              <div class="section-index__badge">2.2</div>
+              <div class="section-index__body">
+                <h3 class="section-index__title">Content Creation and Delivery</h3>
+                <p class="section-index__weight">配点 24%</p>
+                <p class="section-index__desc">メール作成、コンテンツ管理、送信準備、送信設定</p>
+              </div>
+            </a>
+            <a class="section-index__card" href="#meso-automation">
+              <div class="section-index__badge">2.3</div>
+              <div class="section-index__body">
+                <h3 class="section-index__title">Marketing Automation</h3>
+                <p class="section-index__weight">配点 26%</p>
+                <p class="section-index__desc">Automation Studio、Journey Builder、Triggered Send の選択</p>
+              </div>
+            </a>
+            <a class="section-index__card" href="#meso-subscriber">
+              <div class="section-index__badge">2.4</div>
+              <div class="section-index__body">
+                <h3 class="section-index__title">Subscriber and Data Management</h3>
+                <p class="section-index__weight">配点 26%</p>
+                <p class="section-index__desc">Data Extension、Subscriber Key、購読管理、送信差異</p>
+              </div>
+            </a>
+            <a class="section-index__card" href="#meso-analytics">
+              <div class="section-index__badge">2.5</div>
+              <div class="section-index__body">
+                <h3 class="section-index__title">Insights and Analytics</h3>
+                <p class="section-index__weight">配点 14%</p>
+                <p class="section-index__desc">メール指標、レポート、Einstein 製品の選定</p>
+              </div>
+            </a>
+          </div>
+        </article>
+        <!-- 2.1 メソ｜Best Practices -->
+        <article class="page" id="page-meso-bestpractices">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 2.1 — 配点 10%</p>
+            <h1 class="page__title">Email Marketing Best Practices</h1>
+          </header>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">何を問うか</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">メールマーケティングの設計・到達性・購読管理・法令対応を、顧客シナリオで判断できるか。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">メールデザインの基本</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">HTML/CSS の細部より、どの設計が<em class="em">受信者体験・到達性・効果測定に適しているか</em>を問われる。</p>
+              <h3>押さえる点</h3>
+              <ul>
+                <li>モバイル対応、レスポンシブ、画像依存の回避</li>
+                <li>明確な CTA、Subject Line / Preheader / From Name</li>
+                <li>アクセシビリティ</li>
+                <li>テキストと画像のバランス</li>
+                <li>パーソナライズの過不足</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">到達性（Deliverability）</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <h3>押さえる用語</h3>
+              <ul>
+                <li><span class="term" data-tooltip="SPF = Sender Policy Framework。送信元 IP を DNS で公開し、なりすまし送信を防ぐメール認証技術。">SPF<sup>*</sup></span> / <span class="term" data-tooltip="DKIM = DomainKeys Identified Mail。メールに電子署名を付与し、改ざんと送信元を検証する技術。">DKIM<sup>*</sup></span> / <span class="term" data-tooltip="DMARC = Domain-based Message Authentication, Reporting and Conformance。SPF / DKIM の結果に基づき受信側の処理ポリシーを規定する。">DMARC<sup>*</sup></span></li>
+                <li>Sender Authentication Package (SAP)</li>
+                <li>Dedicated IP、IP warming、Sender reputation</li>
+                <li>Bounce、Complaint、Spam trap</li>
+                <li>List hygiene、Engagement</li>
+              </ul>
+              <h3>典型判断</h3>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>シナリオ</th><th>判断</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>新規専用 IP で大量送信したい</td><td>IP warming が必要</td></tr>
+                    <tr><td>開封・クリックが低く苦情が多い</td><td>配信対象の品質・頻度・同意を見直す</td></tr>
+                    <tr><td>到達率が悪い</td><td>認証 (SPF/DKIM/DMARC)、レピュテーション、バウンス、苦情率を見る</td></tr>
+                    <tr><td>古いリストに一斉送信したい</td><td>リスト品質と同意がリスク</td></tr>
+                    <tr><td>専用 IP は常に良い？</td><td>送信量・warming・運用品質次第</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">法令・同意・購読管理</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">試験では条文の暗記ではなく、<em class="em">Marketing Cloud 上でどの設定・運用で対応するか</em>が問われる。</p>
+              <h3>押さえる点</h3>
+              <ul>
+                <li>CAN-SPAM、GDPR、日本の特定電子メール法</li>
+                <li>Commercial vs Transactional</li>
+                <li>Unsubscribe、物理住所、Preference Center</li>
+                <li>Publication List、Suppression List</li>
+                <li>同意取得、再許諾、購読者保持</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">ひっかけ</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Transactional なら何を送ってもよい</td><td>取引目的のメールである必要がある</td></tr>
+                    <tr><td>Unsubscribe を削除で処理する</td><td>削除ではなく購読状態・除外設計で扱う</td></tr>
+                    <tr><td>到達率はメール本文だけで決まる</td><td>認証、送信者評価、リスト品質、エンゲージメントも影響</td></tr>
+                    <tr><td>Dedicated IP は常に良い</td><td>送信量・warming・運用品質次第</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </article>
+        <!-- 2.2 メソ｜Content Creation and Delivery -->
+        <article class="page" id="page-meso-content">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 2.2 — 配点 24%</p>
+            <h1 class="page__title">Content Creation and Delivery</h1>
+          </header>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">何を問うか</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">メール作成、コンテンツ管理、送信準備、送信設定。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">中核機能</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>機能</th><th>役割</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Content Builder</td><td>コンテンツ作成・管理。Email / Block / Template を保持</td></tr>
+                    <tr><td>Email Studio</td><td>メール送信・購読者・Tracking</td></tr>
+                    <tr><td>Template</td><td>再利用可能な構造（HTML レベル）</td></tr>
+                    <tr><td>Content Block</td><td>再利用可能な部品</td></tr>
+                    <tr><td>Dynamic Content</td><td>条件に応じたコンテンツ切替（GUI）</td></tr>
+                    <tr><td>Personalization String</td><td>単純な差し込み（%%FirstName%%）</td></tr>
+                    <tr><td><span class="term" data-tooltip="AMPscript。Marketing Cloud 独自のスクリプト言語。メール本文内で条件分岐・データ参照・差込を行う。">AMPscript<sup>*</sup></span></td><td>条件分岐・データ参照・高度なパーソナライズ</td></tr>
+                    <tr><td><span class="term" data-tooltip="SSJS = Server-Side JavaScript。Marketing Cloud のサーバー側で実行される JavaScript。AMPscript より柔軟。">SSJS<sup>*</sup></span></td><td>より柔軟な処理</td></tr>
+                    <tr><td>Approvals</td><td>送信前承認ワークフロー</td></tr>
+                    <tr><td>A/B Testing</td><td>件名、差出人、本文などの比較</td></tr>
+                    <tr><td>Test Send</td><td>テスト配信</td></tr>
+                    <tr><td>Subscriber Preview</td><td>購読者データを使った表示確認</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">AMPscript 必須知識</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">詳細構文より<em class="em">使い分けと関数選択</em>が問われるが、最低限の構文判別は普通に出る。</p>
+              <h3>デリミタとブロック</h3>
+<pre class="tree-block">%%[ ... ]%%        ← AMPscriptブロック（処理のみ、出力なし）
+%%=v(@var)=%%      ← インライン出力
+%%FirstName%%      ← Personalization String（DE/Subscriberから差込）</pre>
+              <h3>頻出関数</h3>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>関数</th><th>用途</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>AttributeValue("FirstName")</code></td><td>Subscriber / DE 属性を取得</td></tr>
+                    <tr><td><code>Lookup("DE名", "返したいカラム", "検索カラム", "値")</code></td><td>DE から 1 件取得</td></tr>
+                    <tr><td><code>LookupRows(...)</code></td><td>DE から複数行取得（Row 関数で展開）</td></tr>
+                    <tr><td><code>Field(row, "カラム")</code></td><td>LookupRows の結果から値抽出</td></tr>
+                    <tr><td><code>IIF(条件, 真値, 偽値)</code></td><td>三項演算</td></tr>
+                    <tr><td><code>IF / ELSE / ENDIF</code></td><td>条件分岐</td></tr>
+                    <tr><td><code>ProperCase / UpperCase / LowerCase</code></td><td>文字列加工</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Personalization 手段の使い分け</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>要件</th><th>選ぶもの</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>FirstName を差し込む</td><td>Personalization String</td></tr>
+                    <tr><td>属性によりバナーを変える（GUI）</td><td>Dynamic Content</td></tr>
+                    <tr><td>DE を参照して条件分岐する</td><td>AMPscript</td></tr>
+                    <tr><td>複雑な処理をサーバー側で行う</td><td>SSJS</td></tr>
+                    <tr><td>マーケターが GUI で管理したい</td><td>Dynamic Content</td></tr>
+                    <tr><td>開発者が柔軟に制御したい</td><td>AMPscript</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">送信方式の使い分け</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>方式</th><th>向く場面</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Guided Send (Send Flow)</td><td>手動で単発送信したい</td></tr>
+                    <tr><td>User-Initiated Send</td><td>再利用可能な送信定義を作りたい</td></tr>
+                    <tr><td>Triggered Send</td><td>外部イベント・API で 1 通ずつ送信したい</td></tr>
+                    <tr><td>Transactional Send (TMS)</td><td>高優先度の取引メール（API）</td></tr>
+                    <tr><td>Journey Builder Email Activity</td><td>顧客行動に応じた流れの中で送信したい</td></tr>
+                    <tr><td>Automation Studio Send Email Activity</td><td>定期バッチ処理の中で送信したい</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Triggered Send Definition のライフサイクル</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+<pre class="tree-block">Create (定義作成)
+  → Verify (検証)
+    → Start (アクティブ化)
+      → (運用)
+        → Pause / Stop (一時停止/停止)</pre>
+              <p>試験では「Triggered Send が動かない」シナリオで <em class="em">Start し忘れ・Pause 状態</em>が原因という問題がある。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Sender Profile / Delivery Profile / Send Classification</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">頻出。3 つを混同すると即失点。</p>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>機能</th><th>定義するもの</th><th>判断キーワード</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Sender Profile</td><td>From Name / From Email / Reply Mail Management (<span class="term" data-tooltip="RMM = Reply Mail Management。返信メールの自動処理機能。Out-of-Office の除外、Bounce 処理、Unsubscribe 希望の処理を含む。">RMM<sup>*</sup></span>)</td><td>誰から送るか、返信処理</td></tr>
+                    <tr><td>Delivery Profile</td><td>IP、ヘッダー、フッター、Domain 設定など</td><td>どう配送するか</td></tr>
+                    <tr><td>Send Classification</td><td>Sender Profile + Delivery Profile + CAN-SPAM 分類 (Commercial / Transactional)</td><td>送信分類テンプレート</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="takeaway">RMM は Sender Profile の一部。返信メールの自動処理（Out-of-Office の除外、Bounce 処理、Unsubscribe 処理）を含む。</div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">A/B Testing</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <h3>押さえる項目</h3>
+              <ul>
+                <li>Subject Line / From Name / Preheader / Email Content / Send Time</li>
+                <li>Winner Criteria（Open Rate / Click Rate / <span class="term" data-tooltip="CTOR = Click-to-Open Rate。クリック数 / 開封数。開封者のうち何 % がクリックしたか。">CTOR<sup>*</sup></span>）</li>
+                <li>テスト対象割合 / Winner 送信対象割合</li>
+              </ul>
+              <p><em class="em">Path Optimizer</em>: Journey Builder 内で複数パスを A/B テストし、勝者パスに残りの購読者を送る機能。Email Studio の A/B Testing とは別物。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">ひっかけ</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>開封率を見たいのにクリック率を Winner 基準にする</td><td>指標と目的を合わせる</td></tr>
+                    <tr><td>From Name のテストに Sender Profile を意識しない</td><td>From 系は Sender Profile と関連</td></tr>
+                    <tr><td>本文比較なのに件名だけ変える</td><td>何を比較するかを明確にする</td></tr>
+                    <tr><td>Footer 変更を Sender Profile で行う</td><td>Delivery Profile</td></tr>
+                    <tr><td>Commercial / Transactional を Sender Profile で設定</td><td>Send Classification（CAN-SPAM 分類）</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </article>
+        <!-- 2.3 メソ｜Marketing Automation -->
+        <article class="page" id="page-meso-automation">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 2.3 — 配点 26%</p>
+            <h1 class="page__title">Marketing Automation</h1>
+          </header>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">何を問うか</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">Automation Studio、Journey Builder、Triggered Send などを、顧客要件に応じて選べるか。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">3 大判断軸</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>要件</th><th>選ぶもの</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>定期バッチ処理</td><td>Automation Studio</td></tr>
+                    <tr><td>顧客行動に応じた分岐・待機・離脱</td><td>Journey Builder</td></tr>
+                    <tr><td>API / イベントで即時 1 通送信</td><td>Triggered Send / Transactional Send</td></tr>
+                    <tr><td>ファイルを取り込んで対象者作成</td><td>Automation Studio</td></tr>
+                    <tr><td>SQL で複数 DE を加工</td><td>Automation Studio</td></tr>
+                    <tr><td>顧客のライフサイクル施策</td><td>Journey Builder</td></tr>
+                    <tr><td>Welcome / Nurture / Re-engagement</td><td>Journey Builder</td></tr>
+                    <tr><td>単発メール配信</td><td>Guided / User-Initiated Send</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Automation Studio の重要 Activity</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>Activity</th><th>役割</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Import</td><td>ファイルから DE へ取り込み</td></tr>
+                    <tr><td>File Transfer</td><td>SFTP 上のファイル移動、暗号化 / 復号、解凍</td></tr>
+                    <tr><td>Data Extract</td><td>データをファイルとして抽出</td></tr>
+                    <tr><td>SQL Query</td><td>DE 間の抽出・結合・加工</td></tr>
+                    <tr><td>Filter</td><td>条件による抽出</td></tr>
+                    <tr><td>Script</td><td>SSJS 処理</td></tr>
+                    <tr><td>Send Email</td><td>メール送信</td></tr>
+                    <tr><td>Wait</td><td>待機</td></tr>
+                    <tr><td>Verification</td><td>件数・条件の検証</td></tr>
+                    <tr><td>Fire Event</td><td>Journey 起動</td></tr>
+                    <tr><td>Refresh Group</td><td>Group / Filtered List 更新</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Automation Studio の典型順序</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+<pre class="tree-block">File Drop / Schedule
+  ↓
+File Transfer (SFTP→Safehouse)
+  ↓
+Import (Safehouse→DE)
+  ↓
+SQL Query / Filter
+  ↓
+Verification
+  ↓
+Send Email
+  ↓
+Data Extract (DE→ファイル)
+  ↓
+File Transfer (Safehouse→SFTP)</pre>
+              <div class="takeaway">
+                <em class="em">Data Extract</em> = データをファイル化する（Safehouse 上にファイル生成）<br>
+                <em class="em">File Transfer</em> = ファイルを移動する（Safehouse ⇄ SFTP）<br>
+                Extract しただけでは外部 SFTP には届かない。File Transfer が必要。
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Journey Builder の重要要素</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>要素</th><th>役割</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Entry Source</td><td>誰が Journey に入るか</td></tr>
+                    <tr><td>Data Extension Entry</td><td>DE を起点にする</td></tr>
+                    <tr><td>API Event</td><td>外部イベントを起点にする</td></tr>
+                    <tr><td>Salesforce Data Event</td><td>Sales / Service Cloud の変更を起点</td></tr>
+                    <tr><td>Wait</td><td>待機（時間 / 曜日 / 特定日付 / 属性日付）</td></tr>
+                    <tr><td>Decision Split</td><td>属性・条件で分岐</td></tr>
+                    <tr><td>Engagement Split</td><td>開封・クリックなどで分岐</td></tr>
+                    <tr><td>Random Split</td><td>ランダム分岐（A/B 用途以外）</td></tr>
+                    <tr><td>Path Optimizer</td><td>内蔵 A/B テスト（勝者パスへ寄せる）</td></tr>
+                    <tr><td>Goal</td><td>目的達成の定義</td></tr>
+                    <tr><td>Exit Criteria</td><td>離脱条件</td></tr>
+                    <tr><td>Re-entry Settings</td><td>再入場可否（None / Re-entry only after exiting / Re-entry anytime）</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p><em class="em">HTS</em>（High-Throughput Sending）: 大規模配信時に Journey の Email Activity で利用できる高速送信モード。Spring '25 で正式化。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Automation Studio vs Journey Builder</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>比較軸</th><th>Automation Studio</th><th>Journey Builder</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>得意領域</td><td>バッチ処理、SQL、ファイル処理</td><td>顧客体験、分岐、待機、行動連動</td></tr>
+                    <tr><td>起点</td><td>スケジュール、ファイル、手動</td><td>Entry Source、API、DE、SF Event</td></tr>
+                    <tr><td>データ加工</td><td>強い（SQL Query Activity）</td><td>弱い</td></tr>
+                    <tr><td>顧客単位の流れ</td><td>弱い</td><td>強い</td></tr>
+                    <tr><td>レポート</td><td>処理結果中心</td><td>Journey Analytics</td></tr>
+                    <tr><td>典型問題</td><td>毎週対象者抽出して送信</td><td>開封しなければ再送、クリックしたら別分岐</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">ひっかけ</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>すべて Journey Builder でやる</td><td>SQL・ファイル処理は Automation Studio</td></tr>
+                    <tr><td>Data Extract だけで外部 SFTP に送れる</td><td>File Transfer が必要</td></tr>
+                    <tr><td>Filter と SQL は同じ</td><td>複数 DE JOIN や複雑条件は SQL</td></tr>
+                    <tr><td>Triggered Send は一斉配信向き</td><td>イベント駆動・1 件単位向き</td></tr>
+                    <tr><td>Journey Goal は後から何となく分析するためのもの</td><td>目的達成を設計時点で定義する</td></tr>
+                    <tr><td>Re-entry 設定をデフォルトのまま使う</td><td>デフォルトは「再入場不可」</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </article>
+        <!-- 2.4 メソ｜Subscriber and Data Management -->
+        <article class="page" id="page-meso-subscriber">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 2.4 — 配点 26%</p>
+            <h1 class="page__title">Subscriber and Data Management</h1>
+          </header>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">何を問うか</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="takeaway"><em class="em">最重要セクション。</em> Data Extension、Subscriber Key、Import、Segmentation、購読管理、送信差異の原因調査。</div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Data Extension の基本</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>種別</th><th>役割</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Standard DE</td><td>通常のデータ保持</td></tr>
+                    <tr><td>Sendable DE</td><td>送信対象として使える</td></tr>
+                    <tr><td>Non-Sendable DE</td><td>参照用データ</td></tr>
+                    <tr><td>Filtered DE</td><td>条件で抽出された DE</td></tr>
+                    <tr><td>Shared DE</td><td>Parent BU に作成され子 BU 間で共有可能</td></tr>
+                    <tr><td>Local DE</td><td>単一 BU 内の DE</td></tr>
+                    <tr><td>Synchronized DE</td><td>Marketing Cloud Connect 経由で SF 同期</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Sendable DE の核心</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+<pre class="tree-block">Sendable Data Extension
+  ├─ EmailAddress
+  ├─ CustomerID  ← この値を
+  ├─ FirstName
+  └─ Subscriber relationship
+        → All Subscribers の Subscriber Key  ← この値と紐付ける</pre>
+              <p>ここを誤ると、<em class="em">送信対象 / 購読管理 / Tracking / Journey entry / 重複排除 / レポート / Unsubscribe 処理がすべて壊れる</em>。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Primary Key / Subscriber Key / Contact Key / Contact ID</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>概念</th><th>役割</th><th>混同しやすい点</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Primary Key</td><td>DE 内の行を一意にする</td><td>Subscriber Key と同じではない</td></tr>
+                    <tr><td>Subscriber Key</td><td>Email Studio 側の購読者識別子</td><td>Email Address と同じではない</td></tr>
+                    <tr><td>Contact Key</td><td>Contact Builder 側の連絡先識別子</td><td>Subscriber Key と揃えるのがベストプラクティス</td></tr>
+                    <tr><td>Contact ID</td><td>システム内部の数値 ID</td><td>ユーザーは変更不可・通常意識しない</td></tr>
+                    <tr><td>Email Address</td><td>配信先アドレス</td><td>個人識別子としては不十分（共有・変更・複数）</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="takeaway">ベストプラクティス: Subscriber Key = Contact Key を同一値で運用。Email Address を使うと、メアド変更や家族での共有時に同一人物を別 Contact として扱ってしまう。</div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Lists vs Data Extensions</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>要件</th><th>選ぶもの</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>小規模・単純な購読者管理</td><td>Lists</td></tr>
+                    <tr><td>大規模データ</td><td>Data Extensions</td></tr>
+                    <tr><td>API 利用</td><td>Data Extensions</td></tr>
+                    <tr><td>Triggered Send</td><td>Data Extensions</td></tr>
+                    <tr><td>複数属性・購入履歴・リレーショナルデータ</td><td>Data Extensions</td></tr>
+                    <tr><td>SQL で加工したい</td><td>Data Extensions</td></tr>
+                    <tr><td>シンプルなニュースレターリスト</td><td>Lists でも可（ただし非推奨）</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>「大規模」「複数属性」「リレーショナル」「API」「Triggered Send」が出たら <em class="em">Data Extension をほぼ確定で疑う</em>。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">All Subscribers と Subscriber Status</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>Status</th><th>意味</th><th>試験上の注意</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Active</td><td>送信可能</td><td>通常送信対象</td></tr>
+                    <tr><td>Bounced</td><td>バウンスあり</td><td>Hard Bounce で status 変更されることがある</td></tr>
+                    <tr><td>Held</td><td>配信不能状態</td><td>バウンス閾値超過、無効アドレス等。送信差異の主要原因</td></tr>
+                    <tr><td>Unsubscribed</td><td>購読解除</td><td>商用メール送信不可</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Unsubscribe の 3 階層</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>階層</th><th>適用範囲</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>List-Level Unsubscribe</td><td>特定のリスト / Publication List からのみ購読解除</td></tr>
+                    <tr><td>Channel-Level (BU-Level) Unsubscribe</td><td>その BU の全送信から購読解除</td></tr>
+                    <tr><td>Global Unsubscribe</td><td>アカウント全体の全送信から購読解除（CAN-SPAM 対応の最終手段）</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p><em class="em">DoNotTrack Attribute</em>: 特定購読者の Open / Click を記録しない設定。社員テストや個別プライバシー要請対応に使用。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Publication / Suppression / Exclusion</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>種別</th><th>用途</th><th>判断キーワード</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Publication List</td><td>メール種別ごとの購読管理</td><td>ニュースレター、プロモ、製品アップデート</td></tr>
+                    <tr><td>Suppression List</td><td>送ってはいけない人を除外</td><td>Do not contact、苦情、法令対応</td></tr>
+                    <tr><td>Exclusion List</td><td>特定送信から除外</td><td>このキャンペーンだけ除外</td></tr>
+                    <tr><td>Exclusion Script</td><td>条件式で動的除外</td><td>複雑な除外条件</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Segmentation の使い分け</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>要件</th><th>選ぶもの</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>単純条件で抽出</td><td>Data Filter / Filtered DE</td></tr>
+                    <tr><td>複数 DE を JOIN</td><td>SQL Query</td></tr>
+                    <tr><td>動的な日付条件</td><td>SQL Query</td></tr>
+                    <tr><td>マーケターが GUI で管理</td><td>Data Filter</td></tr>
+                    <tr><td>定期的に対象者更新</td><td>Automation Studio + SQL / Filter</td></tr>
+                    <tr><td>Journey 投入用に対象者を作る</td><td>Sendable DE + Journey Entry</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Send Discrepancy：送信数差異の原因（最頻出）</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">「送信予定数より実際の送信数が少ない」場合、以下を<em class="em">順番に疑う</em>。</p>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>優先度</th><th>原因</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>All Subscribers で Unsubscribed / Held / Bounced</td></tr>
+                    <tr><td>2</td><td>Publication List で対象カテゴリを unsubscribe</td></tr>
+                    <tr><td>3</td><td>Suppression List に入っている</td></tr>
+                    <tr><td>4</td><td>Exclusion List / Exclusion Script で除外</td></tr>
+                    <tr><td>5</td><td>Sendable DE の Subscriber relationship が誤っている</td></tr>
+                    <tr><td>6</td><td>Subscriber Key が重複・不一致</td></tr>
+                    <tr><td>7</td><td>Email Address が空・無効・重複</td></tr>
+                    <tr><td>8</td><td>Data Extension の対象抽出条件が誤っている</td></tr>
+                    <tr><td>9</td><td>SQL / Filter の結果が想定と違う</td></tr>
+                    <tr><td>10</td><td>Send Classification の Commercial / Transactional 設定</td></tr>
+                    <tr><td>11</td><td>ドメインブロック、List Detective、到達性制限</td></tr>
+                    <tr><td>12</td><td>Journey re-entry / exit criteria により入っていない</td></tr>
+                    <tr><td>13</td><td>Frequency Cap / Send-Time Optimization の影響</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Contact Builder &amp; Contact Model</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>要素</th><th>役割</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Data Designer</td><td>Contact Builder 内でデータモデルを定義するツール</td></tr>
+                    <tr><td>Attribute Group</td><td>関連する DE をまとめた「ミニデータモデル」</td></tr>
+                    <tr><td>Attribute Set</td><td>Attribute Group 内の個別属性集合</td></tr>
+                    <tr><td>Population</td><td>識別子の異なる Contact 群（例：顧客 ID vs 従業員 ID）。3 つ以下に抑えるのがベストプラクティス。Population 自体は Sendable ではない</td></tr>
+                    <tr><td>Contact Deletion</td><td>Sendable DE から消しても All Contacts からは消えない。Contact 削除は別プロセス</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">ひっかけ</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Primary Key = Subscriber Key</td><td>違う</td></tr>
+                    <tr><td>Email Address で個人を一意に識別できる</td><td>不十分</td></tr>
+                    <tr><td>Publication List は除外リスト</td><td>購読カテゴリ管理</td></tr>
+                    <tr><td>Suppression List は購読管理</td><td>送信除外</td></tr>
+                    <tr><td>Unsubscribed は All Subscribers から消える</td><td>ステータスとして残る</td></tr>
+                    <tr><td>Data Filter で何でもできる</td><td>複雑な JOIN は SQL</td></tr>
+                    <tr><td>Sendable DE は EmailAddress だけあればよい</td><td>Subscriber Key との関係定義が必要</td></tr>
+                    <tr><td>Sendable DE からレコード削除 → Contact 消滅</td><td>Contact 層は別。All Contacts には残る</td></tr>
+                    <tr><td>All Contacts と All Subscribers は同じ</td><td>違う。前者は全 BU 横断・全チャネル、後者は BU 内のメール購読者</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </article>
+        <!-- 2.5 メソ｜Insights and Analytics -->
+        <article class="page" id="page-meso-analytics">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 2.5 — 配点 14%</p>
+            <h1 class="page__title">Insights and Analytics</h1>
+          </header>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">何を問うか</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">メール指標、パフォーマンス分析、レポート、Einstein 製品の選定。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">基本指標</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>指標</th><th>意味</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Sent</td><td>送信試行数</td></tr>
+                    <tr><td>Delivered</td><td>バウンスを除いた到達数</td></tr>
+                    <tr><td>Bounce</td><td>配信失敗</td></tr>
+                    <tr><td>Hard Bounce</td><td>恒久的失敗（無効アドレス等）</td></tr>
+                    <tr><td>Soft Bounce</td><td>一時的失敗（メールボックス満杯等）</td></tr>
+                    <tr><td>Block Bounce</td><td>受信側ポリシーによるブロック</td></tr>
+                    <tr><td>Open / Unique Open / Total Open</td><td>開封 / 一意開封 / 総開封</td></tr>
+                    <tr><td>Click / Unique Click / Total Click</td><td>クリック / 一意クリック / 総クリック</td></tr>
+                    <tr><td>CTR (Click-Through Rate)</td><td>クリック数 / 配信数</td></tr>
+                    <tr><td>CTOR (Click-to-Open Rate)</td><td>クリック数 / 開封数</td></tr>
+                    <tr><td>Unsubscribe</td><td>購読解除</td></tr>
+                    <tr><td>Complaint / Spam Complaint</td><td>迷惑メール報告</td></tr>
+                    <tr><td>Conversion</td><td>目的達成</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">分析手段</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>手段</th><th>用途</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Tracking (Email Studio)</td><td>送信ジョブ単位の確認</td></tr>
+                    <tr><td>Standard Reports (Analytics Builder)</td><td>標準レポート</td></tr>
+                    <tr><td>Reports in Email Studio</td><td>送信ジョブ別の詳細</td></tr>
+                    <tr><td>Data Views</td><td>SQL で <code>_Sent</code>、<code>_Open</code>、<code>_Click</code>、<code>_Bounce</code>、<code>_Subscribers</code>、<code>_Job</code>、<code>_ListSubscribers</code> 等を参照</td></tr>
+                    <tr><td>Tracking Extract</td><td>トラッキングデータをファイル化（過去最大 30 日）</td></tr>
+                    <tr><td>Send Logging</td><td>送信時点の属性を記録（要事前設定）</td></tr>
+                    <tr><td>Journey Analytics</td><td>Journey 単位の分析</td></tr>
+                    <tr><td>Marketing Cloud Intelligence (旧 Datorama)</td><td>高度な統合分析</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Send Logging Data Extension の構造</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">Send Log DE は事前に Salesforce サポートで有効化が必要。SendLog テンプレートから作成すると以下のフィールドが<em class="em">自動で値が入る</em>。</p>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>自動収集フィールド</th><th>内容</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>JobID</td><td>送信ジョブの一意識別子</td></tr>
+                    <tr><td>ListID</td><td>送信に使用したリスト / DE の識別子</td></tr>
+                    <tr><td>BatchID</td><td>Triggered Send の同一 Job 内バッチ識別子</td></tr>
+                    <tr><td>SubID</td><td>Subscriber ID（Subscriber Key と別物・システム内部値）</td></tr>
+                    <tr><td>TriggeredSendID</td><td>Triggered Send Definition の識別子</td></tr>
+                    <tr><td>ErrorCode</td><td>送信失敗時のエラーコード</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3>カスタムフィールド追加ルール</h3>
+              <p>Sendable DE のカラム名 / AMPscript 変数名 / Personalization String 名と<em class="em">完全に一致するカラム名</em>で DE に追加すれば、自動で値が入る。例：SubscriberKey、EmailAddress、FirstName、SubjectLine など。10 カラム以下推奨、すべて nullable 設定。</p>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Data Views vs Tracking Extract vs Send Logging</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>手段</th><th>データ取得タイミング</th><th>保持期間</th><th>カスタマイズ</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Data Views</td><td>リアルタイム参照</td><td>6 ヶ月（多くは）</td><td>不可（標準カラム固定）</td></tr>
+                    <tr><td>Tracking Extract</td><td>スケジュール抽出</td><td>Tracking に依存</td><td>Extract 条件のみ</td></tr>
+                    <tr><td>Send Logging</td><td>送信時点で記録</td><td>DE 設定次第（永続可）</td><td>カスタムカラム追加可</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">Einstein 系の使い分け</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>要件</th><th>製品・機能</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>開封・クリック・離脱可能性を予測</td><td>Einstein Engagement Scoring</td></tr>
+                    <tr><td>受信者ごとの最適送信時刻</td><td>Einstein Send Time Optimization (STO)</td></tr>
+                    <tr><td>送りすぎ / 少なすぎを判断</td><td>Einstein Engagement Frequency</td></tr>
+                    <tr><td>コンテンツを最適選択</td><td>Einstein Content Selection</td></tr>
+                    <tr><td>件名を改善（生成 AI）</td><td>Einstein Copy Insights / Generative AI</td></tr>
+                    <tr><td>件名・本文の生成（多言語）</td><td>Einstein Generative AI for Email</td></tr>
+                    <tr><td>キャンペーン効果を分析</td><td>Einstein / Analytics 系機能</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">最新論点（2026 年時点）</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <ul>
+                <li><em class="em">VerifiedClicks</em>（SMS）: ボットやプレビューによる自動クリックを除外し、実際の購読者クリックに近い値を測定</li>
+                <li>レポートデータ再処理: 7 日ウィンドウでサポートチケットなしに再処理可能</li>
+                <li>180 日保持: 送信・エンゲージメントデータは 180 日保持。長期分析は外部保存前提</li>
+                <li>Data Extract キュー 250 件: 超過すると新規要求が拒否される。スケジュール過密に注意</li>
+                <li>Journey Builder HTS: 大規模配信で利用可能な高速送信モード</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">ひっかけ</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>罠</th><th>正しい理解</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Total と Unique を混同</td><td>Unique は人単位、Total は総数</td></tr>
+                    <tr><td>CTR と CTOR を混同</td><td>CTOR は開封後クリック</td></tr>
+                    <tr><td>Open Rate を絶対視</td><td>プライバシー保護 (<span class="term" data-tooltip="Apple MPP = Apple Mail Privacy Protection。iOS 15 以降の Mail アプリでデフォルト有効。トラッキング画像を事前ロードするため Open Rate が実態より高く出る。">Apple MPP<sup>*</sup></span>)・自動取得の影響を考慮</td></tr>
+                    <tr><td>長期データは MC 内に無期限保持</td><td>180 日保持など制限を意識</td></tr>
+                    <tr><td>Extract は無制限にキューできる</td><td>キュー上限 250 件を意識</td></tr>
+                    <tr><td>Send Logging は何もせず使える</td><td>事前に Salesforce サポートで有効化が必要</td></tr>
+                    <tr><td>Tracking Extract と Send Logging は同じ</td><td>Extract = 既存 Tracking から抽出、Logging = 送信時点で記録</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </article>
         <article class="page" id="page-micro" data-placeholder data-page-title="3. ミクロ"></article>
         <article class="page" id="page-traps" data-placeholder data-page-title="4. ひっかけ集"></article>
         <article class="page" id="page-cheatsheet" data-placeholder data-page-title="5. チートシート"></article>
