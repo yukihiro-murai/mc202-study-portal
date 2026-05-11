@@ -13,12 +13,12 @@
       --bg-base: #0a0a0a;
       --bg-surface: #171717;
       --bg-elevated: #1f1f1f;
-      --border-subtle: #333333;
-      --border-default: #454545;
+      --border-subtle: #262626;
+      --border-default: #333333;
       --border-strong: #5a5a5a;
-      --text-primary: #ffffff;
-      --text-secondary: #ffffff;
-      --text-tertiary: #a1a1aa;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a;
       --accent: #5eb8a0;
       --accent-hover: #6fc9b1;
       --accent-muted: rgba(94, 184, 160, 0.1);
@@ -67,7 +67,7 @@
       background: var(--bg-base);
       color: var(--text-primary);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-      font-size: 18px;
+      font-size: 15px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -231,17 +231,6 @@
     .page { display: none; }
     .page.is-active {
       display: block;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .page__header {
@@ -660,7 +649,6 @@
       margin-top: 16px;
       padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
-      animation: fadeInUp 0.18s ease;
     }
 
     .scenario__answer-row {
@@ -931,7 +919,6 @@
       margin-top: 16px;
       padding-top: 16px;
       border-top: 1px solid var(--border-subtle);
-      animation: fadeInUp 0.18s ease;
     }
 
     .quiz__explanation[hidden] {
@@ -988,133 +975,6 @@
       color: var(--text-tertiary);
       letter-spacing: 0.04em;
       background: var(--bg-elevated);
-    }
-
-    /* ---------- Quiz selection counter (multi-N) ---------- */
-    .quiz__counter {
-      margin: 0 0 12px;
-      font-size: 0.8rem;
-      color: var(--text-tertiary);
-      letter-spacing: 0.02em;
-    }
-
-    .quiz__counter-current {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .quiz__counter.is-ready .quiz__counter-current {
-      color: var(--accent-hover);
-    }
-
-    /* ---------- Quiz page progress bar ---------- */
-    .quiz-progress {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
-      padding: 12px 16px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-    }
-
-    .quiz-progress__item {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-
-    .quiz-progress__label {
-      color: var(--text-tertiary);
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-    }
-
-    .quiz-progress__value {
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .quiz-progress__value--accent {
-      color: var(--accent);
-    }
-
-    .quiz-progress__reset {
-      margin-left: auto;
-      background: transparent;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius);
-      color: var(--text-secondary);
-      padding: 6px 14px;
-      font-size: 0.8rem;
-      font-family: inherit;
-      cursor: pointer;
-      transition: border-color var(--transition), color var(--transition);
-    }
-
-    .quiz-progress__reset:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* ---------- Mock exam timer ---------- */
-    .quiz-timer {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      padding: 12px 16px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
-    }
-
-    .quiz-timer__label {
-      font-size: 0.75rem;
-      color: var(--text-tertiary);
-      letter-spacing: 0.04em;
-    }
-
-    .quiz-timer__display {
-      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      letter-spacing: 0.02em;
-      min-width: 80px;
-    }
-
-    .quiz-timer__display.is-warning,
-    .quiz-timer__display.is-finished {
-      color: var(--status-stale);
-    }
-
-    .quiz-timer__button {
-      background: transparent;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius);
-      color: var(--text-secondary);
-      padding: 6px 14px;
-      font-size: 0.8rem;
-      font-family: inherit;
-      cursor: pointer;
-      transition: border-color var(--transition), color var(--transition);
-    }
-
-    .quiz-timer__button:hover:not(:disabled) {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .quiz-timer__button:disabled {
-      opacity: 0.5;
-      cursor: default;
     }
 
     /* ---------- Quiz nav bar ---------- */
@@ -1368,36 +1228,6 @@
 
     .overlay.is-visible { display: block; }
 
-    /* ---------- Back-to-top floating button ---------- */
-    .to-top {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-default);
-      color: var(--text-secondary);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-family: inherit;
-      z-index: 35;
-      transition: border-color var(--transition), color var(--transition);
-    }
-
-    .to-top:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .to-top.is-visible {
-      display: flex;
-    }
-
     /* ---------- Responsive ---------- */
     @media (max-width: 768px) {
       .mobile-header { display: flex; }
@@ -1573,11 +1403,6 @@
       .scenario {
         scroll-margin-top: 80px;
       }
-
-      .to-top {
-        right: 16px;
-        bottom: 16px;
-      }
     }
   </style>
 </head>
@@ -1613,7 +1438,7 @@
           <li class="nav-item"><span class="nav-link" data-page="roadmap">6. 学習ロードマップ</span></li>
           <li class="nav-item" data-submenu>
             <span class="nav-link" data-page="quiz">
-              <span>7. 練習問題75問</span>
+              <span>7. 練習問題 75 問</span>
               <span class="nav-link__caret">▸</span>
             </span>
             <ul class="sub-list">
@@ -3570,14 +3395,14 @@ File Transfer (Safehouse→SFTP)</pre>
               <div class="scenario__answer-row">
                 <p class="scenario__label">最適解</p>
                 <ol class="scenario__solution">
-                  <li>Salesforce サポートに Send Logging 機能の有効化を依頼</li>
+                  <li>Send Logging が利用可能な状態か確認（環境によって設定または有効化が必要）</li>
                   <li>SendLog テンプレートから DE を作成</li>
                   <li>DE のカラム名を、Sendable DE / AMPscript 変数 / Personalization String と<em class="em">完全に一致</em>させる</li>
                 </ol>
               </div>
               <div class="scenario__answer-row">
                 <p class="scenario__label">判断軸</p>
-                <p>Send Logging は事前申請が必要な機能。さらに、自動で値が入るのは 6 フィールド（JobID / ListID / BatchID / SubID / TriggeredSendID / ErrorCode）のみ。それ以外を取りたければカラム名の完全一致で自動マッピングさせる。</p>
+                <p>Send Logging は環境により事前確認・有効化が必要な機能。さらに、自動で値が入るのは 6 フィールド（JobID / ListID / BatchID / SubID / TriggeredSendID / ErrorCode）のみ。それ以外を取りたければカラム名の完全一致で自動マッピングさせる。</p>
               </div>
             </div>
           </article>
@@ -3799,7 +3624,7 @@ File Transfer (Safehouse→SFTP)</pre>
                     <tr><td>Open Rate を絶対視</td><td>Apple MPP / プライバシー保護で過大計上の可能性</td></tr>
                     <tr><td>長期データは MC 内に無期限保持</td><td>保持期間制限あり。最新 Help を基準に確認し、長期分析は外部退避前提</td></tr>
                     <tr><td>Extract は無制限にキュー可能</td><td>250 件上限</td></tr>
-                    <tr><td>Send Logging はデフォルトで使える</td><td>Salesforce サポートで事前有効化必要</td></tr>
+                    <tr><td>Send Logging はデフォルトで使える</td><td>アカウントで利用可能か確認が必要（設定または有効化が必要な場合あり）</td></tr>
                     <tr><td>Tracking Extract = Send Logging</td><td>前者は既存 Tracking 抽出、後者は送信時点記録</td></tr>
                   </tbody>
                 </table>
@@ -4432,13 +4257,6 @@ File Transfer (Safehouse→SFTP)</pre>
             <h1 class="page__title">Email Marketing Best Practices (10 問)</h1>
           </header>
 
-          <div class="quiz-progress" aria-label="進捗">
-            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
-            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
-          </div>
-
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
             <a class="quiz-nav__item" href="#quiz-section1-q1">Q1-1</a>
@@ -4721,13 +4539,6 @@ File Transfer (Safehouse→SFTP)</pre>
             <h1 class="page__title">Content Creation and Delivery (10 問)</h1>
           </header>
 
-          <div class="quiz-progress" aria-label="進捗">
-            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
-            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
-          </div>
-
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
             <a class="quiz-nav__item" href="#quiz-section2-q1">Q2-1</a>
@@ -4991,7 +4802,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
-              <p class="quiz__misconception">罠タイプ: スコープ違い（GUI vs 開発者制御の境界）</p>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Dynamic Content の機能範囲）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>AMPscript = 開発者制御 / 別 DE Lookup / 条件分岐の本命。Dynamic Content = マーケターが GUI で属性条件と表示内容を設定する用途。</p>
@@ -5009,13 +4820,6 @@ File Transfer (Safehouse→SFTP)</pre>
             <p class="page__subtitle">PRACTICE — SECTION 3</p>
             <h1 class="page__title">Marketing Automation (10 問)</h1>
           </header>
-
-          <div class="quiz-progress" aria-label="進捗">
-            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
-            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
-          </div>
 
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
@@ -5298,13 +5102,6 @@ File Transfer (Safehouse→SFTP)</pre>
             <h1 class="page__title">Subscriber and Data Management (10 問)</h1>
           </header>
 
-          <div class="quiz-progress" aria-label="進捗">
-            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
-            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
-          </div>
-
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
             <a class="quiz-nav__item" href="#quiz-section4-q1">Q4-1</a>
@@ -5586,13 +5383,6 @@ File Transfer (Safehouse→SFTP)</pre>
             <h1 class="page__title">Insights and Analytics (10 問)</h1>
           </header>
 
-          <div class="quiz-progress" aria-label="進捗">
-            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
-            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
-          </div>
-
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
             <a class="quiz-nav__item" href="#quiz-section5-q1">Q5-1</a>
@@ -5820,7 +5610,7 @@ File Transfer (Safehouse→SFTP)</pre>
               <span class="quiz__id">Q5-9</span>
               <span class="quiz__type">単一選択</span>
             </header>
-            <p class="quiz__question">Marketing Cloud Engagement の送信・エンゲージメントデータ保持期間について、管理者が長期分析基盤を設計している。最も安全な対応はどれか。</p>
+            <p class="quiz__question">Marketing Cloud Engagement の送信・エンゲージメントデータ保持期間について、Salesforce Help と Release Maintenance 教材で記述に差分がある状態で、管理者が長期分析基盤を設計している。最も安全な対応はどれか。</p>
             <ul class="quiz__choices">
               <li><button class="quiz__choice" type="button" data-choice="A"><span class="quiz__choice-mark">A</span><span class="quiz__choice-text">Spring '26 Maintenance 教材の 180 日を前提に内製ツールを構築する</span></button></li>
               <li><button class="quiz__choice" type="button" data-choice="B"><span class="quiz__choice-mark">B</span><span class="quiz__choice-text">Salesforce Help の 730 日を前提に内製ツールを構築する</span></button></li>
@@ -5875,20 +5665,6 @@ File Transfer (Safehouse→SFTP)</pre>
           </header>
 
           <p class="lead">配点比例で構成された総合問題（M1-M20: 20 問）+ 複数選択補強問題（M21-M25: multi-3、5 問）。配点比例の内訳: Best Practices 2 問 / Content 5 問 / Automation 5 問 / Subscriber &amp; Data 5 問 / Analytics 3 問。補強問題は 3 つ選択形式で、混同しやすい論点（Send Discrepancy / Send Classification / SFTP 連携 / Contact Key BP / Deliverability）をまとめて確認する。</p>
-
-          <div class="quiz-timer" id="quiz-timer" aria-label="試験タイマー">
-            <span class="quiz-timer__label">試験タイマー（90 分）</span>
-            <span class="quiz-timer__display" id="quiz-timer-display">90:00</span>
-            <button type="button" class="quiz-timer__button" data-timer-action="start">開始</button>
-            <button type="button" class="quiz-timer__button" data-timer-action="reset">リセット</button>
-          </div>
-
-          <div class="quiz-progress" aria-label="進捗">
-            <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答</span><span class="quiz-progress__value quiz-progress__value--accent" data-progress="correct">0</span></span>
-            <span class="quiz-progress__item"><span class="quiz-progress__label">正答率</span><span class="quiz-progress__value" data-progress="rate">0%</span></span>
-            <button type="button" class="quiz-progress__reset" aria-label="このページのクイズをリセット">リセット</button>
-          </div>
 
           <nav class="quiz-nav" aria-label="問題索引">
             <p class="quiz-nav__label">問題索引</p>
@@ -6578,8 +6354,6 @@ File Transfer (Safehouse→SFTP)</pre>
     </main>
   </div>
 
-  <button type="button" class="to-top" id="to-top" aria-label="ページトップへ戻る">↑</button>
-
   <script>
     (function () {
       'use strict';
@@ -6942,7 +6716,6 @@ File Transfer (Safehouse→SFTP)</pre>
       // ---------- Quiz (page-quiz-section*) ----------
       function bindQuizzes() {
         document.querySelectorAll('.quiz').forEach(bindSingleQuiz);
-        bindQuizReset();
       }
 
       function bindSingleQuiz(quiz) {
@@ -6950,20 +6723,8 @@ File Transfer (Safehouse→SFTP)</pre>
         var type = quiz.getAttribute('data-type') || 'single';
         var requiredCount = type === 'single' ? 1 : (parseInt(type.split('-')[1], 10) || 1);
 
-        // State per quiz (accessible via DOM ref for reset)
-        var state = { selectedChoices: [], locked: false, correct: correct, requiredCount: requiredCount, type: type, isCorrect: false };
+        var state = { selectedChoices: [], locked: false, correct: correct, requiredCount: requiredCount, type: type };
         quiz.__quizState = state;
-
-        // Inject counter for multi-N
-        if (type !== 'single' && !quiz.querySelector('.quiz__counter')) {
-          var question = quiz.querySelector('.quiz__question');
-          if (question) {
-            var counter = document.createElement('p');
-            counter.className = 'quiz__counter';
-            counter.innerHTML = '選択済み: <span class="quiz__counter-current">0</span> / <span class="quiz__counter-required">' + requiredCount + '</span>';
-            question.parentNode.insertBefore(counter, question.nextSibling);
-          }
-        }
 
         quiz.querySelectorAll('.quiz__choice').forEach(function (btn) {
           btn.addEventListener('click', function () {
@@ -6984,30 +6745,18 @@ File Transfer (Safehouse→SFTP)</pre>
               state.selectedChoices = [choice];
             }
 
-            updateQuizCounter(quiz, state.selectedChoices.length, requiredCount);
-
             if (state.selectedChoices.length === requiredCount) {
               evaluateQuiz(quiz, correct, state.selectedChoices);
               state.locked = true;
-              updateQuizProgress(quiz);
             }
           });
         });
-      }
-
-      function updateQuizCounter(quiz, current, required) {
-        var counter = quiz.querySelector('.quiz__counter');
-        if (!counter) return;
-        var curEl = counter.querySelector('.quiz__counter-current');
-        if (curEl) curEl.textContent = String(current);
-        counter.classList.toggle('is-ready', current === required);
       }
 
       function evaluateQuiz(quiz, correct, selected) {
         var correctSorted = correct.slice().sort().join(',');
         var selectedSorted = selected.slice().sort().join(',');
         var isCorrect = correctSorted === selectedSorted;
-        if (quiz.__quizState) quiz.__quizState.isCorrect = isCorrect;
 
         quiz.querySelectorAll('.quiz__choice').forEach(function (btn) {
           var choice = btn.getAttribute('data-choice');
@@ -7034,75 +6783,6 @@ File Transfer (Safehouse→SFTP)</pre>
             verdict.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
           }
         }
-      }
-
-      function resetSingleQuiz(quiz) {
-        var st = quiz.__quizState;
-        if (st) {
-          st.selectedChoices = [];
-          st.locked = false;
-          st.isCorrect = false;
-        }
-        quiz.querySelectorAll('.quiz__choice').forEach(function (btn) {
-          btn.disabled = false;
-          btn.classList.remove('is-selected-correct', 'is-selected-wrong', 'is-correct-answer', 'is-pending');
-        });
-        var explanation = quiz.querySelector('.quiz__explanation');
-        if (explanation) {
-          explanation.setAttribute('hidden', '');
-          var verdict = explanation.querySelector('.quiz__verdict');
-          if (verdict) {
-            verdict.textContent = '';
-            verdict.classList.remove('is-correct', 'is-wrong');
-          }
-        }
-        if (st && st.requiredCount) updateQuizCounter(quiz, 0, st.requiredCount);
-      }
-
-      function updateQuizProgress(quizOrPage) {
-        var page = (quizOrPage && quizOrPage.classList && quizOrPage.classList.contains('page'))
-          ? quizOrPage
-          : (quizOrPage && quizOrPage.closest ? quizOrPage.closest('.page') : null);
-        if (!page) return;
-        var progress = page.querySelector('.quiz-progress');
-        if (!progress) return;
-
-        var quizzes = page.querySelectorAll('.quiz');
-        var answered = 0, correct = 0;
-        quizzes.forEach(function (q) {
-          var st = q.__quizState;
-          if (st && st.locked) {
-            answered++;
-            if (st.isCorrect) correct++;
-          }
-        });
-        var total = quizzes.length;
-        var rate = answered > 0 ? Math.round(correct / answered * 100) : 0;
-
-        var elA = progress.querySelector('[data-progress="answered"]');
-        var elC = progress.querySelector('[data-progress="correct"]');
-        var elR = progress.querySelector('[data-progress="rate"]');
-        if (elA) elA.textContent = answered + ' / ' + total;
-        if (elC) elC.textContent = String(correct);
-        if (elR) elR.textContent = rate + '%';
-      }
-
-      function bindQuizReset() {
-        document.querySelectorAll('.quiz-progress__reset').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            var page = btn.closest('.page');
-            if (!page) return;
-            page.querySelectorAll('.quiz').forEach(resetSingleQuiz);
-            updateQuizProgress(page);
-            // Scroll page to top of nav for fresh start
-            var nav = page.querySelector('.quiz-nav');
-            if (nav && nav.scrollIntoView) nav.scrollIntoView({ block: 'start' });
-          });
-        });
-        // Initial render of progress on each page that has progress UI
-        document.querySelectorAll('.quiz-progress').forEach(function (p) {
-          updateQuizProgress(p.closest('.page'));
-        });
       }
 
       // ---------- Interactive checklist (page-cheatsheet) ----------
@@ -7138,81 +6818,6 @@ File Transfer (Safehouse→SFTP)</pre>
         });
       }
 
-      // ---------- Mock exam timer (90 min count-down, no persistence) ----------
-      function bindMockTimer() {
-        var display = document.getElementById('quiz-timer-display');
-        if (!display) return;
-        var startBtn = document.querySelector('[data-timer-action="start"]');
-        var resetBtn = document.querySelector('[data-timer-action="reset"]');
-        if (!startBtn || !resetBtn) return;
-
-        var DEFAULT_SECONDS = 90 * 60;
-        var seconds = DEFAULT_SECONDS;
-        var intervalId = null;
-
-        function render() {
-          var m = Math.floor(seconds / 60);
-          var s = seconds % 60;
-          display.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-          display.classList.toggle('is-warning', seconds > 0 && seconds <= 300);
-          display.classList.toggle('is-finished', seconds <= 0);
-        }
-
-        function start() {
-          if (intervalId !== null) {
-            clearInterval(intervalId);
-            intervalId = null;
-            startBtn.textContent = '再開';
-            return;
-          }
-          intervalId = setInterval(function () {
-            if (seconds <= 0) {
-              clearInterval(intervalId);
-              intervalId = null;
-              startBtn.textContent = '時間切れ';
-              startBtn.disabled = true;
-              return;
-            }
-            seconds--;
-            render();
-          }, 1000);
-          startBtn.textContent = '一時停止';
-        }
-
-        function reset() {
-          if (intervalId !== null) {
-            clearInterval(intervalId);
-            intervalId = null;
-          }
-          seconds = DEFAULT_SECONDS;
-          startBtn.textContent = '開始';
-          startBtn.disabled = false;
-          render();
-        }
-
-        startBtn.addEventListener('click', start);
-        resetBtn.addEventListener('click', reset);
-        render();
-      }
-
-      // ---------- Back-to-top floating button ----------
-      function bindToTop() {
-        var btn = document.getElementById('to-top');
-        if (!btn) return;
-        function update() {
-          if (window.scrollY > 400) {
-            btn.classList.add('is-visible');
-          } else {
-            btn.classList.remove('is-visible');
-          }
-        }
-        window.addEventListener('scroll', update, { passive: true });
-        btn.addEventListener('click', function () {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        update();
-      }
-
       // ---------- Mailto form ----------
       function bindContactForm() {
         var btn = document.getElementById('contact-submit');
@@ -7238,8 +6843,6 @@ File Transfer (Safehouse→SFTP)</pre>
         bindScenarios();
         bindChecklists();
         bindQuizzes();
-        bindMockTimer();
-        bindToTop();
 
         window.addEventListener('hashchange', handleHashChange);
         handleHashChange();
@@ -7292,6 +6895,18 @@ File Transfer (Safehouse→SFTP)</pre>
     Phase 4 で意図的にスコープ外（複雑機能のためスキップ）:
     - 進捗の localStorage 永続化（リロードで初期化を維持）
     - 誤答のみ再出題モード（複雑な状態管理を避ける）
+    Phase 5（整合性回復・余計な変更の差し戻し）:
+    - CSS Variables を IMPLEMENTATION.md の仕様値に戻す（border / text の改変を取り消し）
+    - body font-size を 18px から仕様値 15px に戻す
+    - fadeIn / fadeInUp アニメーションを削除（ミニマリスト方針）
+    - 模試 90 分タイマー機能を削除（後付け機能、シンプルさ回復）
+    - 戻る↑ボタン（to-top）を削除（後付け機能）
+    - クイズ進捗バー（quiz-progress）と関連 JS ロジックを削除（「進捗記録なし」方針に整合）
+    - multi-N 用カウンター UI を削除（is-pending ハイライトで十分）
+    - Send Logging 表現を §2.5 本文の緩和表現に統一（ひっかけ表、§3.12 シナリオ）
+    - Q2-10 の罠タイプタグを「概念違い（Dynamic Content の機能範囲）」に修正
+    - Q5-9 設問文にソース間差分の前提を明示
+    - サイドバーラベル「7. 練習問題75問」→「7. 練習問題 75 問」
   -->
 </body>
 </html>
