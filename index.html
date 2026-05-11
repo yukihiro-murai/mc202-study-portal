@@ -1062,6 +1062,61 @@
       color: var(--accent);
     }
 
+    /* ---------- Mock exam timer ---------- */
+    .quiz-timer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 12px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+    }
+
+    .quiz-timer__label {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+    }
+
+    .quiz-timer__display {
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+      min-width: 80px;
+    }
+
+    .quiz-timer__display.is-warning,
+    .quiz-timer__display.is-finished {
+      color: var(--status-stale);
+    }
+
+    .quiz-timer__button {
+      background: transparent;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .quiz-timer__button:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .quiz-timer__button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
     /* ---------- Quiz nav bar ---------- */
     .quiz-nav {
       display: flex;
@@ -4412,6 +4467,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（新規 IP は IP warming 必須）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>新規 IP は送信者評価（reputation）がゼロ。いきなり大量送信すると ISP からスパム判定される。IP warming で少量から段階的に送信量を増やし評価を確立するのが定石。</p>
@@ -4438,6 +4494,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（コンテンツ表現 vs 到達性主因）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>認証設定（SPF/DKIM/DMARC）と送信者評価は到達性の中核要因。</p>
@@ -4463,6 +4520,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（CAN-SPAM 必須要件）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>CAN-SPAM は送信者の物理住所明記と容易な購読解除手段の提供を求める。</p>
@@ -4514,6 +4572,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（同意取得の強度）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>明示的同意 + Double Opt-in（再確認）は法令・到達性の両面で最も安全。</p>
@@ -4539,6 +4598,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（開封率の主要因）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>開封の主要ドライバは Subject Line、Preheader、From、送信者評価、リスト品質。</p>
@@ -4590,6 +4650,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（モバイル設計原則）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>モバイルでは画像非表示やナローカラム表示に耐える設計が必須。</p>
@@ -4615,6 +4676,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（List Hygiene の運用）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Bounce や長期非反応者を残すと送信者評価が悪化。再エンゲージメント Journey や除外設定が定石。</p>
@@ -4640,6 +4702,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Preference Center の目的）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Preference Center は購読カテゴリ・頻度を購読者自身に管理させ、強制的な unsubscribe を回避するための仕組み。</p>
@@ -4693,6 +4756,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（GUI 管理 vs 開発者制御）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Dynamic Content は GUI で条件と表示内容を設定できる。マーケターによる運用に向く。</p>
@@ -4718,6 +4782,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（Personalization String vs AMPscript Lookup）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>別 DE 参照には <code>Lookup("DE名", "返却カラム", "検索カラム", "検索値")</code> が定番。</p>
@@ -4795,6 +4860,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Send Classification の三層構造）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Send Classification = Sender Profile + Delivery Profile + CAN-SPAM 分類。</p>
@@ -4820,6 +4886,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 罠 wording（Winner Criteria の偽選択肢）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Email Studio A/B Test の代表的な Winner Criteria は Highest Unique Open Rate と Highest Unique Click-Through Rate。CTOR は開封後クリックの<em class="em">分析指標</em>として有用だが、Email Studio A/B Test の Winner Criteria としては扱わない。A/B Test Send と Journey Builder の Path Optimizer は別機能、Random Split は勝者選定を行わない。</p>
@@ -4872,6 +4939,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（プレビュー / テスト手段の使い分け）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Subscriber Preview は実購読者データを使った事前確認機能。</p>
@@ -4897,6 +4965,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（承認ワークフロー機能の所在）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Approvals は Marketing Cloud の事前承認ワークフロー機能。</p>
@@ -4976,6 +5045,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Activity チェーン）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>ファイル取込・SQL 加工は Automation Studio の Activity を順次実行する典型パターン。</p>
@@ -5027,6 +5097,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Automation vs Journey の境界）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>個人ごとの時間軸 + 行動分岐は Journey Builder。</p>
@@ -5052,6 +5123,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（Data Filter vs SQL Query）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>複数 DE JOIN は SQL Query。Data Filter は単純条件のみ。</p>
@@ -5077,6 +5149,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Wait Activity の役割）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>個人タイムライン上の待機は Wait Activity。</p>
@@ -5128,6 +5201,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（複合パターンの組合せ）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>過去 N 日間データの抽出は SQL Query、Journey への投入は DE Entry が定石。</p>
@@ -5153,6 +5227,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Re-entry Settings のデフォルト）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>デフォルトは No re-entry。明示的な変更が必要。</p>
@@ -5204,6 +5279,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（HTS の用途）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>HTS は大規模 Journey 送信向けの高速送信モード。2024 年導入、Spring '25 で利用推奨や考慮事項が強調された。Journey Settings で個別 Journey に有効化し、アクティブ化後は無効化できない。</p>
@@ -5257,6 +5333,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（List vs Data Extension）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>多属性・履歴・SQL 対応は Data Extension。</p>
@@ -5282,6 +5359,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Primary Key / Subscriber Key の役割）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Primary Key は DE 内の行一意性。Subscriber Key は購読者識別子。</p>
@@ -5307,6 +5385,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Sendable DE の核心）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Sendable DE は Subscriber Relationship 設定で All Subscribers と連携。これがないと購読管理が機能しない。</p>
@@ -5332,6 +5411,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Subscriber Key vs Email Address）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Subscriber Key を個別に割り当てれば、同一メールアドレスの中で別購読者として扱える。</p>
@@ -5357,6 +5437,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（Send Discrepancy の主因層）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>送信差異の主要原因は購読・除外レイヤー。</p>
@@ -5408,6 +5489,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Contact Key の永続性要件）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Email Address は変更・共有・複数所持が起こりうる。不変 ID が推奨される。</p>
@@ -5433,6 +5515,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Contact Identity の独立性）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Contact Identity 層は Sendable DE とは独立。DE 削除では Contact は消えない。Contact 削除は別プロセス。</p>
@@ -5458,6 +5541,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（Shared 利用 vs 複製の BU 設計）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Shared 系（DE / Content）は Parent で作成し子 BU から参照可能。複製はアンチパターン。</p>
@@ -5483,6 +5567,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（DoNotTrack の用途）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>DoNotTrack Attribute は特定購読者のトラッキングを抑止する設定。</p>
@@ -5562,6 +5647,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Einstein 機能の役割区別）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>STO は受信者個別最適時刻の機能。</p>
@@ -5587,6 +5673,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（VerifiedClicks の用途）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>VerifiedClicks（Spring '26）はボット由来の自動クリックを除外した補正指標。</p>
@@ -5612,6 +5699,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（送信データ参照手段の使い分け）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Data Views は Tracking 系データを SQL で参照する標準手段。</p>
@@ -5637,6 +5725,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Send Logging vs Tracking Extract）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Send Logging は送信時点のスナップショットをカスタム DE に記録する。</p>
@@ -5662,6 +5751,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（auto-collected vs custom column）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>自動収集される 6 フィールドは JobID / ListID / BatchID / SubID / TriggeredSendID / ErrorCode。</p>
@@ -5687,6 +5777,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Einstein 機能の役割区別）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Engagement Scoring は開封・クリック・離脱可能性を予測する。</p>
@@ -5712,6 +5803,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Open Rate 過大計上の原因）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>MPP はトラッキング画像を事前ロードするため、実開封でなくても Open として計上される。</p>
@@ -5763,6 +5855,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Data Extract キュー上限）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Data Extract キュー上限は 250 件。スケジュール過密で詰まる典型パターン（Spring '26 で明文化）。</p>
@@ -5782,6 +5875,13 @@ File Transfer (Safehouse→SFTP)</pre>
           </header>
 
           <p class="lead">配点比例で構成された総合問題（M1-M20: 20 問）+ 複数選択補強問題（M21-M25: multi-3、5 問）。配点比例の内訳: Best Practices 2 問 / Content 5 問 / Automation 5 問 / Subscriber &amp; Data 5 問 / Analytics 3 問。補強問題は 3 つ選択形式で、混同しやすい論点（Send Discrepancy / Send Classification / SFTP 連携 / Contact Key BP / Deliverability）をまとめて確認する。</p>
+
+          <div class="quiz-timer" id="quiz-timer" aria-label="試験タイマー">
+            <span class="quiz-timer__label">試験タイマー（90 分）</span>
+            <span class="quiz-timer__display" id="quiz-timer-display">90:00</span>
+            <button type="button" class="quiz-timer__button" data-timer-action="start">開始</button>
+            <button type="button" class="quiz-timer__button" data-timer-action="reset">リセット</button>
+          </div>
 
           <div class="quiz-progress" aria-label="進捗">
             <span class="quiz-progress__item"><span class="quiz-progress__label">回答済み</span><span class="quiz-progress__value" data-progress="answered">0 / 0</span></span>
@@ -5833,6 +5933,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Automation vs Journey の境界）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>個人時間軸 + 行動分岐は Journey Builder。</p>
@@ -5858,6 +5959,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（再エンゲージメント vs 抑制の判断軸）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>顧客価値とエンゲージメント履歴で判断するのが定石。</p>
@@ -5883,6 +5985,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（GUI 管理 vs 開発者制御）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Dynamic Content は GUI で条件と表示内容を設定できる。</p>
@@ -5908,6 +6011,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Sender / Delivery の境界）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>From 系と Reply 処理は Sender Profile。Footer / IP は Delivery Profile。</p>
@@ -5959,6 +6063,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 罠 wording（CTOR vs Open Rate の選択）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Subject Line のテストは Open Rate が直接の効果指標。</p>
@@ -5984,6 +6089,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Send Classification の三層構造）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Send Classification = Sender + Delivery + CAN-SPAM 分類の組み合わせテンプレート。</p>
@@ -6009,6 +6115,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Activity チェーン）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>SFTP 取込・SQL 加工・送信のチェーンが Automation Studio の典型。</p>
@@ -6034,6 +6141,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Extract と File Transfer はセット）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Data Extract = ファイル化、File Transfer = 移動。両方必要。</p>
@@ -6059,6 +6167,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Re-entry Settings のデフォルト）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>デフォルトは No re-entry。明示的な変更が必要。</p>
@@ -6084,6 +6193,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（Automation Activity vs Journey 要素）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Decision / Engagement Split は Journey Builder の要素。</p>
@@ -6135,6 +6245,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Sendable DE の核心）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Sendable DE の核心は Subscriber Relationship 設定の有無。</p>
@@ -6160,6 +6271,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（Send Discrepancy の主因層）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>送信差異の主要原因は購読・除外レイヤー。</p>
@@ -6185,6 +6297,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Email Address を SK にするリスク）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Email Address は変更・共有・複数所持のリスク。</p>
@@ -6210,6 +6323,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: スコープ違い（Data Filter vs SQL Query）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>複数 DE JOIN は SQL Query。</p>
@@ -6235,6 +6349,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Contact Key / Subscriber Key の関係）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>別レイヤーの識別子だが同一値運用が推奨。</p>
@@ -6260,6 +6375,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（CTR と CTOR の分母）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>CTOR の分母は Open。</p>
@@ -6285,6 +6401,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 概念違い（Send Logging vs Tracking Extract）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>Send Logging は送信時点のスナップショットを永続保存。</p>
@@ -6310,6 +6427,7 @@ File Transfer (Safehouse→SFTP)</pre>
             </ul>
             <div class="quiz__explanation" hidden>
               <div class="quiz__verdict"></div>
+              <p class="quiz__misconception">罠タイプ: 実務 vs 試験文脈（公式情報の更新確認が必要）</p>
               <div class="quiz__rationale">
                 <p class="quiz__label">根拠</p>
                 <p>保持期間はソース間で差分があるため特定値に依存せず、外部退避（Send Logging / Tracking Extract → BI / Data Lake）を前提に設計する。</p>
@@ -7020,6 +7138,63 @@ File Transfer (Safehouse→SFTP)</pre>
         });
       }
 
+      // ---------- Mock exam timer (90 min count-down, no persistence) ----------
+      function bindMockTimer() {
+        var display = document.getElementById('quiz-timer-display');
+        if (!display) return;
+        var startBtn = document.querySelector('[data-timer-action="start"]');
+        var resetBtn = document.querySelector('[data-timer-action="reset"]');
+        if (!startBtn || !resetBtn) return;
+
+        var DEFAULT_SECONDS = 90 * 60;
+        var seconds = DEFAULT_SECONDS;
+        var intervalId = null;
+
+        function render() {
+          var m = Math.floor(seconds / 60);
+          var s = seconds % 60;
+          display.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+          display.classList.toggle('is-warning', seconds > 0 && seconds <= 300);
+          display.classList.toggle('is-finished', seconds <= 0);
+        }
+
+        function start() {
+          if (intervalId !== null) {
+            clearInterval(intervalId);
+            intervalId = null;
+            startBtn.textContent = '再開';
+            return;
+          }
+          intervalId = setInterval(function () {
+            if (seconds <= 0) {
+              clearInterval(intervalId);
+              intervalId = null;
+              startBtn.textContent = '時間切れ';
+              startBtn.disabled = true;
+              return;
+            }
+            seconds--;
+            render();
+          }, 1000);
+          startBtn.textContent = '一時停止';
+        }
+
+        function reset() {
+          if (intervalId !== null) {
+            clearInterval(intervalId);
+            intervalId = null;
+          }
+          seconds = DEFAULT_SECONDS;
+          startBtn.textContent = '開始';
+          startBtn.disabled = false;
+          render();
+        }
+
+        startBtn.addEventListener('click', start);
+        resetBtn.addEventListener('click', reset);
+        render();
+      }
+
       // ---------- Back-to-top floating button ----------
       function bindToTop() {
         var btn = document.getElementById('to-top');
@@ -7063,6 +7238,7 @@ File Transfer (Safehouse→SFTP)</pre>
         bindScenarios();
         bindChecklists();
         bindQuizzes();
+        bindMockTimer();
         bindToTop();
 
         window.addEventListener('hashchange', handleHashChange);
@@ -7110,11 +7286,12 @@ File Transfer (Safehouse→SFTP)</pre>
     - multi-N 問題に選択数カウンター UI を JS で動的注入（quiz__counter / quiz__counter-current / quiz__counter-required、「選択済み: 0 / N」表示、N 到達時に is-ready クラス付与）。CSS で表示
     - 6 クイズページ（section1-5 + mock）上部に quiz-progress UI を配置: 回答済み / 正答 / 正答率 + リセットボタン。リセットボタンは disabled 解除、選択クラス除去、explanation 非表示、状態初期化、quiz-nav へスクロール戻し
     - チートシートに 5.8 Hands-on Practice Required（実機画面で設定場所を確認すべき 9 領域）と 5.9 Source Conflict Notes（公式ソース間で記述差分が出やすい 7 論点の確認先表）を追加
-    Phase 4（未実施・将来検討）:
-    - 残り 56 問への誤答分類タグ拡張（Phase 2 で 14 問付与済み）
-    - 進捗の localStorage 永続化（現状はリロードで初期化）
-    - 模試の時間計測機能
-    - 誤答のみ再出題モード
+    Phase 4（シンプル機能で完了）:
+    - 残り 56 問へ誤答分類タグを拡張。全 75 問が罠タイプ（概念違い / スコープ違い / 罠 wording / 旧 / 現行名称の混同 / 実務 vs 試験文脈）を保持
+    - 模試ページに 90 分カウントダウンタイマーを追加（開始 / 一時停止 / リセット、残り 5 分で赤、0 で時間切れ表示）。localStorage 永続化なし、リロードで初期化
+    Phase 4 で意図的にスコープ外（複雑機能のためスキップ）:
+    - 進捗の localStorage 永続化（リロードで初期化を維持）
+    - 誤答のみ再出題モード（複雑な状態管理を避ける）
   -->
 </body>
 </html>
