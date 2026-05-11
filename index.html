@@ -226,7 +226,6 @@
     .main__inner {
       max-width: 820px;
       overflow-wrap: break-word;
-      word-break: break-word;
     }
 
     .page { display: none; }
@@ -1082,6 +1081,12 @@
       border-bottom: none;
     }
 
+    .data-table td,
+    .data-table th {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
     /* ---------- Trap pair table (page-traps) ---------- */
     .trap-table {
       width: 100%;
@@ -1105,6 +1110,8 @@
       color: var(--text-primary);
       overflow-x: auto;
       white-space: pre;
+      tab-size: 2;
+      -moz-tab-size: 2;
     }
 
     /* ---------- Term tooltip (common) ---------- */
@@ -4147,7 +4154,7 @@ File Transfer (Safehouse→SFTP)</pre>
           <article class="quiz" id="quiz-section1-q2" data-quiz-id="Q1-2" data-correct="B,C" data-type="multi-2">
             <header class="quiz__head">
               <span class="quiz__id">Q1-2</span>
-              <span class="quiz__type">複数選択（2 つ）</span>
+              <span class="quiz__type">複数選択(2 つ)</span>
             </header>
             <p class="quiz__question">メール到達性に直接影響する要素は？（2 つ選択）</p>
             <ul class="quiz__choices">
@@ -4273,7 +4280,7 @@ File Transfer (Safehouse→SFTP)</pre>
           <article class="quiz" id="quiz-section1-q7" data-quiz-id="Q1-7" data-correct="A,C" data-type="multi-2">
             <header class="quiz__head">
               <span class="quiz__id">Q1-7</span>
-              <span class="quiz__type">複数選択（2 つ）</span>
+              <span class="quiz__type">複数選択(2 つ)</span>
             </header>
             <p class="quiz__question">Dedicated IP を導入するメリットとして適切なものは？（2 つ）</p>
             <ul class="quiz__choices">
@@ -4519,7 +4526,7 @@ File Transfer (Safehouse→SFTP)</pre>
           <article class="quiz" id="quiz-section2-q6" data-quiz-id="Q2-6" data-correct="A,C" data-type="multi-2">
             <header class="quiz__head">
               <span class="quiz__id">Q2-6</span>
-              <span class="quiz__type">複数選択（2 つ）</span>
+              <span class="quiz__type">複数選択(2 つ)</span>
             </header>
             <p class="quiz__question">A/B Test Send で勝者基準（Winner Criteria）として選択可能な指標は？（2 つ）</p>
             <ul class="quiz__choices">
@@ -4619,7 +4626,7 @@ File Transfer (Safehouse→SFTP)</pre>
           <article class="quiz" id="quiz-section2-q10" data-quiz-id="Q2-10" data-correct="A,B" data-type="multi-2">
             <header class="quiz__head">
               <span class="quiz__id">Q2-10</span>
-              <span class="quiz__type">複数選択（2 つ）</span>
+              <span class="quiz__type">複数選択(2 つ)</span>
             </header>
             <p class="quiz__question">AMPscript と Dynamic Content の使い分けとして正しいものは？（2 つ）</p>
             <ul class="quiz__choices">
@@ -4790,7 +4797,7 @@ File Transfer (Safehouse→SFTP)</pre>
           <article class="quiz" id="quiz-section3-q6" data-quiz-id="Q3-6" data-correct="A,C" data-type="multi-2">
             <header class="quiz__head">
               <span class="quiz__id">Q3-6</span>
-              <span class="quiz__type">複数選択（2 つ）</span>
+              <span class="quiz__type">複数選択(2 つ)</span>
             </header>
             <p class="quiz__question">Triggered Send Definition のライフサイクルとして正しいものは？（2 つ）</p>
             <ul class="quiz__choices">
