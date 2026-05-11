@@ -14,9 +14,9 @@
       --bg-elevated: #1f1f1f;
       --border-subtle: #262626;
       --border-default: #333333;
-      --text-primary: #fafafa;
-      --text-secondary: #a1a1aa;
-      --text-tertiary: #71717a;
+      --text-primary: #ffffff;
+      --text-secondary: #ffffff;
+      --text-tertiary: #a1a1aa;
       --accent: #5eb8a0;
       --accent-hover: #6fc9b1;
       --accent-muted: rgba(94, 184, 160, 0.1);
@@ -43,7 +43,7 @@
       background: var(--bg-base);
       color: var(--text-primary);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -56,11 +56,11 @@
       margin: 0 0 12px;
     }
 
-    h1 { font-size: 1.875rem; letter-spacing: -0.01em; }
-    h2 { font-size: 1.375rem; }
-    h3 { font-size: 1.125rem; }
+    h1 { font-size: 2rem; letter-spacing: -0.01em; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
 
-    p { margin: 0 0 12px; color: var(--text-secondary); }
+    p { margin: 0 0 12px; color: var(--text-primary); }
 
     a {
       color: var(--accent);
@@ -112,7 +112,7 @@
 
     .sidebar__subtitle {
       font-size: 0.75rem;
-      color: var(--text-tertiary);
+      color: #c4c4cc;
       margin: 4px 0 0;
       line-height: 1.5;
     }
@@ -138,7 +138,7 @@
       justify-content: space-between;
       padding: 8px 12px;
       border-radius: var(--radius);
-      color: var(--text-secondary);
+      color: #d4d4d8;
       font-size: 0.9rem;
       cursor: pointer;
       transition: background var(--transition), color var(--transition);
@@ -179,7 +179,7 @@
     .sub-list .nav-link {
       font-size: 0.85rem;
       padding: 6px 12px;
-      color: var(--text-tertiary);
+      color: #b8b8c0;
     }
 
     .sub-list .nav-link:hover {
@@ -247,7 +247,7 @@
 
     .notice p {
       margin: 0;
-      color: var(--text-secondary);
+      color: var(--text-primary);
       font-size: 0.9rem;
       line-height: 1.8;
     }
@@ -365,7 +365,7 @@
     }
 
     .placeholder__title {
-      color: var(--text-secondary);
+      color: var(--text-tertiary);
       font-size: 1rem;
       margin: 0 0 8px;
     }
@@ -374,6 +374,212 @@
       color: var(--text-tertiary);
       font-size: 0.85rem;
       margin: 0;
+    }
+
+    /* ---------- Section header (h2 + copy button) ---------- */
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      margin: 0;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    /* ---------- Copy button (Markdown) ---------- */
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      color: var(--text-tertiary);
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .copy-btn.is-copied {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-muted);
+    }
+
+    .copy-btn__icon {
+      position: relative;
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .copy-btn__icon::before,
+    .copy-btn__icon::after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border: 1px solid currentColor;
+      border-radius: 1.5px;
+      box-sizing: border-box;
+      background: var(--bg-base);
+    }
+
+    .copy-btn__icon::before { top: 0; left: 0; }
+    .copy-btn__icon::after { bottom: 0; right: 0; }
+
+    /* ---------- Lead paragraph ---------- */
+    .lead {
+      margin: 0 0 32px;
+      padding: 4px 0 4px 16px;
+      border-left: 2px solid var(--border-default);
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .section-body .lead {
+      margin: 0 0 20px;
+      font-size: 0.92rem;
+    }
+
+    /* ---------- Section body typography ---------- */
+    .section-body > p {
+      margin: 0 0 16px;
+      color: var(--text-primary);
+    }
+
+    .section-body h3 {
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin: 24px 0 10px;
+    }
+
+    .section-body > h3:first-child {
+      margin-top: 0;
+    }
+
+    .section-body ul,
+    .section-body ol {
+      margin: 0 0 16px;
+      padding-left: 22px;
+      color: var(--text-primary);
+    }
+
+    .section-body li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    .section-body > *:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- Data table (common) ---------- */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 0 0 16px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      vertical-align: top;
+    }
+
+    .data-table thead th {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-default);
+      white-space: nowrap;
+    }
+
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ---------- Pre block (ASCII tree etc.) ---------- */
+    pre.tree-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 0 0 16px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* ---------- Term tooltip (common) ---------- */
+    .term {
+      position: relative;
+      border-bottom: 1px dotted var(--text-tertiary);
+      cursor: help;
+      color: var(--text-primary);
+    }
+
+    .term sup {
+      color: var(--accent);
+      font-size: 0.7em;
+      margin-left: 1px;
+    }
+
+    .term::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: -8px;
+      left: 0;
+      transform: translateY(-100%);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      font-weight: normal;
+      line-height: 1.6;
+      color: var(--text-primary);
+      width: max-content;
+      max-width: 280px;
+      white-space: normal;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity var(--transition), visibility var(--transition);
+      z-index: 60;
+    }
+
+    .term:hover::after,
+    .term.is-open::after {
+      opacity: 1;
+      visibility: visible;
     }
 
     /* ---------- Mobile header & overlay ---------- */
@@ -479,6 +685,18 @@
       }
 
       .meta__label { width: auto; }
+
+      .data-table { font-size: 0.85rem; }
+      .data-table th,
+      .data-table td { padding: 8px 12px; }
+
+      .term::after { max-width: 80vw; }
+
+      .copy-btn { padding: 6px 8px; }
+      .copy-btn__label { display: none; }
+
+      .lead { font-size: 0.9rem; }
+      .section-body .lead { font-size: 0.88rem; }
     }
   </style>
 </head>
@@ -603,8 +821,130 @@
           </section>
         </article>
 
+        <!-- 0. 前提知識 -->
+        <article class="page" id="page-prereq">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 0</p>
+            <h1 class="page__title">前提知識：MC 全体構造の再確認</h1>
+          </header>
+
+          <p class="lead">
+            Foundations（MC-101）で扱われるが、Email Specialist でも頻繁に問われる、もしくは頭に入っていることを前提として出題される領域。ここが曖昧だと他セクションの問題が解けない。
+          </p>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">0.1 Marketing Cloud Engagement のアプリ構造</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>アプリ</th>
+                      <th>役割</th>
+                      <th>Email Specialist での重要度</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Email Studio</td><td>メール送信、購読者管理、Tracking</td><td>★★★ 中核</td></tr>
+                    <tr><td>Content Builder</td><td>コンテンツ作成・管理</td><td>★★★ 中核</td></tr>
+                    <tr><td>Automation Studio</td><td>バッチ自動化</td><td>★★★ 中核</td></tr>
+                    <tr><td>Journey Builder</td><td>顧客行動ベースのフロー</td><td>★★★ 中核</td></tr>
+                    <tr><td><span class="term" data-tooltip="Contact Builder。Marketing Cloud のアプリの 1 つ。Contact Model、Population、Attribute Group を管理する場所。">Contact Builder<sup>*</sup></span></td><td>Contact Model、Population 管理</td><td>★★ 頻出</td></tr>
+                    <tr><td>Mobile Studio (MobileConnect/Push)</td><td>SMS/Push</td><td>★ 名前と概念のみ</td></tr>
+                    <tr><td>Analytics Builder</td><td>レポート</td><td>★★</td></tr>
+                    <tr><td>Setup</td><td>BU/User/データ管理</td><td>★ 概念のみ</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">0.2 Contact vs Subscriber の決定的な違い</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">ここを混同していると、購読管理・購読数差異・データ構造の問題が全滅する。</p>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>概念</th>
+                      <th>定義</th>
+                      <th>識別子</th>
+                      <th>存在場所</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Contact</td><td>チャネル横断の人物レコード</td><td>Contact Key</td><td>All Contacts (Contact Builder)</td></tr>
+                    <tr><td>Subscriber</td><td>特定チャネルの購読者レコード</td><td>Subscriber Key</td><td>All Subscribers (Email Studio)</td></tr>
+                    <tr><td>Contact ID</td><td>システム内部の数値 ID（ユーザー変更不可）</td><td>Contact ID</td><td>バックエンド</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3>重要な含意</h3>
+              <ul>
+                <li>すべての Subscriber は Contact だが、すべての Contact が Subscriber ではない（メールを送られたことのない Contact もありうる）</li>
+                <li><span class="term" data-tooltip="Sendable DE。送信対象として利用可能な Data Extension。Subscriber Relationship 設定が必須。">Sendable DE<sup>*</sup></span> から行を削除しても、All Contacts からは消えない（Contact Identity は別レイヤーで管理）</li>
+                <li>ベストプラクティス: Subscriber Key と Contact Key は同じ値にする</li>
+                <li>Email Address を Contact Key にすると、メアド変更で別人扱い・共有メアドで競合などの問題が発生</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">0.3 Business Unit 構造（<span class="term" data-tooltip="Enterprise 2.0。複数の BU を持てる Marketing Cloud のアカウント構造。">Enterprise 2.0<sup>*</sup></span>）</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <p class="lead">試験シナリオの多くが複数 <span class="term" data-tooltip="BU = Business Unit。Marketing Cloud 内の組織分割単位。Enterprise 2.0 構成では Parent BU の下に複数の Child BU を持てる。">BU<sup>*</sup></span> を持つ企業を想定している。</p>
+<pre class="tree-block">Parent BU (Top-level Account)
+├─ Child BU 1 (例: ブランドA)
+├─ Child BU 2 (例: ブランドB)
+└─ Child BU 3 (例: 部門X)</pre>
+              <h3>ポイント</h3>
+              <ul>
+                <li>All Contacts は Enterprise（全 BU 横断）レベル → Contact 数のカウントも Enterprise 単位</li>
+                <li>All Subscribers は BU ごと（ただし Parent BU からは子 BU を跨いで参照可能）</li>
+                <li>Shared Data Extension は Parent BU で作成し、複数の Child BU から参照可能</li>
+                <li>Send Classification / Sender Profile / Delivery Profile は BU ごとに管理</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="block" data-copyable>
+            <div class="section-head">
+              <h2 class="section-title">0.4 試験で出る前提</h2>
+              <button class="copy-btn" type="button" aria-label="このセクションを Markdown でコピー" title="Markdown でコピー">
+                <span class="copy-btn__icon"></span>
+                <span class="copy-btn__label">Copy</span>
+              </button>
+            </div>
+            <div class="section-body">
+              <ul>
+                <li>多くのシナリオが「複数 BU を持つ企業」を想定して出題される</li>
+                <li>「Parent BU からのみ実施できる作業」「子 BU に反映される設定」「BU を跨ぐデータ共有」の論点は頻出</li>
+                <li>一斉送信を想定する問題と、API 駆動の 1 件単位送信を想定する問題が混在する</li>
+              </ul>
+            </div>
+          </section>
+        </article>
+
         <!-- Placeholder pages -->
-        <article class="page" id="page-prereq" data-placeholder data-page-title="0. 前提知識"></article>
         <article class="page" id="page-macro" data-placeholder data-page-title="1. マクロ"></article>
         <article class="page" id="page-meso" data-placeholder data-page-title="2. メソ"></article>
         <article class="page" id="page-meso-bestpractices" data-placeholder data-page-title="2. メソ｜Best Practices"></article>
@@ -807,6 +1147,150 @@
         dot.classList.add(statusClass);
       }
 
+      // ---------- Term tooltips (hover + tap toggle) ----------
+      function bindTermTooltips() {
+        var openTerm = null;
+        document.addEventListener('click', function (e) {
+          var target = e.target;
+          var term = target && target.closest ? target.closest('.term') : null;
+          if (term) {
+            if (openTerm && openTerm !== term) {
+              openTerm.classList.remove('is-open');
+            }
+            var willOpen = !term.classList.contains('is-open');
+            term.classList.toggle('is-open', willOpen);
+            openTerm = willOpen ? term : null;
+            e.stopPropagation();
+            return;
+          }
+          if (openTerm) {
+            openTerm.classList.remove('is-open');
+            openTerm = null;
+          }
+        });
+      }
+
+      // ---------- Markdown conversion (DOM → Markdown) ----------
+      function nodesToMarkdown(nodes) {
+        var out = '';
+        for (var i = 0; i < nodes.length; i++) {
+          out += nodeToMarkdown(nodes[i]);
+        }
+        return out;
+      }
+
+      function nodeToMarkdown(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          return node.textContent;
+        }
+        if (node.nodeType !== Node.ELEMENT_NODE) return '';
+        var tag = node.tagName.toLowerCase();
+        var inner = function () { return nodesToMarkdown(node.childNodes); };
+        switch (tag) {
+          case 'h2': return '## ' + inner().trim() + '\n\n';
+          case 'h3': return '### ' + inner().trim() + '\n\n';
+          case 'h4': return '#### ' + inner().trim() + '\n\n';
+          case 'p':
+            var t = inner().replace(/\s+/g, ' ').trim();
+            return t ? t + '\n\n' : '';
+          case 'strong':
+          case 'b': return '**' + inner() + '**';
+          case 'em':
+          case 'i': return '*' + inner() + '*';
+          case 'code': return '`' + inner() + '`';
+          case 'br': return '\n';
+          case 'sup': return '';
+          case 'ul': return listToMarkdown(node, false);
+          case 'ol': return listToMarkdown(node, true);
+          case 'table': return tableToMarkdown(node);
+          case 'pre': return '```\n' + node.textContent.replace(/\n+$/, '') + '\n```\n\n';
+          default: return inner();
+        }
+      }
+
+      function listToMarkdown(listEl, ordered) {
+        var items = [];
+        for (var i = 0; i < listEl.children.length; i++) {
+          if (listEl.children[i].tagName.toLowerCase() === 'li') items.push(listEl.children[i]);
+        }
+        var out = '';
+        items.forEach(function (li, idx) {
+          var prefix = ordered ? (idx + 1) + '. ' : '- ';
+          var content = nodesToMarkdown(li.childNodes).replace(/\s+/g, ' ').trim();
+          out += prefix + content + '\n';
+        });
+        return out + '\n';
+      }
+
+      function tableToMarkdown(tableEl) {
+        var rows = tableEl.querySelectorAll('tr');
+        var lines = [];
+        rows.forEach(function (row, idx) {
+          var cells = row.querySelectorAll('th, td');
+          var cellTexts = [];
+          cells.forEach(function (c) {
+            cellTexts.push(nodesToMarkdown(c.childNodes).replace(/\s+/g, ' ').trim());
+          });
+          lines.push('| ' + cellTexts.join(' | ') + ' |');
+          if (idx === 0) {
+            var sepCells = [];
+            cells.forEach(function () { sepCells.push('---'); });
+            lines.push('| ' + sepCells.join(' | ') + ' |');
+          }
+        });
+        return lines.join('\n') + '\n\n';
+      }
+
+      // ---------- Copy section as Markdown ----------
+      function bindCopyButtons() {
+        document.querySelectorAll('.copy-btn').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var section = btn.closest('[data-copyable]');
+            if (!section) return;
+            var titleEl = section.querySelector('.section-title');
+            var body = section.querySelector('.section-body');
+            var md = '';
+            if (titleEl) md += '## ' + nodesToMarkdown(titleEl.childNodes).replace(/\s+/g, ' ').trim() + '\n\n';
+            if (body) md += nodesToMarkdown(body.childNodes);
+            md = md.replace(/\n{3,}/g, '\n\n').trim();
+            copyToClipboard(md).then(function () {
+              flashCopied(btn);
+            }).catch(function () {});
+          });
+        });
+      }
+
+      function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(text);
+        }
+        return new Promise(function (resolve, reject) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            resolve();
+          } catch (err) { reject(err); }
+        });
+      }
+
+      function flashCopied(btn) {
+        var label = btn.querySelector('.copy-btn__label');
+        var original = label ? label.textContent : '';
+        if (label) label.textContent = 'Copied';
+        btn.classList.add('is-copied');
+        setTimeout(function () {
+          if (label) label.textContent = original || 'Copy';
+          btn.classList.remove('is-copied');
+        }, 1500);
+      }
+
       // ---------- Mailto form ----------
       function bindContactForm() {
         var btn = document.getElementById('contact-submit');
@@ -827,6 +1311,8 @@
         bindMobileSidebar();
         computeFreshness();
         bindContactForm();
+        bindTermTooltips();
+        bindCopyButtons();
 
         window.addEventListener('hashchange', handleHashChange);
         handleHashChange();
