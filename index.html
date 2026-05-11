@@ -535,6 +535,152 @@
       color: var(--text-primary);
     }
 
+    /* ---------- Scenario card (page-micro) ---------- */
+    .scenario {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .scenario__head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .scenario__number {
+      flex-shrink: 0;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .scenario__title {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+    }
+
+    .scenario__question {
+      margin-bottom: 14px;
+    }
+
+    .scenario__label {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 4px;
+    }
+
+    .scenario__question p:not(.scenario__label) {
+      margin: 0;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .scenario__toggle {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .scenario__toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .scenario__toggle-icon {
+      font-size: 0.7rem;
+      transition: transform var(--transition);
+    }
+
+    .scenario__toggle[aria-expanded="true"] .scenario__toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .scenario__answer[hidden] {
+      display: none;
+    }
+
+    .scenario__answer {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .scenario__answer-row {
+      margin-bottom: 14px;
+    }
+
+    .scenario__answer-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .scenario__answer-row > p:not(.scenario__label):not(.scenario__solution) {
+      margin: 0;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .scenario__solution {
+      margin: 0;
+      color: var(--accent);
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    ol.scenario__solution,
+    ul.scenario__solution {
+      padding-left: 22px;
+    }
+
+    ol.scenario__solution li,
+    ul.scenario__solution li {
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    ol.scenario__solution li:last-child,
+    ul.scenario__solution li:last-child {
+      margin-bottom: 0;
+    }
+
+    .scenario__answer-row ul:not(.scenario__solution),
+    .scenario__answer-row ol:not(.scenario__solution) {
+      margin: 6px 0 0;
+      padding-left: 22px;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .scenario__answer-row ul:not(.scenario__solution) li,
+    .scenario__answer-row ol:not(.scenario__solution) li {
+      margin-bottom: 4px;
+    }
+
+    .scenario__answer-row ul:not(.scenario__solution) li:last-child,
+    .scenario__answer-row ol:not(.scenario__solution) li:last-child {
+      margin-bottom: 0;
+    }
+
+    .scenario__answer-row--wrong .scenario__label {
+      color: var(--status-stale);
+    }
+
     /* ---------- Section body typography ---------- */
     .section-body > p {
       margin: 0 0 16px;
@@ -2323,7 +2469,419 @@ File Transfer (Safehouse→SFTP)</pre>
             </div>
           </section>
         </article>
-        <article class="page" id="page-micro" data-placeholder data-page-title="3. ミクロ"></article>
+        <!-- 3. ミクロ -->
+        <article class="page" id="page-micro">
+          <header class="page__header">
+            <p class="page__subtitle">SECTION 3</p>
+            <h1 class="page__title">ミクロ：判断シナリオと頻出ひっかけ</h1>
+          </header>
+
+          <p class="lead">複合シナリオで何を選ぶかの判断力を鍛えるパート。実試験では単一機能の定義を問う問題は少なく、複数の機能領域がまたがるシナリオで「最適 (most appropriate)」を選ばせる出題が多い。<br><br>以下は試験形式に寄せたシナリオ集（本試験の問題ではなく、判断軸を学ぶための例）。</p>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.1</div>
+              <h3 class="scenario__title">購読者は 10,000 件、実送信は 8,700 件</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>Sendable DE には 10,000 件あるが、Send 成功は 8,700 件だった。最初に確認すべきものは？</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution">All Subscribers の購読ステータス（Unsubscribed / Held / Bounced）、Suppression List、Exclusion 設定</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>送信差異は購読・除外レイヤーで発生することが圧倒的に多い。データの中身（メアドの妥当性、重複）を確認するのはその後。実務でも試験でも、購読層を上から下へ削っていく順序を最初に思い浮かべる癖をつける。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.2</div>
+              <h3 class="scenario__title">会員ランクに応じた異なるバナー表示</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>会員ランク（Gold / Silver / Bronze）によって異なるバナー画像を表示したい。マーケターが GUI で管理できる方法と、別 DE から条件参照する場合の方法は？</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution">GUI 管理は <em class="em">Dynamic Content</em>、別 DE 参照を伴う条件分岐は <em class="em">AMPscript</em>（Lookup 関数で別 DE を参照）</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>「GUI 管理可能か / 開発者制御が必要か」「単純属性参照か / 別 DE 参照か」の 2 軸で切る。問題文中に「別の DE」「条件結合」が出てきたら AMPscript を疑うシグナル。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.3</div>
+              <h3 class="scenario__title">購入完了直後のメール</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>EC サイトの購入完了時、外部システムから API で 1 通ずつ送信したい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">Triggered Send</em></p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>「外部イベント駆動」「1 件単位」「即時性」の 3 つが揃ったら Triggered。</p>
+              </div>
+              <div class="scenario__answer-row scenario__answer-row--wrong">
+                <p class="scenario__label">誤答理由</p>
+                <ul>
+                  <li>Guided Send → 手動操作。API から呼び出せない</li>
+                  <li>Journey Builder → 顧客旅程に組み込むなら可能だが「1 通だけ即時送信」用途には過剰</li>
+                  <li>User-Initiated Send → 再利用可能な定義だが、1 件単位の API 呼び出しを想定していない</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.4</div>
+              <h3 class="scenario__title">Automation で Data Extract したのに SFTP に無い</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>Automation Studio で Data Extract Activity は成功した。しかし外部 SFTP にファイルが見つからない。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution">Data Extract の後に <em class="em">File Transfer Activity</em> がない</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>Data Extract = ファイル生成（<span class="term" data-tooltip="Safehouse。Marketing Cloud が提供する内部ファイル保管領域。Automation Studio が処理するファイルは原則 Safehouse に置かれる。外部 SFTP とは File Transfer Activity で橋渡しする。">Safehouse<sup>*</sup></span> 内）、File Transfer = ファイル移動（Safehouse ⇄ SFTP）。この 2 つはセットで使うのが前提。試験でも実務でもここで詰まる人が非常に多い。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.5</div>
+              <h3 class="scenario__title">フォーム登録 → Welcome → 3 日後にクリック有無で分岐</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>上記フローを実現する最適ツールは？</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">Journey Builder</em></p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>「個人ごとの時間軸 + 行動分岐」が出たら Journey。Automation Studio はバッチ処理向きで「個人ごとの 3 日後」を待つことができない（Wait で全体待機はできるが、個人時間軸ではない）。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.6</div>
+              <h3 class="scenario__title">ブランドごとに From Name とフッターを変える</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>同じメール本文だがブランド A とブランド B で From Name と Footer を変更したい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">Sender Profile</em>（From Name 用）と <em class="em">Delivery Profile</em>（Footer 用）をそれぞれブランド別に作成し、Send Classification として組み合わせる</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>「From」というキーワードに引きずられて Delivery Profile を選ぶと不正解。</p>
+                <ul>
+                  <li>From Name / From Email → Sender Profile</li>
+                  <li>Reply 処理 (RMM) → Sender Profile</li>
+                  <li>Footer / Header / IP → Delivery Profile</li>
+                  <li>Commercial / Transactional → Send Classification の CAN-SPAM 分類</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.7</div>
+              <h3 class="scenario__title">開封者のうちクリックした割合を見たい</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>開封したユーザーのうち、何 % がリンクをクリックしたか知りたい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">CTOR</em>（Click-to-Open Rate = Click / Open）</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>CTR は分母が Delivered、CTOR は分母が Open。「開封してくれた人のうち」が出たら CTOR と即断できる癖をつける。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.8</div>
+              <h3 class="scenario__title">受信者ごとの最適時間に送りたい</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>受信者個別の反応傾向に合わせて送信時刻を最適化したい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">Einstein Send Time Optimization (STO)</em></p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <ul>
+                  <li>受信者ごと最適時刻 → STO</li>
+                  <li>開封・クリック確率予測 → Engagement Scoring</li>
+                  <li>送信頻度の過剰 / 不足判定 → Engagement Frequency</li>
+                  <li>コンテンツ自動選択 → Content Selection</li>
+                  <li>件名・本文生成（多言語含む） → Copy Insights / Generative AI</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.9</div>
+              <h3 class="scenario__title">SMS クリック数にボットが混在</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>SMS キャンペーンのクリック数に、URL プレビューやセキュリティスキャナの自動クリックが混ざっている。実際の人間のクリックに近い値を見たい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">VerifiedClicks</em>（Spring '26 追加）</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>Apple MPP 対応などプライバシー保護由来の自動クリック・自動開封は、メール / SMS 両方で測定値を歪める。Salesforce は VerifiedClicks で補正値を提供している。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.10</div>
+              <h3 class="scenario__title">BU 横断のキャンペーン管理</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>Parent BU 1 つと Child BU 3 つの構成で、共通のテンプレートとロゴをすべての子 BU で使い回したい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">Shared Data Extension</em> / Shared Content（Parent BU で作成 → Child BU から参照）</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>「共通利用」「複数 BU」「親で一元管理」というキーワードは Shared 系のシグナル。各子 BU に同じものを複製するのはアンチパターン。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.11</div>
+              <h3 class="scenario__title">購読者がメアド変更で同一人物が 2 人にカウントされる</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>同じ顧客がメールアドレスを変えたら、Marketing Cloud 上で別 Contact として扱われた。原因は？</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution">Contact Key として <em class="em">Email Address を使っている</em>こと</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>Email Address は個人識別子として弱い。家族で共有、メアド変更、複数アドレス所持の可能性がある。Contact Key は不変の社内 ID（顧客 ID）を割り当てるのがベストプラクティス。試験でも頻出。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.12</div>
+              <h3 class="scenario__title">Send Logging を有効にしたい</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>送信時点の SubscriberKey / EmailAddress / SubjectLine を記録したい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <ol class="scenario__solution">
+                  <li>Salesforce サポートに Send Logging 機能の有効化を依頼</li>
+                  <li>SendLog テンプレートから DE を作成</li>
+                  <li>DE のカラム名を、Sendable DE / AMPscript 変数 / Personalization String と<em class="em">完全に一致</em>させる</li>
+                </ol>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>Send Logging は事前申請が必要な機能。さらに、自動で値が入るのは 6 フィールド（JobID / ListID / BatchID / SubID / TriggeredSendID / ErrorCode）のみ。それ以外を取りたければカラム名の完全一致で自動マッピングさせる。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.13</div>
+              <h3 class="scenario__title">旧購読者を再エンゲージメントしたい</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>過去 6 ヶ月開封なしの購読者を再エンゲージメントするキャンペーンを設計したい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">Automation Studio で SQL Query</em> → 対象者 DE を生成 → <em class="em">Journey Builder</em> に投入</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>「過去 N 日間の○○」というデータ抽出は SQL Query が定番（Data View <code>_Open</code> を結合）。抽出後の顧客旅程は Journey Builder で分岐管理。両方を使う複合パターンは試験頻出。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.14</div>
+              <h3 class="scenario__title">Journey に再入場させたい</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>Welcome Journey に 2 回目の登録時も入って欲しいが、デフォルト設定では入らない。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution">Journey の <em class="em">Re-entry Settings</em> を <code>Re-entry Anytime</code> または <code>Re-entry only after exiting</code> に変更</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>デフォルトは <code>No re-entry</code>（一度入ったら終わり）。Welcome / Loyalty / 周年 Journey などで再入場を意図する場合は明示的に設定変更が必要。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="scenario">
+            <header class="scenario__head">
+              <div class="scenario__number">3.15</div>
+              <h3 class="scenario__title">A/B テスト勝者の自動配信</h3>
+            </header>
+            <div class="scenario__question">
+              <p class="scenario__label">設問</p>
+              <p>件名 A/B で 20% ずつ送り、CTOR 優秀な方を残り 60% に自動配信したい。</p>
+            </div>
+            <button class="scenario__toggle" type="button" aria-expanded="false">
+              <span class="scenario__toggle-label">解答と判断軸を見る</span>
+              <span class="scenario__toggle-icon">▾</span>
+            </button>
+            <div class="scenario__answer" hidden>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">最適解</p>
+                <p class="scenario__solution"><em class="em">Email Studio の A/B Test Send</em> で件名 2 種・テスト割合各 20%・勝者基準 CTOR・勝者送信割合 60% を設定</p>
+              </div>
+              <div class="scenario__answer-row">
+                <p class="scenario__label">判断軸</p>
+                <p>違いを知る：</p>
+                <ul>
+                  <li><em class="em">A/B Test Send (Email Studio 内)</em>: 1 回の送信ジョブで件名や本文を比較</li>
+                  <li><em class="em"><span class="term" data-tooltip="Path Optimizer。Journey Builder 内で複数パスを A/B テストし、結果に基づき残りの購読者を勝者パスに送る機能。">Path Optimizer<sup>*</sup></span> (Journey Builder 内)</em>: Journey 内の複数パスを比較し勝者パスへ寄せる</li>
+                  <li><em class="em">Random Split (Journey Builder)</em>: 単純ランダム分岐（勝者選定機能なし）</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </article>
         <article class="page" id="page-traps" data-placeholder data-page-title="4. ひっかけ集"></article>
         <article class="page" id="page-cheatsheet" data-placeholder data-page-title="5. チートシート"></article>
         <article class="page" id="page-roadmap" data-placeholder data-page-title="6. 学習ロードマップ"></article>
@@ -2667,6 +3225,29 @@ File Transfer (Safehouse→SFTP)</pre>
         }, 1500);
       }
 
+      // ---------- Scenario card toggle ----------
+      function bindScenarios() {
+        document.querySelectorAll('.scenario__toggle').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!expanded));
+            var card = btn.closest('.scenario');
+            if (!card) return;
+            var answer = card.querySelector('.scenario__answer');
+            if (!answer) return;
+            if (expanded) {
+              answer.setAttribute('hidden', '');
+            } else {
+              answer.removeAttribute('hidden');
+            }
+            var label = btn.querySelector('.scenario__toggle-label');
+            if (label) {
+              label.textContent = expanded ? '解答と判断軸を見る' : '解答と判断軸を閉じる';
+            }
+          });
+        });
+      }
+
       // ---------- Mailto form ----------
       function bindContactForm() {
         var btn = document.getElementById('contact-submit');
@@ -2689,6 +3270,7 @@ File Transfer (Safehouse→SFTP)</pre>
         bindContactForm();
         bindTermTooltips();
         bindCopyButtons();
+        bindScenarios();
 
         window.addEventListener('hashchange', handleHashChange);
         handleHashChange();
