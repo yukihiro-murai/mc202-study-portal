@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a0a0a">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="last-updated" content="2026/05/11">
+  <meta name="last-updated" content="2026/05/12">
   <title>MC-202 試験対策ガイド</title>
   <style>
     /* ---------- Design tokens ---------- */
@@ -364,6 +364,235 @@
       margin-top: 12px;
       display: flex;
       justify-content: flex-end;
+    }
+
+    /* ---------- Learning path (TOP page main) ---------- */
+    .learning-path {
+      background: linear-gradient(180deg, var(--accent-muted) 0%, var(--bg-surface) 60%);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .learning-path__heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 6px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .learning-path__heading::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .learning-path__intro {
+      margin: 0 0 18px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .learning-path__steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .learning-path__step {
+      position: relative;
+      display: flex;
+      gap: 18px;
+      padding: 18px 20px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius);
+    }
+
+    .learning-path__step--primary {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-muted) inset;
+    }
+
+    .learning-path__step:not(:last-child)::after {
+      content: '↓';
+      position: absolute;
+      left: 32px;
+      bottom: -24px;
+      transform: translateX(-50%);
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .learning-path__step-badge {
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius);
+      background: var(--bg-base);
+      border: 1px solid var(--border-default);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .learning-path__step-badge--primary {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .learning-path__step-badge-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-tertiary);
+    }
+
+    .learning-path__step-badge--primary .learning-path__step-badge-label {
+      color: var(--bg-base);
+    }
+
+    .learning-path__step-badge-num {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .learning-path__step-badge--primary .learning-path__step-badge-num {
+      color: var(--bg-base);
+    }
+
+    .learning-path__step-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .learning-path__step-tag {
+      display: inline-block;
+      margin: 0 0 6px;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: 999px;
+    }
+
+    .learning-path__step-tag--primary {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-muted);
+    }
+
+    .learning-path__step-title {
+      display: block;
+      margin: 4px 0 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    .learning-path__step-title:hover {
+      color: var(--accent);
+    }
+
+    .learning-path__step-external {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 0.85em;
+      color: var(--text-tertiary);
+    }
+
+    .learning-path__step-title:hover .learning-path__step-external {
+      color: var(--accent);
+    }
+
+    .learning-path__step-desc {
+      margin: 8px 0 0;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* ---------- Reference resources (TOP page sub) ---------- */
+    .resources {
+      background: transparent;
+      border: 1px dashed var(--border-default);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+    }
+
+    .resources__heading {
+      margin: 0 0 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .resources__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .resources__item {
+      padding: 10px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+    }
+
+    .resources__link {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .resources__link:hover {
+      color: var(--accent);
+    }
+
+    .resources__link-external {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 0.85em;
+      color: var(--text-tertiary);
+    }
+
+    .resources__link:hover .resources__link-external {
+      color: var(--accent);
+    }
+
+    .resources__desc {
+      margin: 4px 0 0;
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      line-height: 1.6;
     }
 
     .btn {
@@ -1254,6 +1483,23 @@
         padding: 16px 18px;
       }
 
+      .learning-path { padding: 18px 16px; }
+
+      .learning-path__step {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .learning-path__step-badge {
+        width: 56px;
+        height: 56px;
+      }
+
+      .learning-path__step:not(:last-child)::after {
+        left: 28px;
+      }
+
       .meta__row {
         flex-direction: column;
         align-items: flex-start;
@@ -1479,11 +1725,77 @@
             <div class="notice" role="note">
               <p class="notice__title">注意喚起</p>
               <p>
-                試験傾向や試験情報は日々アップデートされます。公式でも注意喚起がされています。<br>
-                公式 Exam Guide、Trailhead Trailmix、Release Maintenance、Salesforce Help の更新を確認してから学習してください。<br>
-                旧情報を元に学習すると逆効果なのでご注意ください。<br>
-                公式 Exam Guide / Trailhead Trailmix を基準にしつつ、Release Maintenance や Salesforce Help の更新も確認し、このページの情報とハイブリッドで活用してください。
+                Trailhead や Trailmix の完走だけでは試験範囲をカバーしきれない可能性があります。<br>
+                試験傾向や仕様は日々アップデートされるため、Release Notes と Salesforce Help で最新の内容も必ず確認してください。<br>
+                旧情報を元に学習すると逆効果になることがあります。<br>
+                公式リソースとこのページの情報をハイブリッドで活用し、確実に合格を目指しましょう。
               </p>
+            </div>
+          </section>
+
+          <section class="block">
+            <div class="learning-path">
+              <h2 class="learning-path__heading">メイン学習パス</h2>
+              <p class="learning-path__intro">STEP 1 → STEP 2 の順で進めるのが理想です。Trailhead Trailmix を活用したカリキュラム構成です。</p>
+              <ol class="learning-path__steps">
+                <li class="learning-path__step">
+                  <div class="learning-path__step-badge">
+                    <span class="learning-path__step-badge-label">STEP</span>
+                    <span class="learning-path__step-badge-num">1</span>
+                  </div>
+                  <div class="learning-path__step-body">
+                    <span class="learning-path__step-tag">事前学習として推奨</span>
+                    <a class="learning-path__step-title"
+                       href="https://trailhead.salesforce.com/ja/users/strailhead/trailmixes/prepare-for-your-salesforce-marketing-associate-credential"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Salesforce Certified Marketing Cloud Engagement Foundations<span class="learning-path__step-external" aria-hidden="true">↗</span>
+                    </a>
+                    <p class="learning-path__step-desc">Email Specialist に取り組む前に、事前知識としてこちらのカリキュラムを完了しておくことが理想的です。Marketing Cloud Engagement の全体像や基本概念を押さえるためのトレイルミックスで、必須ではありませんが、参考・補足としてご活用ください。</p>
+                  </div>
+                </li>
+                <li class="learning-path__step learning-path__step--primary">
+                  <div class="learning-path__step-badge learning-path__step-badge--primary">
+                    <span class="learning-path__step-badge-label">STEP</span>
+                    <span class="learning-path__step-badge-num">2</span>
+                  </div>
+                  <div class="learning-path__step-body">
+                    <span class="learning-path__step-tag learning-path__step-tag--primary">本命の認定資格</span>
+                    <a class="learning-path__step-title"
+                       href="https://trailhead.salesforce.com/ja/users/strailhead/trailmixes/prepare-for-your-marketing-cloud-email-specialist-credential"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                      Salesforce Certified Marketing Cloud Email Specialist<span class="learning-path__step-external" aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <section class="block">
+            <div class="resources">
+              <h2 class="resources__heading">参考リンク</h2>
+              <ul class="resources__list">
+                <li class="resources__item">
+                  <a class="resources__link"
+                     href="https://help.salesforce.com/s/articleView?id=release-notes.rn_marketing_engagement.htm&amp;type=5"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    Release Notes<span class="resources__link-external" aria-hidden="true">↗</span>
+                  </a>
+                  <p class="resources__desc">Marketing Cloud Engagement の各リリースの公式リリースノート</p>
+                </li>
+                <li class="resources__item">
+                  <a class="resources__link"
+                     href="https://help.salesforce.com/s/articleView?id=mktg.mc_overview_marketing_cloud.htm&amp;language=ja&amp;type=5"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    Salesforce Help<span class="resources__link-external" aria-hidden="true">↗</span>
+                  </a>
+                  <p class="resources__desc">Marketing Cloud Engagement の機能・仕様を確認できる日本語の公式ヘルプ</p>
+                </li>
+              </ul>
             </div>
           </section>
 
@@ -6907,6 +7219,11 @@ File Transfer (Safehouse→SFTP)</pre>
     - Q2-10 の罠タイプタグを「概念違い（Dynamic Content の機能範囲）」に修正
     - Q5-9 設問文にソース間差分の前提を明示
     - サイドバーラベル「7. 練習問題75問」→「7. 練習問題 75 問」
+    Phase 6（TOP ページに公式リソース導線を整備）:
+    - 注意喚起テキストを刷新: Trailhead / Trailmix だけでは不足の旨を最重要メッセージ化、公式 Exam Guide の言及を削除、Release Notes / Salesforce Help の確認を訴求
+    - TOP ページに「メイン学習パス」セクションを新設: STEP 1（Marketing Cloud Engagement Foundations Trailmix、事前学習）→ STEP 2（Marketing Cloud Email Specialist Trailmix、本命）の 2 段ステップ。アクセントカラーで強調、コネクター矢印付き
+    - TOP ページに「参考リンク」セクションを新設: Release Notes（rn_marketing_engagement）、Salesforce Help（mc_overview_marketing_cloud）。学習パスとは控えめなトーン（破線枠、彩度抑制）で差別化
+    - 全外部リンクに target="_blank" rel="noopener noreferrer" を付与
   -->
 </body>
 </html>
