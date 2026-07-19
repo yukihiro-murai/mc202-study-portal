@@ -43,3 +43,14 @@ GitHub Pages で配信する単一 HTML コンテンツ。
 - バックエンド連携
 - ユーザー認証
 - 進捗保存
+
+---
+
+## マルチマシン Git 同期プロトコル (必須・スキップ禁止)
+
+このリポジトリは Mac mini と MacBook Pro の2台で並行運用されている。**GitHub (origin) が唯一の正であり、ローカルは常に古い可能性がある。** すべての AI エージェント (Claude Code / Codex / Grok Build / Hermes Agent / Cursor 等) は以下を守ること。
+
+- **作業開始時 (必ず実行)**: `git branch --show-current` でブランチ確認 → `git status` → `git fetch origin` → behind なら `git pull --ff-only`。fast-forward できない・未コミット変更と衝突しそうな場合は、勝手に merge / rebase / stash せず状況を報告して指示を待つ。
+- **作業終了・中断時 (必ず実行)**: 変更を commit (WIP でも commit する) → `git pull --ff-only` → `git push origin <branch>` (新規ブランチは `-u`)。**push を完了するまで「作業完了」と報告しない。** push していない作業はもう一台から存在しないのと同じ。
+- **禁止**: force push (ユーザー明示指示時を除く) / fetch 省略での着手 / push 省略での完了報告 / コンフリクトの独断解決。
+- git push 後、`.clasp.json` があれば `clasp status` → `clasp push` で GAS に反映する。
